@@ -69,10 +69,10 @@ export const LiveDonationTicker = () => {
   }, []);
 
   return (
-    <div className="bg-brand-primary p-4 rounded-xl shadow-lg mb-6 flex items-center gap-4 text-white overflow-hidden">
-      <div className="flex items-center gap-2 shrink-0 border-r border-slate-700 pr-4">
+    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-6 flex items-center gap-4 text-slate-800 overflow-hidden">
+      <div className="flex items-center gap-2 shrink-0 border-r border-slate-200 pr-4">
         <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-300">Live Gateway</span>
+        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Live Gateway</span>
       </div>
       <div className="flex-1 flex gap-4 overflow-hidden relative h-8 items-center">
         <AnimatePresence>
@@ -82,10 +82,10 @@ export const LiveDonationTicker = () => {
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 - i * 0.3 }}
               exit={{ x: -100, opacity: 0 }}
-              className="flex items-center gap-2 whitespace-nowrap bg-brand-secondary px-3 py-1.5 rounded-md border border-slate-700 shrink-0"
+              className="flex items-center gap-2 whitespace-nowrap bg-slate-50 px-3 py-1.5 rounded-md border border-slate-100 shrink-0"
             >
-              <span className="text-xs font-medium text-slate-300">{d.name}</span>
-              <span className="text-xs font-bold text-emerald-400">₹{d.amount.toLocaleString()}</span>
+              <span className="text-xs font-medium text-slate-600">{d.name}</span>
+              <span className="text-xs font-bold text-emerald-600">₹{d.amount.toLocaleString()}</span>
             </motion.div>
           ))}
         </AnimatePresence>
@@ -228,24 +228,24 @@ export const LiveBroadcastAnalytics = () => {
 // 7. Events: Countdown
 export const UpcomingEventCountdown = () => {
   return (
-    <div className="bg-gradient-to-r from-slate-900 to-slate-800 p-6 rounded-xl shadow-lg mb-6 flex justify-between items-center text-white">
+    <div className="bg-white border border-slate-200 p-6 rounded-xl shadow-sm mb-6 flex justify-between items-center">
       <div className="flex items-center gap-4">
-        <div className="p-3 bg-white/10 rounded-lg backdrop-blur border border-white/20">
-          <Clock className="w-6 h-6 text-amber-400" />
+        <div className="p-3 bg-amber-50 rounded-lg border border-amber-100">
+          <Clock className="w-6 h-6 text-amber-500" />
         </div>
         <div>
-          <h4 className="text-lg font-black tracking-tight mb-1">Maha Shivaratri Procession</h4>
-          <p className="text-xs text-slate-300 font-medium flex items-center gap-2">
-            <Users className="w-3 h-3" /> Live RSVP: <span className="font-bold text-emerald-400">12,450 Expected</span>
+          <h4 className="text-lg font-bold tracking-tight text-slate-800 mb-1">Maha Shivaratri Procession</h4>
+          <p className="text-xs text-slate-500 font-medium flex items-center gap-2">
+            <Users className="w-3 h-3" /> Live RSVP: <span className="font-semibold text-emerald-600">12,450 Expected</span>
           </p>
         </div>
       </div>
       
       <div className="flex gap-2">
         {[{l: 'DAYS', v: '04'}, {l: 'HRS', v: '12'}, {l: 'MIN', v: '45'}].map(t => (
-          <div key={t.l} className="flex flex-col items-center bg-brand-primary/20 px-3 py-1.5 rounded border border-white/10">
-            <span className="text-lg font-black text-white">{t.v}</span>
-            <span className="text-[8px] font-bold text-slate-400 tracking-widest">{t.l}</span>
+          <div key={t.l} className="flex flex-col items-center bg-slate-50 px-3 py-1.5 rounded border border-slate-100">
+            <span className="text-lg font-bold text-brand-primary">{t.v}</span>
+            <span className="text-[8px] font-medium text-slate-500 tracking-widest">{t.l}</span>
           </div>
         ))}
       </div>

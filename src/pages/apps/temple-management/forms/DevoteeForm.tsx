@@ -55,7 +55,7 @@ const DevoteeForm: React.FC = () => {
   const [scanComplete, setScanComplete] = useState(false);
   const [isGeneratingId, setIsGeneratingId] = useState(false);
   const [idGenerated, setIdGenerated] = useState(false);
-  
+
   // Simulated history for this mock
   const [activityHistory] = useState([
     { date: "2026-05-10", action: "Donated ₹5,000 for Annadanam" },
@@ -116,7 +116,7 @@ const DevoteeForm: React.FC = () => {
           reminderNakshatra: (existing as any).reminderNakshatra || false,
           reminderFestivalGreetings: (existing as any).reminderFestivalGreetings || false,
           reminderDonationAnniversary: (existing as any).reminderDonationAnniversary || false,
-          familyStr: (existing.family as any[])?.map((f:any) => `${f.name} (${f.relation})`).join(', ') || "",
+          familyStr: (existing.family as any[])?.map((f: any) => `${f.name} (${f.relation})`).join(', ') || "",
           volunteerRolesStr: (existing.volunteerRoles as string[])?.join(', ') || "",
           templeId: existing.templeId as string || (activeTempleId !== "all" ? activeTempleId : ""),
         });
@@ -160,7 +160,7 @@ const DevoteeForm: React.FC = () => {
       toast.error("Please enter a valid email address.");
       return;
     }
-    
+
 
     const newDevotee = {
       id: id || `DEV-${Math.floor(Math.random() * 1000)}`,
@@ -195,7 +195,7 @@ const DevoteeForm: React.FC = () => {
       templeName: temples.find(t => t.id === formData.templeId)?.name || "Unknown Temple",
       communication: { whatsapp: formData.whatsapp, sms: formData.sms, email: formData.emailAlerts },
       family: formData.familyStr ? [{ name: formData.familyStr, relation: "Family" }] : [],
-      volunteerRoles: formData.volunteerRolesStr ? formData.volunteerRolesStr.split(',').map(s=>s.trim()) : [],
+      volunteerRoles: formData.volunteerRolesStr ? formData.volunteerRolesStr.split(',').map(s => s.trim()) : [],
       engagementScore: isEdit ? 85 : 0
     };
 
@@ -206,7 +206,7 @@ const DevoteeForm: React.FC = () => {
       addMockItem("devotees", newDevotee);
       toast.success("Devotee registered successfully!");
     }
-    
+
     navigate("/devotees");
   };
 
@@ -223,7 +223,7 @@ const DevoteeForm: React.FC = () => {
                 Biometric Registration
               </h3>
               <p className="text-[11px] text-slate-500 mb-4">Fast-track entry by scanning fingerprint or facial features.</p>
-              
+
               {!scanComplete ? (
                 <button
                   type="button"
@@ -250,40 +250,40 @@ const DevoteeForm: React.FC = () => {
             </div>
 
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-               <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                 <QrCode className="w-5 h-5 text-indigo-500" />
-                 Digital ID Card
-               </h3>
-               {idGenerated ? (
-                 <div className="p-4 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl text-white relative overflow-hidden shadow-md">
-                   <div className="absolute top-0 right-0 p-3 opacity-20">
-                     <QrCode className="w-24 h-24" />
-                   </div>
-                   <div className="relative z-10">
-                     <h4 className="font-black text-lg mb-1">{formData.firstName || "Devotee"} {formData.lastName}</h4>
-                     <p className="text-indigo-100 text-[10px] uppercase font-bold tracking-wider mb-4">{formData.membershipType}</p>
-                     <div className="flex items-center gap-2 text-indigo-100 text-xs">
-                       <User className="w-3.5 h-3.5" />
-                       <span>{id || "DEV-NEW"}</span>
-                     </div>
-                   </div>
-                 </div>
-               ) : (
-                 <div className="text-center">
-                   <div className="w-24 h-24 bg-slate-100 rounded-xl mx-auto mb-4 flex items-center justify-center border-2 border-dashed border-slate-200">
-                     <QrCode className="w-8 h-8 text-slate-300" />
-                   </div>
-                   <button 
-                     type="button" 
-                     onClick={handleGenerateId}
-                     disabled={isGeneratingId || !formData.firstName}
-                     className="px-4 py-2 bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-bold text-xs rounded-lg transition-colors w-full flex items-center justify-center gap-2 disabled:opacity-50"
-                   >
-                     {isGeneratingId ? <Loader2 className="w-4 h-4 animate-spin" /> : <QrCode className="w-4 h-4" />}
-                     {isGeneratingId ? "Generating..." : "Generate Digital ID"}
-                   </button>
-                 </div>
-               )}
+              <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <QrCode className="w-5 h-5 text-indigo-500" />
+                Digital ID Card
+              </h3>
+              {idGenerated ? (
+                <div className="p-4 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl text-white relative overflow-hidden shadow-md">
+                  <div className="absolute top-0 right-0 p-3 opacity-20">
+                    <QrCode className="w-24 h-24" />
+                  </div>
+                  <div className="relative z-10">
+                    <h4 className="font-black text-lg mb-1">{formData.firstName || "Devotee"} {formData.lastName}</h4>
+                    <p className="text-indigo-100 text-[10px] uppercase font-bold tracking-wider mb-4">{formData.membershipType}</p>
+                    <div className="flex items-center gap-2 text-indigo-100 text-xs">
+                      <User className="w-3.5 h-3.5" />
+                      <span>{id || "DEV-NEW"}</span>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center">
+                  <div className="w-24 h-24 bg-slate-100 rounded-xl mx-auto mb-4 flex items-center justify-center border-2 border-dashed border-slate-200">
+                    <QrCode className="w-8 h-8 text-slate-300" />
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleGenerateId}
+                    disabled={isGeneratingId || !formData.firstName}
+                    className="px-4 py-2 bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-bold text-xs rounded-lg transition-colors w-full flex items-center justify-center gap-2 disabled:opacity-50"
+                  >
+                    {isGeneratingId ? <Loader2 className="w-4 h-4 animate-spin" /> : <QrCode className="w-4 h-4" />}
+                    {isGeneratingId ? "Generating..." : "Generate Digital ID"}
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         );
@@ -336,7 +336,7 @@ const DevoteeForm: React.FC = () => {
       case "Personal":
         return (
           <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="space-y-8">
-            
+
             {/* Primary Details Card */}
             <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
@@ -345,17 +345,17 @@ const DevoteeForm: React.FC = () => {
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
                 <div className="sm:col-span-2">
-                  <SmartSelect label="Linked Temple Unit" icon={Building2}  value={formData.templeId} onChange={v => setFormData(p => ({...p, templeId: v}))} options={temples.map(t => ({ value: t.id, label: t.name }))} />
+                  <SmartSelect label="Linked Temple Unit" icon={Building2} value={formData.templeId} onChange={v => setFormData(p => ({ ...p, templeId: v }))} options={temples.map(t => ({ value: t.id, label: t.name }))} />
                 </div>
-                <SmartField label="First Name" icon={User}  value={formData.firstName} onChange={v => setFormData(p => ({...p, firstName: v}))} />
-                <SmartField label="Last Name" icon={User}  value={formData.lastName} onChange={v => setFormData(p => ({...p, lastName: v}))} />
-                <SmartField label="Phone Number" icon={Phone}  value={formData.phone} onChange={v => setFormData(p => ({...p, phone: v}))} formatter={formatPhone} validationFn={validatePhone} />
-                <SmartField label="Email Address" icon={Mail} value={formData.email} onChange={v => setFormData(p => ({...p, email: v}))} validationFn={validateEmail} />
-                <SmartField label="Secondary Phone" icon={Phone} value={formData.phoneSecondary} onChange={v => setFormData(p => ({...p, phoneSecondary: v}))} formatter={formatPhone} />
-                <SmartField label="Secondary Email" icon={Mail} value={formData.emailSecondary} onChange={v => setFormData(p => ({...p, emailSecondary: v}))} validationFn={validateEmail} />
+                <SmartField label="First Name" icon={User} value={formData.firstName} onChange={v => setFormData(p => ({ ...p, firstName: v }))} />
+                <SmartField label="Last Name" icon={User} value={formData.lastName} onChange={v => setFormData(p => ({ ...p, lastName: v }))} />
+                <SmartField label="Phone Number" icon={Phone} value={formData.phone} onChange={v => setFormData(p => ({ ...p, phone: v }))} formatter={formatPhone} validationFn={validatePhone} />
+                <SmartField label="Email Address" icon={Mail} value={formData.email} onChange={v => setFormData(p => ({ ...p, email: v }))} validationFn={validateEmail} />
+                <SmartField label="Secondary Phone" icon={Phone} value={formData.phoneSecondary} onChange={v => setFormData(p => ({ ...p, phoneSecondary: v }))} formatter={formatPhone} />
+                <SmartField label="Secondary Email" icon={Mail} value={formData.emailSecondary} onChange={v => setFormData(p => ({ ...p, emailSecondary: v }))} validationFn={validateEmail} />
               </div>
             </div>
-            
+
             {/* Demographics Card */}
             <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
@@ -363,12 +363,12 @@ const DevoteeForm: React.FC = () => {
                 Demographics
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-6">
-                <SmartField label="Date of Birth" icon={User} type="date" value={formData.dob} onChange={v => setFormData(p => ({...p, dob: v}))} />
-                <SmartSelect label="Gender" icon={User} value={formData.gender} onChange={v => setFormData(p => ({...p, gender: v}))} options={["Male", "Female", "Other"]} />
-                <SmartField label="Occupation" icon={User} value={formData.occupation} onChange={v => setFormData(p => ({...p, occupation: v}))} />
+                <SmartField label="Date of Birth" icon={User} type="date" value={formData.dob} onChange={v => setFormData(p => ({ ...p, dob: v }))} />
+                <SmartSelect label="Gender" icon={User} value={formData.gender} onChange={v => setFormData(p => ({ ...p, gender: v }))} options={["Male", "Female", "Other"]} />
+                <SmartField label="Occupation" icon={User} value={formData.occupation} onChange={v => setFormData(p => ({ ...p, occupation: v }))} />
               </div>
             </div>
-            
+
             {/* Spiritual Identity Card */}
             <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
@@ -376,12 +376,12 @@ const DevoteeForm: React.FC = () => {
                 Spiritual Identity
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-6">
-                <SmartField label="Gothram" icon={BookOpen} value={formData.gothram} onChange={v => setFormData(p => ({...p, gothram: v}))} />
-                <SmartField label="Nakshatra" icon={BookOpen} value={formData.nakshatra} onChange={v => setFormData(p => ({...p, nakshatra: v}))} />
-                <SmartField label="Rasi" icon={BookOpen} value={formData.rasi} onChange={v => setFormData(p => ({...p, rasi: v}))} />
+                <SmartField label="Gothram" icon={BookOpen} value={formData.gothram} onChange={v => setFormData(p => ({ ...p, gothram: v }))} />
+                <SmartField label="Nakshatra" icon={BookOpen} value={formData.nakshatra} onChange={v => setFormData(p => ({ ...p, nakshatra: v }))} />
+                <SmartField label="Rasi" icon={BookOpen} value={formData.rasi} onChange={v => setFormData(p => ({ ...p, rasi: v }))} />
               </div>
             </div>
-            
+
             {/* Location Card */}
             <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
@@ -390,11 +390,11 @@ const DevoteeForm: React.FC = () => {
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-6">
                 <div className="sm:col-span-3">
-                  <SmartField label="Full Address" icon={MapPin} value={formData.address} onChange={v => setFormData(p => ({...p, address: v}))} />
+                  <SmartField label="Full Address" icon={MapPin} value={formData.address} onChange={v => setFormData(p => ({ ...p, address: v }))} />
                 </div>
-                <SmartField label="City" icon={MapPin} value={formData.city} onChange={v => setFormData(p => ({...p, city: v}))} />
-                <SmartField label="State" icon={MapPin} value={formData.state} onChange={v => setFormData(p => ({...p, state: v}))} />
-                <SmartField label="Country" icon={MapPin} value={formData.country} onChange={v => setFormData(p => ({...p, country: v}))} />
+                <SmartField label="City" icon={MapPin} value={formData.city} onChange={v => setFormData(p => ({ ...p, city: v }))} />
+                <SmartField label="State" icon={MapPin} value={formData.state} onChange={v => setFormData(p => ({ ...p, state: v }))} />
+                <SmartField label="Country" icon={MapPin} value={formData.country} onChange={v => setFormData(p => ({ ...p, country: v }))} />
               </div>
             </div>
 
@@ -405,8 +405,8 @@ const DevoteeForm: React.FC = () => {
                 Family & Emergency
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
-                <SmartField label="Family Members" icon={Users} value={formData.familyStr} onChange={v => setFormData(p => ({...p, familyStr: v}))} placeholder="e.g. Anjali (Spouse), Arjun (Son)" />
-                <SmartField label="Emergency Contact" icon={ShieldAlert} value={formData.emergencyContact} onChange={v => setFormData(p => ({...p, emergencyContact: v}))} />
+                <SmartField label="Family Members" icon={Users} value={formData.familyStr} onChange={v => setFormData(p => ({ ...p, familyStr: v }))} placeholder="e.g. Anjali (Spouse), Arjun (Son)" />
+                <SmartField label="Emergency Contact" icon={ShieldAlert} value={formData.emergencyContact} onChange={v => setFormData(p => ({ ...p, emergencyContact: v }))} />
               </div>
             </div>
           </motion.div>
@@ -421,11 +421,11 @@ const DevoteeForm: React.FC = () => {
                 Membership Status
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
-                <SmartSelect label="Membership Type" icon={Award} value={formData.membershipType} onChange={v => setFormData(p => ({...p, membershipType: v}))} options={["Life Member", "VIP", "Regular", "Donor"]} />
-                <SmartSelect label="Account Status" icon={ShieldAlert} value={formData.status} onChange={v => setFormData(p => ({...p, status: v}))} options={["Active", "Inactive", "Suspended"]} />
+                <SmartSelect label="Membership Type" icon={Award} value={formData.membershipType} onChange={v => setFormData(p => ({ ...p, membershipType: v }))} options={["Life Member", "VIP", "Regular", "Donor"]} />
+                <SmartSelect label="Account Status" icon={ShieldAlert} value={formData.status} onChange={v => setFormData(p => ({ ...p, status: v }))} options={["Active", "Inactive", "Suspended"]} />
               </div>
             </div>
-            
+
             {/* Communication Preferences */}
             <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
@@ -434,15 +434,15 @@ const DevoteeForm: React.FC = () => {
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <label className="flex items-center justify-center sm:justify-start gap-2 text-sm font-medium text-slate-700 bg-white px-5 py-3 rounded-xl border border-slate-200 cursor-pointer hover:border-brand-primary/40 hover:shadow-sm transition-all">
-                  <input type="checkbox" checked={formData.whatsapp} onChange={e => setFormData(p => ({...p, whatsapp: e.target.checked}))} className="w-4 h-4 accent-brand-primary rounded" />
+                  <input type="checkbox" checked={formData.whatsapp} onChange={e => setFormData(p => ({ ...p, whatsapp: e.target.checked }))} className="w-4 h-4 accent-brand-primary rounded" />
                   WhatsApp
                 </label>
                 <label className="flex items-center justify-center sm:justify-start gap-2 text-sm font-medium text-slate-700 bg-white px-5 py-3 rounded-xl border border-slate-200 cursor-pointer hover:border-brand-primary/40 hover:shadow-sm transition-all">
-                  <input type="checkbox" checked={formData.sms} onChange={e => setFormData(p => ({...p, sms: e.target.checked}))} className="w-4 h-4 accent-brand-primary rounded" />
+                  <input type="checkbox" checked={formData.sms} onChange={e => setFormData(p => ({ ...p, sms: e.target.checked }))} className="w-4 h-4 accent-brand-primary rounded" />
                   SMS
                 </label>
                 <label className="flex items-center justify-center sm:justify-start gap-2 text-sm font-medium text-slate-700 bg-white px-5 py-3 rounded-xl border border-slate-200 cursor-pointer hover:border-brand-primary/40 hover:shadow-sm transition-all">
-                  <input type="checkbox" checked={formData.emailAlerts} onChange={e => setFormData(p => ({...p, emailAlerts: e.target.checked}))} className="w-4 h-4 accent-brand-primary rounded" />
+                  <input type="checkbox" checked={formData.emailAlerts} onChange={e => setFormData(p => ({ ...p, emailAlerts: e.target.checked }))} className="w-4 h-4 accent-brand-primary rounded" />
                   Email
                 </label>
               </div>
@@ -456,19 +456,19 @@ const DevoteeForm: React.FC = () => {
               </h4>
               <div className="flex flex-wrap gap-4">
                 <label className="flex items-center gap-2 text-sm font-medium text-slate-700 bg-white px-5 py-3 rounded-xl border border-slate-200 cursor-pointer hover:border-brand-primary/40 hover:shadow-sm transition-all">
-                  <input type="checkbox" checked={formData.reminderBirthday} onChange={e => setFormData(p => ({...p, reminderBirthday: e.target.checked}))} className="w-4 h-4 accent-brand-primary rounded" />
+                  <input type="checkbox" checked={formData.reminderBirthday} onChange={e => setFormData(p => ({ ...p, reminderBirthday: e.target.checked }))} className="w-4 h-4 accent-brand-primary rounded" />
                   Birthday
                 </label>
                 <label className="flex items-center gap-2 text-sm font-medium text-slate-700 bg-white px-5 py-3 rounded-xl border border-slate-200 cursor-pointer hover:border-brand-primary/40 hover:shadow-sm transition-all">
-                  <input type="checkbox" checked={formData.reminderNakshatra} onChange={e => setFormData(p => ({...p, reminderNakshatra: e.target.checked}))} className="w-4 h-4 accent-brand-primary rounded" />
+                  <input type="checkbox" checked={formData.reminderNakshatra} onChange={e => setFormData(p => ({ ...p, reminderNakshatra: e.target.checked }))} className="w-4 h-4 accent-brand-primary rounded" />
                   Nakshatra
                 </label>
                 <label className="flex items-center gap-2 text-sm font-medium text-slate-700 bg-white px-5 py-3 rounded-xl border border-slate-200 cursor-pointer hover:border-brand-primary/40 hover:shadow-sm transition-all">
-                  <input type="checkbox" checked={formData.reminderFestivalGreetings} onChange={e => setFormData(p => ({...p, reminderFestivalGreetings: e.target.checked}))} className="w-4 h-4 accent-brand-primary rounded" />
+                  <input type="checkbox" checked={formData.reminderFestivalGreetings} onChange={e => setFormData(p => ({ ...p, reminderFestivalGreetings: e.target.checked }))} className="w-4 h-4 accent-brand-primary rounded" />
                   Festivals
                 </label>
                 <label className="flex items-center gap-2 text-sm font-medium text-slate-700 bg-white px-5 py-3 rounded-xl border border-slate-200 cursor-pointer hover:border-brand-primary/40 hover:shadow-sm transition-all">
-                  <input type="checkbox" checked={formData.reminderDonationAnniversary} onChange={e => setFormData(p => ({...p, reminderDonationAnniversary: e.target.checked}))} className="w-4 h-4 accent-brand-primary rounded" />
+                  <input type="checkbox" checked={formData.reminderDonationAnniversary} onChange={e => setFormData(p => ({ ...p, reminderDonationAnniversary: e.target.checked }))} className="w-4 h-4 accent-brand-primary rounded" />
                   Donation Anniv.
                 </label>
               </div>
@@ -481,7 +481,7 @@ const DevoteeForm: React.FC = () => {
                 Volunteer Registration
               </h4>
               <div className="w-full">
-                <SmartField label="Volunteer Interests (Comma separated)" icon={User} value={formData.volunteerRolesStr} onChange={v => setFormData(p => ({...p, volunteerRolesStr: v}))} helperText="e.g. Crowd Control, Prasadam, Event Organizer" />
+                <SmartField label="Volunteer Interests (Comma separated)" icon={User} value={formData.volunteerRolesStr} onChange={v => setFormData(p => ({ ...p, volunteerRolesStr: v }))} helperText="e.g. Crowd Control, Prasadam, Event Organizer" />
               </div>
             </div>
           </motion.div>
@@ -530,35 +530,35 @@ const DevoteeForm: React.FC = () => {
       <div className="flex-1 overflow-y-auto custom-scrollbar">
         <div className="max-w-5xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-1">
-          <AnimatePresence mode="wait">
-            <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
-              {renderLeftPanel()}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        <div className="lg:col-span-2">
-          <form onSubmit={handleSave} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 flex flex-col">
-            <div className="pb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-1">
               <AnimatePresence mode="wait">
-                <motion.div key={activeTab}>
-                  {renderFormContent()}
+                <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
+                  {renderLeftPanel()}
                 </motion.div>
               </AnimatePresence>
             </div>
-            
-            <div className="pt-6 border-t border-slate-100 flex flex-col-reverse sm:flex-row justify-end gap-4 mt-auto">
-              <button type="button" onClick={() => navigate("/devotees")} className="w-full sm:w-auto px-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">Cancel</button>
-              <button type="submit" disabled={!formData.firstName || !formData.phone} className="w-full sm:w-auto px-6 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50">
-                <Save className="w-5 h-5" />
-                {isEdit ? "Update Profile" : "Register Profile"}
-              </button>
+
+            <div className="lg:col-span-2">
+              <form onSubmit={handleSave} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 flex flex-col">
+                <div className="pb-6">
+                  <AnimatePresence mode="wait">
+                    <motion.div key={activeTab}>
+                      {renderFormContent()}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                <div className="pt-6 border-t border-slate-100 flex flex-col-reverse sm:flex-row justify-end gap-4 mt-auto">
+                  <button type="button" onClick={() => navigate("/devotees")} className="w-full sm:w-auto px-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">Cancel</button>
+                  <button type="submit" disabled={!formData.firstName || !formData.phone} className="w-full sm:w-auto px-6 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50">
+                    <Save className="w-5 h-5" />
+                    {isEdit ? "Update Profile" : "Register Profile"}
+                  </button>
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
-        </div>
+          </div>
         </div>
       </div>
     </div>

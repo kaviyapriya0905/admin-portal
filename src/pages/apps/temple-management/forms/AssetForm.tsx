@@ -92,36 +92,48 @@ const AssetForm: React.FC = () => {
   const progressPercent = (completedFields.length / requiredFields.length) * 100;
 
   return (
-    <div className="flex flex-col h-full">
-      {/* Fixed Header */}
-      <div className="shrink-0 bg-[#fafafa] border-b border-slate-100 pb-4 mb-0 flex items-start sm:items-center gap-4">
-        <button onClick={() => navigate("/assets")} className="p-2 bg-white rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors shrink-0 mt-1 sm:mt-0">
-          <ArrowLeft className="w-5 h-5 text-slate-600" />
-        </button>
-        <div className="flex-1">
-          <h1 className="text-xl sm:text-2xl font-bold text-slate-800">{isEdit ? "Modify Asset Profile" : "Register New Asset"}</h1>
-          <p className="text-xs sm:text-sm text-slate-500 flex items-center gap-1.5 mt-0.5">
-            <ShieldCheck className="w-4 h-4 text-emerald-500" /> Secure Protocol · Registry v3.4
+    <div className="max-w-6xl mx-auto space-y-8 pb-12 relative min-h-[calc(100vh-6rem)]">
+      {/* Decorative Background Gradients */}
+      <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-slate-200/40 to-transparent pointer-events-none -z-10 rounded-3xl" />
+      <div className="absolute top-20 right-20 w-96 h-96 bg-slate-400/10 blur-[120px] rounded-full pointer-events-none -z-10" />
+
+      {/* Header */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 py-8 px-8"
+      >
+        <div>
+          <button 
+            type="button"
+            onClick={() => navigate("/assets")} 
+            className="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 hover:text-brand-primary transition-colors mb-4 uppercase tracking-wider"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" /> Back to Assets
+          </button>
+          
+          <div className="flex items-center gap-3 mb-2">
+            <div className="inline-flex items-center justify-center p-2 bg-white shadow-sm border border-slate-100 rounded-xl text-brand-primary">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <h1 className="text-xl font-black text-slate-800 tracking-tight">
+              {isEdit ? "Modify Asset Profile" : "Register New Asset"}
+            </h1>
+          </div>
+          <p className="text-[11px] text-slate-500 font-medium max-w-lg leading-relaxed">
+            Secure Protocol · Registry v3.4. Define capital category, evaluate condition, and manage maintenance cycles.
           </p>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Scrollable body */}
-      <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-5xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
-
-      <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden mb-8">
-        <motion.div className="h-full bg-brand-primary" initial={{ width: 0 }} animate={{ width: `${progressPercent}%` }} transition={{ duration: 0.5 }} />
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-0 self-start">
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-            <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 px-8">
+        <div className="lg:col-span-4 space-y-6">
+          <div className="bg-white/80 backdrop-blur-md rounded-3xl border border-slate-200 shadow-sm p-6">
+            <h3 className="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2">
               <Activity className="w-4 h-4 text-brand-primary" />
               Live Audit Status
             </h3>
-            <p className="text-[11px] text-slate-400 mb-5">Automated evaluation based on condition & maintenance.</p>
+            <p className="text-[10px] text-slate-400 mb-5">Automated evaluation based on condition & maintenance.</p>
             
             {auditStatus === "idle" && (
               <div className="p-4 bg-slate-50 border border-slate-100 rounded-xl text-center text-slate-400">
@@ -153,106 +165,101 @@ const AssetForm: React.FC = () => {
           </div>
         </div>
 
-        <div className="lg:col-span-2">
-          <form onSubmit={handleSave} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 space-y-8">
-            
-            {/* Section 1: Identification */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-1.5 h-5 bg-brand-primary rounded-full" />
-                <h2 className="text-[12px] font-bold text-slate-400 uppercase tracking-wider">
-                  Asset Identification
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
-                <div className="sm:col-span-2">
-                  <SmartField
-                    label="Asset Designation"
-                    icon={Building2}
-                    
-                    value={formData.name}
-                    onChange={v => setFormData(p => ({...p, name: v}))}
-                    placeholder="e.g. Suvarna Gopuram Entrance Door"
-                    validationFn={v => v.length > 2 ? true : null}
-                  />
+        <div className="lg:col-span-8">
+          <form onSubmit={handleSave} className="bg-white/80 backdrop-blur-xl rounded-3xl border border-slate-200 overflow-hidden flex flex-col relative">
+            <div className="p-6 sm:p-8 flex-1 relative z-10 space-y-8">
+              
+              {/* Section 1: Identification */}
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                    Asset Identification
+                  </h2>
                 </div>
 
-                <SmartField
-                  label="Capital Category"
-                  icon={LayoutGrid}
-                  
-                  value={formData.category}
-                  onChange={v => setFormData(p => ({...p, category: v}))}
-                  placeholder="e.g. Infrastructure, Sacred Items"
-                />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
+                  <div className="space-y-2 group sm:col-span-2">
+                    <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider group-focus-within:text-brand-primary transition-colors">Asset Designation</label>
+                    <input type="text" placeholder="e.g. Suvarna Gopuram Entrance Door" value={formData.name} onChange={e => setFormData(p => ({...p, name: e.target.value}))} className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 outline-none text-[12px] font-semibold text-slate-800 transition-all placeholder:text-slate-300 shadow-sm" />
+                  </div>
 
-                <SmartField
-                  label="Acquisition Date"
-                  icon={Calendar}
-                  
-                  type="date"
-                  value={formData.purchaseDate}
-                  onChange={v => setFormData(p => ({...p, purchaseDate: v}))}
-                />
-              </div>
-            </div>
+                  <div className="space-y-2 group">
+                    <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider group-focus-within:text-brand-primary transition-colors">Capital Category</label>
+                    <input type="text" placeholder="e.g. Infrastructure, Sacred Items" value={formData.category} onChange={e => setFormData(p => ({...p, category: e.target.value}))} className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 outline-none text-[12px] font-semibold text-slate-800 transition-all placeholder:text-slate-300 shadow-sm" />
+                  </div>
 
-            <div className="w-full h-px bg-slate-100" />
-
-            {/* Section 2: Condition Audit Status */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-1.5 h-5 bg-amber-500 rounded-full" />
-                <h2 className="text-[12px] font-bold text-slate-400 uppercase tracking-wider">
-                  Condition Audit Status
-                </h2>
+                  <div className="space-y-2 group">
+                    <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider group-focus-within:text-brand-primary transition-colors">Acquisition Date</label>
+                    <input type="date" value={formData.purchaseDate} onChange={e => setFormData(p => ({...p, purchaseDate: e.target.value}))} className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 outline-none text-[12px] font-semibold text-slate-800 transition-all placeholder:text-slate-300 shadow-sm" />
+                  </div>
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
-                <SmartSelect
-                  label="Physical Condition Profile"
-                  icon={CheckCircle}
-                  
-                  value={formData.condition}
-                  onChange={v => setFormData(p => ({...p, condition: v}))}
-                  options={CONDITIONS}
-                />
+              <div className="w-full h-px bg-slate-100" />
 
-                <SmartSelect
-                  label="Maintenance Cycle Status"
-                  icon={Activity}
-                  
-                  value={formData.maintenanceStatus}
-                  onChange={v => setFormData(p => ({...p, maintenanceStatus: v}))}
-                  options={MAINTENANCE_STATUSES}
-                />
+              {/* Section 2: Condition Audit Status */}
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                    Condition Audit Status
+                  </h2>
+                </div>
 
-                <div className="sm:col-span-2">
-                  <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5 block">
-                    <FileText className="w-3.5 h-3.5" /> Audit Notes & Locational Details
-                  </label>
-                  <textarea
-                    value={formData.notes}
-                    onChange={e => setFormData(p => ({ ...p, notes: e.target.value }))}
-                    placeholder="Specify exact location within temple premises, serial numbers, or detailed maintenance history..."
-                    rows={4}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition-all focus:border-brand-primary/40 focus:ring-2 focus:ring-brand-primary/10 focus:bg-white resize-none shadow-inner"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
+                  <div className="space-y-2 group">
+                    <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider group-focus-within:text-brand-primary transition-colors">Physical Condition Profile</label>
+                    <div className="relative">
+                      <select value={formData.condition} onChange={e => setFormData(p => ({...p, condition: e.target.value}))} className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 outline-none text-[12px] font-semibold text-slate-800 transition-all appearance-none cursor-pointer shadow-sm">
+                        <option value="" disabled>Select Condition</option>
+                        {CONDITIONS.map(c => <option key={c} value={c}>{c}</option>)}
+                      </select>
+                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-400">
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 group">
+                    <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider group-focus-within:text-brand-primary transition-colors">Maintenance Cycle Status</label>
+                    <div className="relative">
+                      <select value={formData.maintenanceStatus} onChange={e => setFormData(p => ({...p, maintenanceStatus: e.target.value}))} className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 outline-none text-[12px] font-semibold text-slate-800 transition-all appearance-none cursor-pointer shadow-sm">
+                        <option value="" disabled>Select Status</option>
+                        {MAINTENANCE_STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
+                      </select>
+                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-400">
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 group sm:col-span-2">
+                    <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider group-focus-within:text-brand-primary transition-colors">Audit Notes & Locational Details</label>
+                    <textarea
+                      value={formData.notes}
+                      onChange={e => setFormData(p => ({ ...p, notes: e.target.value }))}
+                      placeholder="Specify exact location within temple premises, serial numbers, or detailed maintenance history..."
+                      rows={4}
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 outline-none px-4 py-3 text-[12px] font-semibold text-slate-800 transition-all placeholder:text-slate-300 shadow-sm resize-none"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-slate-100 flex flex-col-reverse sm:flex-row justify-end gap-4">
-              <button type="button" onClick={() => navigate("/assets")} className="w-full sm:w-auto px-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">Cancel</button>
-              <button type="submit" disabled={progressPercent < 100} className="w-full sm:w-auto px-8 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50">
-                <Save className="w-5 h-5" />
-                {isEdit ? "Update Asset Profile" : "Finalize Asset Registry"}
-              </button>
+            {/* Premium Sticky Footer */}
+            <div className="relative z-20 p-6 sm:px-8 border-t border-slate-200/60 bg-white/90 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4 mt-auto">
+              <p className="text-[11px] font-semibold text-slate-400 text-center sm:text-left">
+                Ensure all required fields are accurately filled.
+              </p>
+              <div className="flex gap-4 w-full sm:w-auto">
+                <button type="button" onClick={() => navigate("/assets")} className="flex-1 sm:flex-none px-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors text-sm">Cancel</button>
+                <button type="submit" className="flex-1 sm:flex-none px-8 py-3 text-sm bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:translate-y-0">
+                  <Save className="w-4 h-4" />
+                  {isEdit ? "Update Asset Profile" : "Finalize Asset Registry"}
+                </button>
+              </div>
             </div>
           </form>
-        </div>
-        </div>
         </div>
       </div>
     </div>

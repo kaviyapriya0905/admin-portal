@@ -144,7 +144,6 @@ const PoojaSevas: React.FC = () => {
           if (upcoming.length > 0) {
             const randomSeva = upcoming[Math.floor(Math.random() * upcoming.length)];
             next[randomSeva.id] = 45 * 60; // 45 mins in seconds
-            toast.success(`${randomSeva.name} has officially started!`, { icon: "🔥" });
           }
         }
         
@@ -156,7 +155,6 @@ const PoojaSevas: React.FC = () => {
              updated = true;
           } else if (next[id] === 0) {
              next[id] = -1; // marked as completed
-             toast.success(`A Seva has been completed.`, { icon: "✅" });
              updated = true;
           }
         });
