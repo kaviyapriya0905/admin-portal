@@ -72,7 +72,7 @@ const SmartField: React.FC<SmartFieldProps> = ({
               scale: (isFocused || value) ? 0.75 : 1,
               color: showError ? '#f43f5e' : (isFocused ? '#a34015' : '#94a3b8')
             }}
-            className={`absolute left-4 top-3.5 origin-left pointer-events-none font-bold uppercase tracking-wider text-[10px]
+            className={`absolute left-4 top-3.5 origin-left pointer-events-none font-bold uppercase tracking-wider text-[10px] whitespace-nowrap truncate w-[85%]
               ${(isFocused || value) ? 'opacity-100' : 'opacity-80'}
             `}
           >
@@ -89,6 +89,7 @@ const SmartField: React.FC<SmartFieldProps> = ({
               setIsFocused(false);
               setIsTouched(true);
             }}
+            placeholder={isFocused ? props.placeholder : ""}
             className={`w-full bg-transparent px-4 pt-6 pb-2 outline-none text-sm font-semibold
               ${showError ? 'text-rose-700' : 'text-slate-800'}
               ${type === 'date' && !value && !isFocused ? 'text-transparent' : ''}

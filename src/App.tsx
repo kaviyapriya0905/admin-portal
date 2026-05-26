@@ -18,7 +18,6 @@ import RentalVenue from "./pages/apps/temple-management/RentalVenue";
 import Assets from "./pages/apps/temple-management/Assets";
 import Campaigns from "./pages/apps/temple-management/Campaigns";
 import EventsCalendar from "./pages/apps/temple-management/EventsCalendar";
-import LiveOperations from "./pages/apps/temple-management/LiveOperations";
 
 // Form Pages
 import DevoteeForm from "./pages/apps/temple-management/forms/DevoteeForm";
@@ -125,7 +124,6 @@ function App() {
           <Route path="/events/add" element={<EventForm />} />
           <Route path="/events/edit/:id" element={<EventForm />} />
 
-          <Route path="/live-operations" element={<LiveOperations />} />
           <Route path="/settings" element={<Settings />} />
         </Route>
         <Route path="*" element={<CatchAllRedirect />} />

@@ -20,6 +20,7 @@ import {
   ChevronsLeft,
   ChevronsRight,
   Settings,
+  Radio,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
@@ -125,15 +126,11 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   }, [location.pathname]);
 
   useEffect(() => {
-    if (isSidebarOpen) {
-      const timer = setTimeout(() => setIsSidebarOpen(false), 0);
-      return () => clearTimeout(timer);
-    }
-  }, [location.pathname, isSidebarOpen]);
+    setIsSidebarOpen(false);
+  }, [location.pathname]);
 
   const menuItems = [
     { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
-    // { icon: label: "Live Ops", path: "/live-operations" },
     { icon: UserPlus, label: "Admin Onboard", path: "/admin-onboard" },
     { icon: Building2, label: "Temple Onboard", path: "/temple-onboard" },
     { icon: Users, label: "Devotees", path: "/devotees" },
@@ -155,7 +152,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsSidebarOpen(false)}
-            className="fixed inset-0 bg-brand-primary/40 backdrop-blur-sm z-[60] lg:hidden"
+            className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[60] lg:hidden"
           />
         )}
       </AnimatePresence>

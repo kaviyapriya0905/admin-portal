@@ -405,7 +405,7 @@ const DevoteeForm: React.FC = () => {
                 Family & Emergency
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
-                <SmartField label="Family Members (Comma separated)" icon={Users} value={formData.familyStr} onChange={v => setFormData(p => ({...p, familyStr: v}))} helperText="e.g. Anjali (Spouse), Arjun (Son)" />
+                <SmartField label="Family Members" icon={Users} value={formData.familyStr} onChange={v => setFormData(p => ({...p, familyStr: v}))} placeholder="e.g. Anjali (Spouse), Arjun (Son)" />
                 <SmartField label="Emergency Contact" icon={ShieldAlert} value={formData.emergencyContact} onChange={v => setFormData(p => ({...p, emergencyContact: v}))} />
               </div>
             </div>
