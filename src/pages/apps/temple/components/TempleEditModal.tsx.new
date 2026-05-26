@@ -1,0 +1,36 @@
+                        value={editingTemple.superadmin?.bio || ''}
+                        onChange={(e) => setEditingTemple({
+                          ...editingTemple,
+                          superadmin: { ...editingTemple.superadmin!, bio: e.target.value }
+                        })}
+                        className="w-full px-4 py-2.5 bg-slate-50 border border-slate-100 rounded-md text-[12px] focus:outline-none focus:ring-4 focus:ring-brand-primary/5 focus:border-brand-primary focus:bg-white transition-all font-medium text-slate-900 min-h-[80px] resize-none"
+                      />
+                    </div>
+                  </div>
+                </form>
+
+                <div className="p-8 bg-slate-50/50 border-t border-slate-100 flex gap-4">
+                  <button 
+                    type="button"
+                    onClick={() => setEditingTemple(null)}
+                    className="flex-1 px-8 py-4 bg-white border border-slate-100 text-slate-400 text-xs font-bold rounded-md hover:bg-slate-100 hover:text-slate-600 transition-all shadow-sm"
+                  >
+                    Discard
+                  </button>
+                  <button 
+                    type="submit"
+                    onClick={onUpdate}
+                    className="flex-[2] px-8 py-4 bg-brand-primary text-white text-xs font-bold rounded-md hover:bg-[#8e330b] transition-all shadow-xl shadow-brand-primary/20 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    Update Registry
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>,
+        modalRoot
+      );
+    };
+
+    export default TempleEditModal;

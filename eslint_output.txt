@@ -1,0 +1,206 @@
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\admin\AdminOnboard.tsx
+  161:37  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\Assets.tsx
+   8:3   error  'MoreVertical' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+  24:40  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-explicit-any
+  27:52  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-explicit-any
+  39:5   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\Assets.tsx:39:5
+  37 |     }));
+  38 |
+> 39 |     setAssets(processed);
+     |     ^^^^^^^^^ Avoid calling setState() directly within an effect
+  40 |   }, [activeTempleId, temples]);
+  41 |
+  42 |   const stats = [  react-hooks/set-state-in-effect
+  82:75  error  'i' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+  85:57  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-explicit-any
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\Campaigns.tsx
+   9:3   error  'Share2' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+  10:3   error  'MoreVertical' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+  25:46  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  28:58  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  40:7   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\Campaigns.tsx:40:7
+  38 |     
+  39 |     if (activeTab !== 'All') {
+> 40 |       setCampaigns(processed.filter(c => c.status === activeTab));
+     |       ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  41 |     } else {
+  42 |       setCampaigns(processed);
+  43 |     }  react-hooks/set-state-in-effect
+  44:6   error  React Hook useEffect has a missing dependency: 'activeTab'. Either include it or remove the dependency array. You can also replace multiple useState variables with useReducer if 'setCampaigns' needs the current value of 'activeTab'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  react-hooks/exhaustive-deps
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\Devotees.tsx
+   10:3   error  'MoreVertical' is defined but never used      @typescript-eslint/no-unused-vars
+   14:3   error  'ChevronDown' is defined but never used       @typescript-eslint/no-unused-vars
+   27:44  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+   28:10  error  'loading' is assigned a value but never used  @typescript-eslint/no-unused-vars
+   32:56  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+   40:23  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+   45:45  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+   64:16  error  'error' is defined but never used             @typescript-eslint/no-unused-vars
+   65:9   error  Unexpected console statement                  no-console
+  170:63  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  187:61  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\Donations.tsx
+    8:3   error  'ExternalLink' is defined but never used      @typescript-eslint/no-unused-vars
+   27:46  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+   28:10  error  'loading' is assigned a value but never used  @typescript-eslint/no-unused-vars
+   32:58  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+   40:23  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+   45:45  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+   65:16  error  'error' is defined but never used             @typescript-eslint/no-unused-vars
+   66:9   error  Unexpected console statement                  no-console
+  128:92  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  165:64  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\PoojaSevas.tsx
+    7:3   error  'User' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+    8:3   error  'MoreVertical' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+   26:38  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-explicit-any
+   30:50  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-explicit-any
+   42:5   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\PoojaSevas.tsx:42:5
+  40 |     }));
+  41 |
+> 42 |     setSevas(processed);
+     |     ^^^^^^^^ Avoid calling setState() directly within an effect
+  43 |   }, [activeTempleId, temples]);
+  44 |
+  45 |   const stats = [  react-hooks/set-state-in-effect
+  133:67  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-explicit-any
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\RentalVenue.tsx
+   6:3   error  'Users' is defined but never used             @typescript-eslint/no-unused-vars
+   8:3   error  'Clock' is defined but never used             @typescript-eslint/no-unused-vars
+   9:3   error  'CheckCircle2' is defined but never used      @typescript-eslint/no-unused-vars
+  11:3   error  'MoreVertical' is defined but never used      @typescript-eslint/no-unused-vars
+  28:44  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  29:10  error  'loading' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  32:52  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  33:27  error  'temples' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  39:23  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  47:45  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  53:16  error  'error' is defined but never used             @typescript-eslint/no-unused-vars
+  54:9   error  Unexpected console statement                  no-console
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\components\AssetViewModal.tsx
+  4:30  error  'Tag' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\components\DevoteeViewModal.tsx
+  4:40  error  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\components\DonationViewModal.tsx
+  4:50  error  'CreditCard' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\components\PoojaSevaViewModal.tsx
+  4:51  error  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple-management\components\RentalVenueViewModal.tsx
+  4:49  error  'Building' is defined but never used  @typescript-eslint/no-unused-vars
+  4:59  error  'Activity' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple\TempleEnrollmentWizard.tsx
+  310:43  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple\TempleOnboard.tsx
+   77:43  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   78:48  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  156:43  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\apps\temple\wizard-steps\ExecutiveStep.tsx
+  1:16  error  'Shield' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\home\Dashboard.tsx
+  138:6   error  React Hook useEffect has missing dependencies: 'canManage' and 'user.templeId'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/exhaustive-deps
+  450:40  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\home\Dashboard.tsx:450:40
+  448 |                 // Mock metrics for each temple
+  449 |                 const metrics = {
+> 450 |                   devotees: Math.floor(Math.random() * 500) + 100,
+      |                                        ^^^^^^^^^^^^^ Cannot call impure function
+  451 |                   donations: `₹${(Math.random() * 50 + 10).toFixed(1)}k`,
+  452 |                   sevas: Math.floor(Math.random() * 30) + 5,
+  453 |                   assets: `₹${(Math.random() * 5 + 1).toFixed(1)}L`,           react-hooks/purity
+  451:35  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\home\Dashboard.tsx:451:35
+  449 |                 const metrics = {
+  450 |                   devotees: Math.floor(Math.random() * 500) + 100,
+> 451 |                   donations: `₹${(Math.random() * 50 + 10).toFixed(1)}k`,
+      |                                   ^^^^^^^^^^^^^ Cannot call impure function
+  452 |                   sevas: Math.floor(Math.random() * 30) + 5,
+  453 |                   assets: `₹${(Math.random() * 5 + 1).toFixed(1)}L`,
+  454 |                   growth: (Math.random() * 15 + 5).toFixed(1)  react-hooks/purity
+  452:37  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\home\Dashboard.tsx:452:37
+  450 |                   devotees: Math.floor(Math.random() * 500) + 100,
+  451 |                   donations: `₹${(Math.random() * 50 + 10).toFixed(1)}k`,
+> 452 |                   sevas: Math.floor(Math.random() * 30) + 5,
+      |                                     ^^^^^^^^^^^^^ Cannot call impure function
+  453 |                   assets: `₹${(Math.random() * 5 + 1).toFixed(1)}L`,
+  454 |                   growth: (Math.random() * 15 + 5).toFixed(1)
+  455 |                 };               react-hooks/purity
+  453:32  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\home\Dashboard.tsx:453:32
+  451 |                   donations: `₹${(Math.random() * 50 + 10).toFixed(1)}k`,
+  452 |                   sevas: Math.floor(Math.random() * 30) + 5,
+> 453 |                   assets: `₹${(Math.random() * 5 + 1).toFixed(1)}L`,
+      |                                ^^^^^^^^^^^^^ Cannot call impure function
+  454 |                   growth: (Math.random() * 15 + 5).toFixed(1)
+  455 |                 };
+  456 |                                                                                       react-hooks/purity
+  454:28  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\pages\home\Dashboard.tsx:454:28
+  452 |                   sevas: Math.floor(Math.random() * 30) + 5,
+  453 |                   assets: `₹${(Math.random() * 5 + 1).toFixed(1)}L`,
+> 454 |                   growth: (Math.random() * 15 + 5).toFixed(1)
+      |                            ^^^^^^^^^^^^^ Cannot call impure function
+  455 |                 };
+  456 |
+  457 |                 return (                                                                                                                                            react-hooks/purity
+
+C:\Users\BalajiKrishnan\Desktop\omg-superadmin\omg-temple-erp-admin-app-frontend\src\utils\mockData.ts
+  4:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 70 problems (70 errors, 0 warnings)
