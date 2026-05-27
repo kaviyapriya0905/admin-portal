@@ -5,36 +5,37 @@ import {
   Navigate,
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import Login from "./pages/auth/Login";
-import ForgotPassword from "./pages/auth/ForgotPassword";
-import CreatePassword from "./pages/auth/CreatePassword";
-import Dashboard from "./pages/home/Dashboard";
-import AdminOnboard from "./pages/apps/admin/AdminOnboard";
-import TempleOnboard from "./pages/apps/temple/TempleOnboard";
-import Devotees from "./pages/apps/temple-management/Devotees";
-import Donations from "./pages/apps/temple-management/Donations";
-import PoojaSevas from "./pages/apps/temple-management/PoojaSevas";
-import RentalVenue from "./pages/apps/temple-management/RentalVenue";
-import Assets from "./pages/apps/temple-management/Assets";
-import Campaigns from "./pages/apps/temple-management/Campaigns";
-import EventsCalendar from "./pages/apps/temple-management/EventsCalendar";
+import Login from "@/pages/auth/Login";
+import ForgotPassword from "@/pages/auth/ForgotPassword";
+import CreatePassword from "@/pages/auth/CreatePassword";
+import Dashboard from "@/pages/dashboard/Dashboard";
+import AdminOnboard from "@/pages/admin/AdminOnboard";
+import TempleOnboard from "@/pages/temple-registry/TempleOnboard";
+import Devotees from "@/pages/temple-ops/Devotees";
+import Donations from "@/pages/temple-ops/Donations";
+import PoojaSevas from "@/pages/temple-ops/PoojaSevas";
+import RentalVenue from "@/pages/temple-ops/RentalVenue";
+import Assets from "@/pages/temple-ops/Assets";
+import Campaigns from "@/pages/temple-ops/Campaigns";
+import CampaignDetails from "@/pages/temple-ops/CampaignDetails";
+import EventsCalendar from "@/pages/temple-ops/EventsCalendar";
 
 // Form Pages
-import DevoteeForm from "./pages/apps/temple-management/forms/DevoteeForm";
-import DonationForm from "./pages/apps/temple-management/forms/DonationForm";
-import AdminForm from "./pages/apps/admin/AdminForm";
-import TempleForm from "./pages/apps/temple/TempleForm";
-import PoojaSevaForm from "./pages/apps/temple-management/forms/PoojaSevaForm";
-import RentalVenueForm from "./pages/apps/temple-management/forms/RentalVenueForm";
-import AssetForm from "./pages/apps/temple-management/forms/AssetForm";
-import CampaignForm from "./pages/apps/temple-management/forms/CampaignForm";
-import EventForm from "./pages/apps/temple-management/forms/EventForm";
-import Settings from "./pages/apps/settings/Settings";
+import DevoteeForm from "@/pages/temple-ops/forms/DevoteeForm";
+import DonationForm from "@/pages/temple-ops/forms/DonationForm";
+import AdminForm from "@/pages/admin/AdminForm";
+import TempleForm from "@/pages/temple-registry/TempleForm";
+import PoojaSevaForm from "@/pages/temple-ops/forms/PoojaSevaForm";
+import RentalVenueForm from "@/pages/temple-ops/forms/RentalVenueForm";
+import AssetForm from "@/pages/temple-ops/forms/AssetForm";
+import CampaignForm from "@/pages/temple-ops/forms/CampaignForm";
+import EventForm from "@/pages/temple-ops/forms/EventForm";
+import Settings from "@/pages/settings/Settings";
 
-import DashboardLayout from "./layouts/DashboardLayout";
-import ProtectedRoute from "./components/ProtectedRoute";
+import DashboardLayout from "@/layouts/DashboardLayout";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import { useSelector } from "react-redux";
-import { type RootState } from "./redux/store";
+import { type RootState } from "@/store/store";
 import { Outlet } from "react-router-dom";
 
 const LayoutWrapper = () => (
@@ -119,6 +120,7 @@ function App() {
           <Route path="/campaigns" element={<Campaigns />} />
           <Route path="/campaigns/add" element={<CampaignForm />} />
           <Route path="/campaigns/edit/:id" element={<CampaignForm />} />
+          <Route path="/campaigns/:id" element={<CampaignDetails />} />
 
           <Route path="/events" element={<EventsCalendar />} />
           <Route path="/events/add" element={<EventForm />} />

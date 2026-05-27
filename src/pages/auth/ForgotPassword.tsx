@@ -8,20 +8,17 @@ import {
   Loader2,
   Lock,
   CheckCircle2,
-  Eye,
-  EyeOff,
-  AlertCircle,
 } from "lucide-react";
 import toast from "react-hot-toast";
-import { cn } from "../../utils/cn";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import SmartField from "@/components/ui/SmartField";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   forgotPasswordSchema,
   resetPasswordSchema,
   type ForgotPasswordFormData,
   type ResetPasswordFormData,
-} from "../../utils/validationSchemas";
+} from "@/utils/validationSchemas";
 
 type Step = "request" | "reset" | "success";
 
@@ -32,7 +29,6 @@ const ForgotPassword: React.FC = () => {
 
   const [step, setStep] = useState<Step>("request");
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (token) {
@@ -42,7 +38,6 @@ const ForgotPassword: React.FC = () => {
 
   // Request Form
   const {
-    register: registerRequest,
     handleSubmit: handleSubmitRequest,
     formState: { errors: requestErrors },
     control: controlRequest,
@@ -52,16 +47,12 @@ const ForgotPassword: React.FC = () => {
     mode: "onChange",
   });
 
-  const requestEmailValue = useWatch({
-    control: controlRequest,
-    name: "email",
-  });
 
   // Reset Form
   const {
-    register: registerReset,
     handleSubmit: handleSubmitReset,
     formState: { errors: resetErrors },
+    control: controlReset,
   } = useForm<ResetPasswordFormData>({
     // @ts-ignore
     resolver: yupResolver(resetPasswordSchema),
@@ -134,33 +125,21 @@ const ForgotPassword: React.FC = () => {
               className="space-y-4"
             >
               <div className="space-y-1.5">
-                <label className="text-[12px] font-bold text-slate-400 ml-1">
-                  Email address
-                </label>
-                <div className="relative group">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-brand-primary transition-colors" />
-                  <input
-                    {...registerRequest("email")}
-                    type="email"
-                    placeholder="Enter your email"
-                    className={cn(
-                      "w-full pl-11 pr-4 py-3 bg-slate-50 border rounded-xl text-[13px] focus:outline-none transition-all font-bold text-slate-700",
-                      requestErrors.email
-                        ? "border-rose-200 ring-4 ring-rose-50"
-                        : "border-slate-100 focus:border-brand-primary/30 focus:bg-white",
-                    )}
-                  />
-                  {requestEmailValue && !requestErrors.email && (
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-emerald-500">
-                      <CheckCircle2 className="w-4 h-4" />
-                    </div>
+                <Controller
+                  name="email"
+                  control={controlRequest}
+                  render={({ field }) => (
+                    <SmartField
+                      label="Email address"
+                      icon={Mail}
+                      type="email"
+                      placeholder="Enter your email"
+                      value={field.value || ""}
+                      onChange={field.onChange}
+                      errorText={requestErrors.email?.message}
+                    />
                   )}
-                </div>
-                {requestErrors.email && (
-                  <p className="text-[10px] text-rose-500 font-bold ml-1">
-                    {requestErrors.email.message}
-                  </p>
-                )}
+                />
               </div>
               <button
                 type="submit"
@@ -186,67 +165,39 @@ const ForgotPassword: React.FC = () => {
               className="space-y-4"
             >
               <div className="space-y-1.5 text-left">
-                <label className="block text-[12px] font-bold text-slate-400 ml-1">
-                  New Password
-                </label>
-                <div className="relative group">
-                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-brand-primary transition-colors" />
-                  <input
-                    {...registerReset("password")}
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Enter new password"
-                    className={cn(
-                      "w-full pl-11 pr-12 py-3 bg-slate-50 border rounded-xl text-[13px] focus:outline-none transition-all font-bold text-slate-700",
-                      resetErrors.password
-                        ? "border-rose-200 ring-4 ring-rose-50"
-                        : "border-slate-100 focus:border-brand-primary/30 focus:bg-white",
-                    )}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-600 transition-colors"
-                  >
-                    {showPassword ? (
-                      <EyeOff className="w-4 h-4" />
-                    ) : (
-                      <Eye className="w-4 h-4" />
-                    )}
-                  </button>
-                </div>
-                {resetErrors.password && (
-                  <p className="text-[10px] text-rose-500 font-bold ml-1">
-                    {resetErrors.password.message}
-                  </p>
-                )}
+                <Controller
+                  name="password"
+                  control={controlReset}
+                  render={({ field }) => (
+                    <SmartField
+                      label="New Password"
+                      icon={Lock}
+                      type="password"
+                      placeholder="Enter new password"
+                      value={field.value || ""}
+                      onChange={field.onChange}
+                      errorText={resetErrors.password?.message}
+                    />
+                  )}
+                />
               </div>
 
               <div className="space-y-1.5 text-left">
-                <label className="block text-[12px] font-bold text-slate-400 ml-1">
-                  Confirm Password
-                </label>
-                <div className="relative group">
-                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-brand-primary transition-colors" />
-                  <input
-                    {...registerReset("confirmPassword")}
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Confirm new password"
-                    className={cn(
-                      "w-full pl-11 pr-12 py-3 bg-slate-50 border rounded-xl text-[13px] focus:outline-none transition-all font-bold text-slate-700",
-                      resetErrors.confirmPassword
-                        ? "border-rose-200 ring-4 ring-rose-50"
-                        : "border-slate-100 focus:border-brand-primary/30 focus:bg-white",
-                    )}
-                  />
-                </div>
-                {resetErrors.confirmPassword && (
-                  <div className="flex items-center gap-1.5 text-rose-500 mt-1.5 px-1">
-                    <AlertCircle className="w-3.5 h-3.5" />
-                    <span className="text-[10px] font-bold">
-                      {resetErrors.confirmPassword.message}
-                    </span>
-                  </div>
-                )}
+                <Controller
+                  name="confirmPassword"
+                  control={controlReset}
+                  render={({ field }) => (
+                    <SmartField
+                      label="Confirm Password"
+                      icon={Lock}
+                      type="password"
+                      placeholder="Confirm new password"
+                      value={field.value || ""}
+                      onChange={field.onChange}
+                      errorText={resetErrors.confirmPassword?.message}
+                    />
+                  )}
+                />
               </div>
 
               <button

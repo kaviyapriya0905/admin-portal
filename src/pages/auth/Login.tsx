@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Loader2, Eye, EyeOff } from "lucide-react";
-import { loginSuccess } from "../../redux/slices/authSlice";
-import { type RootState } from "../../redux/store";
+import { Loader2 } from "lucide-react";
+import { loginSuccess } from "@/store/slices/authSlice";
+import { type RootState } from "@/store/store";
+import SmartField from "@/components/ui/SmartField";
 
 const Login: React.FC = () => {
-  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("company-admin@gwcdata.ai");
   const [password, setPassword] = useState("Company_Admin@123");
   const [entering, setEntering] = useState(false);
@@ -81,46 +81,21 @@ const Login: React.FC = () => {
         </div>
 
         <div className="space-y-4">
-          <div className="space-y-1.5 text-left">
-            <label className="block text-[12px] font-bold text-slate-400 px-1">
-              Email address
-            </label>
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter admin email"
-              className="w-full px-4 py-2.5 bg-slate-50/50 border border-gray-200 rounded-md text-[13px] focus:border-brand-primary outline-none transition-all placeholder:text-slate-200 font-bold text-slate-700"
-            />
-          </div>
+          <SmartField
+            label="Email address"
+            value={email}
+            onChange={setEmail}
+            type="email"
+            placeholder="Enter admin email"
+          />
 
-          <div className="space-y-1.5 text-left">
-            <label className="text-[12px] font-bold text-slate-400 px-1">
-              Password
-            </label>
-            <div className="relative">
-              <input
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
-                className="w-full px-4 py-2.5 pr-12 bg-slate-50/50 border border-gray-200 rounded-md text-[13px] focus:border-brand-primary outline-none transition-all placeholder:text-slate-200 font-bold text-slate-700"
-              />
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="text-slate-300 hover:text-slate-500 transition-colors"
-                >
-                  {showPassword ? (
-                    <EyeOff className="w-4 h-4" />
-                  ) : (
-                    <Eye className="w-4 h-4" />
-                  )}
-                </button>
-              </div>
-            </div>
-          </div>
+          <SmartField
+            label="Password"
+            value={password}
+            onChange={setPassword}
+            type="password"
+            placeholder="Enter password"
+          />
 
           <motion.button
             whileHover={{ scale: 1.01 }}

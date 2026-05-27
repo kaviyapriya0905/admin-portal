@@ -4,7 +4,7 @@ import {
   LayoutDashboard,
   UserPlus,
   Building2,
-  Search,
+  
   Bell,
   LogOut,
   User,
@@ -23,16 +23,18 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutRequest } from "../redux/slices/authSlice";
-import { setActiveTemple, setTemples } from "../redux/slices/templeSlice";
-import { type RootState } from "../redux/store";
+import { logoutRequest } from "@/store/slices/authSlice";
+import { setActiveTemple, setTemples } from "@/store/slices/templeSlice";
+import { type RootState } from "@/store/store";
 import {
   getUserRoleName,
   formatRoleName,
   isCompanyAdminRole,
-} from "../utils/userRole";
-import { cn } from "../utils/cn";
-import { getMockData } from "../utils/mockData";
+} from "@/utils/userRole";
+import { cn } from "@/utils/cn";
+import { getMockData } from "@/utils/mockData";
+import DropdownMenu from "@/components/ui/DropdownMenu";
+import SmartSearchBar from "@/components/ui/SmartSearchBar";
 
 interface SidebarItemProps {
   icon: React.ElementType;
@@ -298,14 +300,11 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
                 </select>
               </div>
             ) : (
-              <div className="relative group flex-1">
-                <Search className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-brand-primary transition-all duration-300" />
-                <input
-                  type="text"
-                  placeholder="Search centralized resources..."
-                  className="w-full bg-transparent border-none py-3 pl-8 pr-4 text-[12px] focus:ring-0 outline-none text-slate-600 placeholder:text-slate-200 font-semibold tracking-tight"
-                />
-              </div>
+              <SmartSearchBar 
+                placeholder="centralized resources..."
+                containerClassName="flex-1 max-w-sm"
+                className="bg-transparent border-none py-3 text-[12px] focus:ring-0 text-slate-600 placeholder:text-slate-200 font-semibold tracking-tight shadow-none"
+              />
             )}
           </div>
           <div className="flex items-center gap-3 sm:gap-6 ml-4">
@@ -314,31 +313,41 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
               <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-brand-primary rounded-full border-2 border-white ring-2 ring-brand-primary/20"></span>
             </button>
             <div className="hidden sm:block h-6 w-[1px] bg-slate-100"></div>
-            <button className="flex items-center gap-2 sm:gap-4 group pl-2 pr-1 py-1 hover:bg-slate-50 rounded-md transition-all border border-transparent hover:border-slate-100">
-              <div className="hidden md:flex flex-col items-end">
-                <span className="text-[13px] font-semibold text-slate-900 leading-tight">
-                  {user?.firstName
-                    ? `${user.firstName} ${user.lastName || ""}`.trim()
-                    : "Admin"}
-                </span>
-                <span className="text-[9px] text-brand-primary font-bold mt-1 normal-case tracking-normal leading-none opacity-80">
-                  {formatRoleName(getUserRoleName(user))}
-                </span>
-              </div>
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:border-brand-primary/20 transition-all shadow-sm overflow-hidden">
-                {user?.profilePic ? (
-                  <img
-                    src={user.profilePic}
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-slate-100 text-slate-400 group-hover:text-brand-primary transition-colors">
-                    <User className="w-5 h-5" />
+            <DropdownMenu
+              hideChevron
+              buttonClassName="flex items-center gap-2 sm:gap-4 group pl-2 pr-1 py-1 hover:bg-slate-50 rounded-md transition-all border border-transparent hover:border-slate-100 !bg-transparent !shadow-none !ring-0"
+              buttonContent={
+                <>
+                  <div className="hidden md:flex flex-col items-end">
+                    <span className="text-[13px] font-semibold text-slate-900 leading-tight">
+                      {user?.firstName
+                        ? `${user.firstName} ${user.lastName || ""}`.trim()
+                        : "Admin"}
+                    </span>
+                    <span className="text-[9px] text-brand-primary font-bold mt-1 normal-case tracking-normal leading-none opacity-80">
+                      {formatRoleName(getUserRoleName(user))}
+                    </span>
                   </div>
-                )}
-              </div>
-            </button>
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:border-brand-primary/20 transition-all shadow-sm overflow-hidden">
+                    {user?.profilePic ? (
+                      <img
+                        src={user.profilePic}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-slate-100 text-slate-400 group-hover:text-brand-primary transition-colors">
+                        <User className="w-5 h-5" />
+                      </div>
+                    )}
+                  </div>
+                </>
+              }
+              items={[
+                { label: "Account Settings", icon: Settings, href: "/settings" },
+                { label: "Sign out protocol", icon: LogOut, danger: true, onClick: () => dispatch(logoutRequest()) }
+              ]}
+            />
           </div>
         </header>
         <div className="p-4 sm:p-8 flex-1 relative min-h-0 overflow-y-auto custom-scrollbar">

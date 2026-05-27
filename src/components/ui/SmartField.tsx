@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, AlertCircle } from "lucide-react";
+import { CheckCircle2, AlertCircle, Eye, EyeOff } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface SmartFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
@@ -30,6 +30,13 @@ const SmartField: React.FC<SmartFieldProps> = ({
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isTouched, setIsTouched] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const isValid = validationFn ? validationFn(value) : null;
+  const showError = isTouched && (errorText || isValid === false);
+  
+  // Use showPassword state to toggle actual input type if the prop type is "password"
+  const actualType = type === "password" ? (showPassword ? "text" : "password") : type;
 
   // Apply formatting if provided
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,8 +47,6 @@ const SmartField: React.FC<SmartFieldProps> = ({
     onChange(newVal);
   };
 
-  const isValid = validationFn ? validationFn(value) : null;
-  const showError = isTouched && isValid === false;
 
   return (
     <div className={`relative ${className}`}>
@@ -81,7 +86,7 @@ const SmartField: React.FC<SmartFieldProps> = ({
 
           <input
             {...props}
-            type={type}
+            type={actualType}
             value={value}
             onChange={handleChange}
             onFocus={() => setIsFocused(true)}
@@ -98,8 +103,19 @@ const SmartField: React.FC<SmartFieldProps> = ({
           />
         </div>
 
-        {/* Validation Icons */}
+        {/* Validation Icons & Password Toggle */}
         <AnimatePresence>
+          {type === "password" && (
+            <motion.button
+              type="button"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              onClick={() => setShowPassword(!showPassword)}
+              className="pr-4 text-slate-400 hover:text-brand-primary focus:outline-none transition-colors"
+            >
+              {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+            </motion.button>
+          )}
           {isValid === true && value.length > 0 && (
             <motion.div
               initial={{ scale: 0, opacity: 0 }}

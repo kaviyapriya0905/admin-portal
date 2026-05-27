@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Shield,
   Lock,
-  Eye,
-  EyeOff,
   Loader2,
   CheckCircle2,
   ArrowRight,
   Check,
-  X,
   ShieldAlert,
 } from "lucide-react";
+import SmartField from "@/components/ui/SmartField";
 import { useDispatch } from "react-redux";
-import { logout } from "../../redux/slices/authSlice";
+import { logout } from "@/store/slices/authSlice";
 import toast from "react-hot-toast";
 
 const CreatePassword: React.FC = () => {
@@ -23,7 +21,6 @@ const CreatePassword: React.FC = () => {
   const dispatch = useDispatch();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [completed, setCompleted] = useState(false);
 
@@ -131,95 +128,45 @@ const CreatePassword: React.FC = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-6">
-            <div className="space-y-2">
-              <label className="text-[12px] font-medium text-slate-600 ml-1">
-                New password
-              </label>
-              <div className="relative group">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-brand-primary transition-colors" />
-                <input
-                  type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter a strong password"
-                  className="w-full pl-12 pr-12 py-3 bg-slate-50 border border-slate-100 rounded-xl text-[14px] focus:outline-none focus:border-brand-primary/30 focus:bg-white transition-all font-medium text-slate-700"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-600 transition-colors"
-                >
-                  {showPassword ? (
-                    <EyeOff className="w-4 h-4" />
-                  ) : (
-                    <Eye className="w-4 h-4" />
-                  )}
-                </button>
-              </div>
-              <div className="pt-2 px-1 grid grid-cols-1 gap-2">
-                {requirements.map((req, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div
-                      className={`w-3.5 h-3.5 rounded-full flex items-center justify-center transition-colors ${req.met ? "bg-emerald-500" : "bg-slate-100"}`}
-                    >
-                      {req.met ? (
-                        <Check className="w-2.5 h-2.5 text-white" />
-                      ) : (
-                        <div className="w-1 h-1 bg-slate-300 rounded-full" />
-                      )}
-                    </div>
-                    <span
-                      className={`text-[11px] font-medium transition-colors ${req.met ? "text-emerald-600" : "text-slate-400"}`}
-                    >
-                      {req.label}
-                    </span>
+            <SmartField
+              label="New password"
+              icon={Lock}
+              type="password"
+              placeholder="Enter a strong password"
+              value={password}
+              onChange={setPassword}
+            />
+
+            <div className="pt-2 px-1 grid grid-cols-1 gap-2">
+              {requirements.map((req, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <div
+                    className={`w-3.5 h-3.5 rounded-full flex items-center justify-center transition-colors ${req.met ? "bg-emerald-500" : "bg-slate-100"}`}
+                  >
+                    {req.met ? (
+                      <Check className="w-2.5 h-2.5 text-white" />
+                    ) : (
+                      <div className="w-1 h-1 bg-slate-300 rounded-full" />
+                    )}
                   </div>
-                ))}
-              </div>
+                  <span
+                    className={`text-[11px] font-medium transition-colors ${req.met ? "text-emerald-600" : "text-slate-400"}`}
+                  >
+                    {req.label}
+                  </span>
+                </div>
+              ))}
             </div>
 
-            <div className="space-y-2">
-              <label className="text-[12px] font-medium text-slate-600 ml-1">
-                Confirm password
-              </label>
-              <div className="relative group">
-                <ShieldAlert className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-brand-primary transition-colors" />
-                <input
-                  type={showPassword ? "text" : "password"}
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  placeholder="Verify your password"
-                  className={`w-full pl-12 pr-12 py-3 bg-slate-50 border rounded-xl text-[14px] focus:outline-none transition-all font-medium text-slate-700 ${
-                    passwordsMatch
-                      ? "border-emerald-100 focus:border-emerald-500 focus:bg-white"
-                      : confirmPassword
-                        ? "border-rose-100 focus:border-rose-300 focus:bg-white"
-                        : "border-slate-100 focus:border-brand-primary/30 focus:bg-white"
-                  }`}
-                />
-                <AnimatePresence>
-                  {confirmPassword && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.5 }}
-                      className="absolute right-4 top-1/2 -translate-y-1/2"
-                    >
-                      {passwordsMatch ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                      ) : (
-                        <X className="w-4 h-4 text-rose-400" />
-                      )}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-              {confirmPassword && !passwordsMatch && (
-                <p className="text-[10px] text-rose-500 font-medium ml-1">
-                  Passwords do not match
-                </p>
-              )}
-            </div>
+            <SmartField
+              label="Confirm password"
+              icon={ShieldAlert}
+              type="password"
+              placeholder="Verify your password"
+              value={confirmPassword}
+              onChange={setConfirmPassword}
+              errorText={confirmPassword && !passwordsMatch ? "Passwords do not match" : ""}
+            />
           </div>
 
           <button

@@ -8,6 +8,7 @@ interface SmartTextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextA
   value: string;
   onChange: (val: string) => void;
   helperText?: string;
+  errorText?: string;
 }
 
 const SmartTextarea: React.FC<SmartTextareaProps> = ({
@@ -16,6 +17,7 @@ const SmartTextarea: React.FC<SmartTextareaProps> = ({
   value,
   onChange,
   helperText,
+  errorText,
   className = "",
   required,
   ...props
@@ -27,6 +29,7 @@ const SmartTextarea: React.FC<SmartTextareaProps> = ({
       <div 
         className={`relative flex bg-slate-50 border rounded-xl overflow-hidden transition-all duration-300
           ${isFocused ? 'border-brand-primary ring-2 ring-brand-primary/20 bg-white' : 'border-slate-200'}
+          ${errorText ? 'border-rose-400 ring-rose-400/20 bg-rose-50' : ''}
         `}
       >
         {/* Leading Icon */}
@@ -67,9 +70,19 @@ const SmartTextarea: React.FC<SmartTextareaProps> = ({
         </div>
       </div>
 
-      {/* Helper Text */}
+      {/* Helper / Error Text */}
       <AnimatePresence>
-        {helperText && (
+        {errorText && (
+          <motion.p
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -5 }}
+            className="absolute left-1 -bottom-5 text-[10px] font-bold text-rose-500"
+          >
+            {errorText}
+          </motion.p>
+        )}
+        {!errorText && helperText && (
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
