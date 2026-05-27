@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Save, Users, Loader2, Megaphone, Mail, MessageSquare, ShieldAlert, Coins, Share2, CheckCircle2, CalendarDays, Lock } from "lucide-react";
+import { ArrowLeft, Save, Users, Loader2, Megaphone, Mail, MessageSquare, ShieldAlert, Coins, Share2, CalendarDays } from "lucide-react";
 import toast from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import SmartField from "../../../../components/ui/SmartField";
@@ -117,112 +117,7 @@ const CampaignForm: React.FC = () => {
 
   const tabs: ("General" | "Rules" | "Budget" | "Integrations")[] = ["General", "Rules", "Budget", "Integrations"];
 
-  const renderLeftPanel = () => {
-    switch (activeTab) {
-      case "General":
-        return (
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 lg:sticky lg:top-24">
-            <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-              <Users className="w-5 h-5 text-brand-primary" />
-              Audience Reach
-            </h3>
-            {!formData.targetAudience ? (
-              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center text-slate-400">
-                <span className="text-[11px] font-bold uppercase tracking-wider">Select Audience Filter</span>
-              </div>
-            ) : isEstimating ? (
-              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center text-brand-primary flex flex-col items-center gap-2 animate-pulse">
-                <Loader2 className="w-6 h-6 animate-spin" />
-                <span className="text-[11px] font-bold uppercase tracking-wider">Scanning Database...</span>
-              </div>
-            ) : estimatedReach !== null ? (
-              <div className="p-5 bg-brand-primary/5 border border-brand-primary/20 rounded-xl animate-in zoom-in duration-300 text-center">
-                <div className="text-3xl font-black text-brand-primary mb-1">{estimatedReach.toLocaleString()}</div>
-                <h4 className="font-bold text-slate-700 text-xs">Estimated Matches</h4>
-                <p className="text-slate-500 text-[10px] mt-2">These devotees will receive the broadcast.</p>
-              </div>
-            ) : null}
-          </div>
-        );
-      case "Rules":
-        return (
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 lg:sticky lg:top-24">
-            <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-              <ShieldAlert className="w-5 h-5 text-amber-500" />
-              Rule Restrictions
-            </h3>
-            <div className="space-y-4">
-              <div className="flex justify-between items-center p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                <span className="text-xs text-slate-500 font-medium">Daily Limit</span>
-                <span className="text-xs font-bold text-slate-700">{formData.dailyParticipationLimit} entries</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                <span className="text-xs text-slate-500 font-medium">Eligibility</span>
-                <span className="text-xs font-bold text-slate-700">{formData.eligibility}</span>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                <span className="text-xs text-slate-500 font-medium">Approval Req</span>
-                <span className="text-xs font-bold text-slate-700">{formData.approvalRequired}</span>
-              </div>
-            </div>
-          </div>
-        );
-      case "Budget":
-        return (
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 lg:sticky lg:top-24">
-            <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-              <Coins className="w-5 h-5 text-emerald-500" />
-              Budget Health
-            </h3>
-            <div className="text-center p-5 bg-emerald-50 border border-emerald-100 rounded-xl mb-4">
-              <div className="text-2xl font-black text-emerald-600 mb-1">₹{parseInt(formData.budget).toLocaleString()}</div>
-              <h4 className="font-bold text-emerald-700 text-xs">Total Allocation</h4>
-            </div>
-            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
-              <div className="flex justify-between text-xs mb-2">
-                <span className="text-slate-500">Daily Burn Limit</span>
-                <span className="font-bold text-slate-700">₹{parseInt(formData.dailyLimit).toLocaleString()}</span>
-              </div>
-              <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                <div className="h-full bg-emerald-500" style={{ width: `${(parseInt(formData.dailyLimit) / parseInt(formData.budget)) * 100}%` }} />
-              </div>
-            </div>
-          </div>
-        );
-      case "Integrations":
-        return (
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 lg:sticky lg:top-24">
-            <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-              <Share2 className="w-5 h-5 text-blue-500" />
-              Platform Status
-            </h3>
-            
-            {formData.metaConnected ? (
-              <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl text-center flex flex-col items-center gap-2 mb-4">
-                <Share2 className="w-8 h-8 text-blue-600" />
-                <div className="flex items-center gap-1 text-emerald-600">
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span className="text-[11px] font-bold uppercase">Meta Linked</span>
-                </div>
-              </div>
-            ) : (
-              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center flex flex-col items-center gap-2 mb-4">
-                <Share2 className="w-8 h-8 text-slate-400" />
-                <span className="text-[11px] font-bold uppercase text-slate-500">Not Connected</span>
-              </div>
-            )}
 
-            <div className="p-3 bg-white border border-slate-200 rounded-lg flex items-center gap-3">
-              <div className="p-2 bg-brand-primary/10 rounded-md"><Lock className="w-4 h-4 text-brand-primary" /></div>
-              <div>
-                <div className="text-[10px] text-slate-400 uppercase font-bold">API Provider</div>
-                <div className="text-xs font-bold text-slate-700">{formData.provider}</div>
-              </div>
-            </div>
-          </div>
-        );
-    }
-  };
 
   const renderFormContent = () => {
     switch (activeTab) {

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Save, Building2, LayoutGrid, Calendar, FileText, CheckCircle, Activity, ShieldCheck, AlertCircle } from "lucide-react";
+import { ArrowLeft, Save, CheckCircle, Activity, ShieldCheck, AlertCircle } from "lucide-react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
-import SmartField from "../../../../components/ui/SmartField";
-import SmartSelect from "../../../../components/ui/SmartSelect";
 import { getMockData, addMockItem, updateMockItem } from "../../../../utils/mockData";
 
 const CONDITIONS = ['Excellent', 'Good', 'Fair', 'Poor'];
@@ -87,9 +85,7 @@ const AssetForm: React.FC = () => {
     navigate("/assets");
   };
 
-  const requiredFields = ['name', 'category', 'purchaseDate', 'condition', 'maintenanceStatus'];
-  const completedFields = requiredFields.filter(f => formData[f as keyof typeof formData] && formData[f as keyof typeof formData].length > 0);
-  const progressPercent = (completedFields.length / requiredFields.length) * 100;
+
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-12 relative min-h-[calc(100vh-6rem)]">

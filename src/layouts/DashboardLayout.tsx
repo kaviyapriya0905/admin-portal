@@ -20,7 +20,6 @@ import {
   ChevronsLeft,
   ChevronsRight,
   Settings,
-  Radio,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { User, Shield, Bell, Settings as SettingsIcon, Save, Key, Smartphone, Mail, Globe, Palette, LogOut, Camera, CheckCircle2, AlertCircle, ArrowLeft } from "lucide-react";
+import React, { useState } from "react";
+import { User, Shield, Bell, Settings as SettingsIcon, Save, Key, Smartphone, Mail, Globe, Palette, Camera, CheckCircle2, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
