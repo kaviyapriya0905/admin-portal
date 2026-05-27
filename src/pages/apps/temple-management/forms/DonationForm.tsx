@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft, Save, Landmark, ShieldCheck, Loader2,
   User, IndianRupee, CreditCard, Target, FileText,
-  Hash, CalendarDays, Radio, QrCode, StickyNote, Phone, Building2
+  CalendarDays, Radio, QrCode, StickyNote, Phone, Building2,
+  Banknote, Smartphone
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
@@ -31,10 +32,6 @@ const numToWords = (num: number): string => {
 
 const CATEGORY_OPTIONS = ["General Fund", "Annadanam", "Renovation", "Endowment", "Education", "Medical Aid", "Festival", "Infrastructure"];
 const CHANNEL_OPTIONS = ["Counter", "Online", "Hundi"];
-const GATEWAY_OPTIONS: Record<string, string[]> = {
-  UPI: ["PhonePe", "PayU", "Razorpay"],
-  Card: ["Razorpay", "PayU"],
-};
 
 const DonationForm: React.FC = () => {
   const navigate = useNavigate();
@@ -60,6 +57,18 @@ const DonationForm: React.FC = () => {
     pan: "",
     notes: "",
     templeId: activeTempleId !== "all" ? activeTempleId : "",
+    // Card details
+    cardNumber: "",
+    cardHolder: "",
+    cardExpiry: "",
+    cardCvv: "",
+    // UPI details
+    upiId: "",
+    // Bank Transfer details
+    accountNumber: "",
+    ifscCode: "",
+    accountHolder: "",
+    bankName: "",
   });
 
   const [devoteeSearch, setDevoteeSearch] = useState("");
@@ -103,6 +112,15 @@ const DonationForm: React.FC = () => {
           pan: (existing as any).pan || "",
           notes: (existing as any).notes || "",
           templeId: (existing as any).templeId || (activeTempleId !== "all" ? activeTempleId : ""),
+          cardNumber: "",
+          cardHolder: "",
+          cardExpiry: "",
+          cardCvv: "",
+          upiId: "",
+          accountNumber: "",
+          ifscCode: "",
+          accountHolder: "",
+          bankName: "",
         });
         setBankVerified(true);
       }
@@ -211,7 +229,7 @@ const DonationForm: React.FC = () => {
 
       {/* Scrollable body */}
       <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-5xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
+        <div className="max-w-7xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left sidebar */}
@@ -415,52 +433,231 @@ const DonationForm: React.FC = () => {
                     onChange={handleChannelChange}
                     options={CHANNEL_OPTIONS}
                   />
-                  <SmartSelect
-                    label="Instrument / Method"
-                    icon={CreditCard}
-                    value={formData.paymentMethod}
-                    onChange={handleMethodChange}
-                    options={methodOptions}
-                  />
                 </div>
 
-                {/* Payment Gateway (Online only) */}
-                <AnimatePresence>
-                  {formData.channel === "Online" && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="pt-4 border-t border-slate-100 space-y-4">
-                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Select Payment Gateway</label>
-                        <div className="grid grid-cols-3 gap-3">
-                          {(GATEWAY_OPTIONS[formData.paymentMethod] || ["Razorpay", "PayU"]).map(gw => (
-                            <button
-                              key={gw}
-                              type="button"
-                              onClick={() => setFormData(p => ({ ...p, gateway: gw }))}
-                              className={`h-11 rounded-xl border text-[11px] font-bold tracking-wider transition-all ${formData.gateway === gw ? "border-brand-primary bg-brand-primary text-white shadow-lg shadow-brand-primary/20 scale-[1.02]" : "border-slate-200 bg-white text-slate-500 hover:border-slate-300"}`}
+                {/* ── Instrument / Method Picker ── */}
+                <div>
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-3 block flex items-center gap-1.5">
+                    <CreditCard className="w-3 h-3" /> Instrument / Method
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    {methodOptions.map((method) => {
+                      const isActive = formData.paymentMethod === method;
+                      const iconMap: Record<string, React.ElementType> = {
+                        Cash: Banknote,
+                        UPI: Smartphone,
+                        Card: CreditCard,
+                        "Bank Transfer": Landmark,
+                      };
+                      const colorMap: Record<string, string> = {
+                        Cash: "text-emerald-600 bg-emerald-50 border-emerald-200",
+                        UPI: "text-purple-600 bg-purple-50 border-purple-200",
+                        Card: "text-blue-600 bg-blue-50 border-blue-200",
+                        "Bank Transfer": "text-amber-600 bg-amber-50 border-amber-200",
+                      };
+                      const activeMap: Record<string, string> = {
+                        Cash: "border-emerald-500 bg-emerald-500 text-white shadow-lg shadow-emerald-200",
+                        UPI: "border-purple-500 bg-purple-500 text-white shadow-lg shadow-purple-200",
+                        Card: "border-blue-500 bg-blue-500 text-white shadow-lg shadow-blue-200",
+                        "Bank Transfer": "border-amber-500 bg-amber-500 text-white shadow-lg shadow-amber-200",
+                      };
+                      const MethodIcon = iconMap[method] || CreditCard;
+                      return (
+                        <motion.button
+                          key={method}
+                          type="button"
+                          whileHover={{ scale: 1.03 }}
+                          whileTap={{ scale: 0.97 }}
+                          onClick={() => handleMethodChange(method)}
+                          className={`relative flex flex-col items-center justify-center gap-2 p-4 rounded-2xl border-2 transition-all duration-200 ${
+                            isActive
+                              ? activeMap[method] || "border-brand-primary bg-brand-primary text-white"
+                              : "border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:bg-slate-50"
+                          }`}
+                        >
+                          {isActive && (
+                            <motion.div
+                              layoutId="method-active-bg"
+                              className="absolute inset-0 rounded-2xl"
+                              transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                            />
+                          )}
+                          <div className={`relative z-10 p-2 rounded-xl ${
+                            isActive ? "bg-white/20" : colorMap[method] || "bg-slate-100"
+                          }`}>
+                            <MethodIcon className="w-5 h-5" />
+                          </div>
+                          <span className="relative z-10 text-[11px] font-bold tracking-wide whitespace-nowrap">{method}</span>
+                          {isActive && (
+                            <motion.div
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              className="absolute top-2 right-2 w-4 h-4 rounded-full bg-white/30 flex items-center justify-center"
                             >
-                              {gw}
-                            </button>
-                          ))}
-                        </div>
+                              <div className="w-2 h-2 rounded-full bg-white" />
+                            </motion.div>
+                          )}
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                </div>
 
-                        {formData.paymentMethod === "UPI" && (
-                          <div className="p-6 rounded-2xl border border-slate-100 bg-slate-50/50 flex flex-col items-center gap-4">
-                            <div className="w-28 h-28 bg-white rounded-xl border border-slate-200 shadow-md flex items-center justify-center">
-                              <QrCode className="w-16 h-16 text-brand-primary opacity-60" />
+                {/* ── Payment Method Details ── */}
+                {(() => {
+                  if (formData.paymentMethod === "Card") return (
+                    <motion.div
+                      key="card"
+                      initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.25 }}
+                      className="pt-4 border-t border-slate-100"
+                    >
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center">
+                          <CreditCard className="w-4 h-4 text-blue-600" />
+                        </span>
+                        <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Card Details</span>
+                      </div>
+
+                      {/* Live Card Preview */}
+                      <div className="relative h-44 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 p-5 mb-5 shadow-xl overflow-hidden">
+                        <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4" />
+                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" />
+                        <div className="relative z-10 h-full flex flex-col justify-between">
+                          <div className="flex justify-between items-start">
+                            <div className="w-10 h-7 rounded-md bg-amber-400/80 flex items-center justify-center">
+                              <div className="w-6 h-4 rounded-sm border border-amber-600/50 bg-amber-300/80" />
                             </div>
-                            <div className="text-center">
-                              <p className="text-[12px] font-bold text-slate-700">Scan QR to pay {rawAmount > 0 ? `₹${rawAmount.toLocaleString("en-IN")}` : ""}</p>
-                              <p className="text-[10px] text-slate-400 mt-1">Verified Temple Merchant ID: temple@bank</p>
+                            <CreditCard className="w-7 h-7 text-white/30" />
+                          </div>
+                          <div>
+                            <p className="text-white/50 text-[10px] font-bold tracking-[0.2em] mb-1">CARD NUMBER</p>
+                            <p className="text-white text-[15px] font-bold tracking-[0.25em] font-mono">
+                              {formData.cardNumber
+                                ? formData.cardNumber.replace(/(.{4})/g, '$1 ').trim()
+                                : '•••• •••• •••• ••••'}
+                            </p>
+                            <div className="flex justify-between mt-2">
+                              <div>
+                                <p className="text-white/40 text-[8px] tracking-wider">CARD HOLDER</p>
+                                <p className="text-white text-[11px] font-bold uppercase">{formData.cardHolder || '—'}</p>
+                              </div>
+                              <div className="text-right">
+                                <p className="text-white/40 text-[8px] tracking-wider">EXPIRES</p>
+                                <p className="text-white text-[11px] font-bold">{formData.cardExpiry || 'MM/YY'}</p>
+                              </div>
                             </div>
                           </div>
-                        )}
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="sm:col-span-2 space-y-1.5 group">
+                          <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider group-focus-within:text-brand-primary transition-colors">Card Number</label>
+                          <input
+                            type="text" inputMode="numeric" maxLength={19}
+                            placeholder="1234 5678 9012 3456"
+                            value={formData.cardNumber}
+                            onChange={e => {
+                              const v = e.target.value.replace(/\D/g, '').slice(0, 16);
+                              setFormData(p => ({ ...p, cardNumber: v }));
+                            }}
+                            className="w-full h-11 px-4 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 outline-none text-[13px] font-mono font-semibold text-slate-800 transition-all tracking-widest"
+                          />
+                        </div>
+                        <div className="space-y-1.5 group">
+                          <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider group-focus-within:text-brand-primary transition-colors">Card Holder Name</label>
+                          <input
+                            type="text" placeholder="As on card"
+                            value={formData.cardHolder}
+                            onChange={e => setFormData(p => ({ ...p, cardHolder: e.target.value.toUpperCase() }))}
+                            className="w-full h-11 px-4 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 outline-none text-[12px] font-semibold text-slate-800 transition-all uppercase tracking-wider"
+                          />
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div className="space-y-1.5 group">
+                            <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider group-focus-within:text-brand-primary transition-colors">Expiry</label>
+                            <input
+                              type="text" placeholder="MM/YY" maxLength={5}
+                              value={formData.cardExpiry}
+                              onChange={e => {
+                                let v = e.target.value.replace(/\D/g, '').slice(0, 4);
+                                if (v.length >= 3) v = v.slice(0, 2) + '/' + v.slice(2);
+                                setFormData(p => ({ ...p, cardExpiry: v }));
+                              }}
+                              className="w-full h-11 px-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 outline-none text-[13px] font-mono font-semibold text-slate-800 transition-all"
+                            />
+                          </div>
+                          <div className="space-y-1.5 group">
+                            <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider group-focus-within:text-brand-primary transition-colors">CVV</label>
+                            <input
+                              type="password" placeholder="•••" maxLength={4}
+                              value={formData.cardCvv}
+                              onChange={e => setFormData(p => ({ ...p, cardCvv: e.target.value.replace(/\D/g, '').slice(0, 4) }))}
+                              className="w-full h-11 px-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 outline-none text-[13px] font-mono font-semibold text-slate-800 transition-all"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </motion.div>
-                  )}
-                </AnimatePresence>
+                  );
+
+                  if (formData.paymentMethod === "UPI") return (
+                    <motion.div
+                      key="upi"
+                      initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.25 }}
+                      className="pt-4 border-t border-slate-100"
+                    >
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="w-7 h-7 rounded-lg bg-purple-50 flex items-center justify-center">
+                          <QrCode className="w-4 h-4 text-purple-600" />
+                        </span>
+                        <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Scan & Pay via UPI</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div className="w-36 h-36 bg-white rounded-2xl border border-slate-200 shadow-md flex items-center justify-center">
+                          <QrCode className="w-20 h-20 text-brand-primary opacity-70" />
+                        </div>
+                        <div className="text-center">
+                          <p className="text-[13px] font-bold text-slate-800">
+                            {rawAmount > 0 ? `Scan to pay ₹${rawAmount.toLocaleString('en-IN')}` : 'Enter amount to generate QR'}
+                          </p>
+                          <p className="text-[10px] text-slate-400 mt-1">Temple Merchant UPI: temple@sbi</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+
+                  if (formData.paymentMethod === "Bank Transfer") return (
+                    <motion.div
+                      key="bank"
+                      initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.25 }}
+                      className="pt-4 border-t border-slate-100"
+                    >
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center">
+                          <Landmark className="w-4 h-4 text-amber-600" />
+                        </span>
+                        <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Bank Transfer Reference</span>
+                      </div>
+                      <div className="space-y-1.5 group">
+                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider group-focus-within:text-brand-primary transition-colors">Transaction ID / UTR Number</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. UTR123456789012"
+                          value={formData.transactionId}
+                          onChange={e => setFormData(p => ({ ...p, transactionId: e.target.value }))}
+                          className="w-full h-11 px-4 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 outline-none text-[13px] font-mono font-semibold text-slate-800 transition-all"
+                        />
+                        <p className="text-[10px] text-slate-400 mt-1">Enter the UTR / reference number from your bank transfer receipt.</p>
+                      </div>
+                    </motion.div>
+                  );
+
+                  return null;
+                })()}
               </div>
             </div>
 
@@ -482,19 +679,6 @@ const DonationForm: React.FC = () => {
                   errorText="Must be 5 Letters, 4 Numbers, 1 Letter"
                 />
 
-                <AnimatePresence>
-                  {formData.paymentMethod !== "Cash" && (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                      <SmartField
-                        label="Transaction ID / Ref No."
-                        icon={Hash}
-                        value={formData.transactionId}
-                        onChange={v => setFormData(p => ({ ...p, transactionId: v }))}
-                        helperText="From the bank gateway receipt"
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
 
                 <div className="sm:col-span-2">
                   <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 block flex items-center gap-1.5">

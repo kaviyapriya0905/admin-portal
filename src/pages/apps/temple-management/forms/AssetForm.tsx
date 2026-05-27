@@ -88,7 +88,7 @@ const AssetForm: React.FC = () => {
 
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8 pb-12 relative min-h-[calc(100vh-6rem)]">
+    <div className="max-w-7xl mx-auto space-y-8 pb-12 relative min-h-[calc(100vh-6rem)]">
       {/* Decorative Background Gradients */}
       <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-slate-200/40 to-transparent pointer-events-none -z-10 rounded-3xl" />
       <div className="absolute top-20 right-20 w-96 h-96 bg-slate-400/10 blur-[120px] rounded-full pointer-events-none -z-10" />

@@ -199,7 +199,7 @@ const PoojaSevaForm: React.FC = () => {
 
       {/* Scrollable body */}
       <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-5xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
+        <div className="max-w-7xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left sidebar */}

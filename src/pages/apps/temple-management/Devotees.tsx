@@ -370,21 +370,9 @@ const Devotees: React.FC = () => {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex flex-col gap-1 w-24">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[9px] font-semibold bg-indigo-50 text-indigo-600 border border-indigo-100/60 w-fit whitespace-nowrap">
-                          {devotee.type}
-                        </span>
-                        <div className="flex items-center justify-between text-[8px] text-slate-400 font-bold uppercase mt-1">
-                          <span>Engagement</span>
-                          <span className={devotee.engagementScore > 80 ? 'text-amber-500' : ''}>{devotee.engagementScore}%</span>
-                        </div>
-                        <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
-                          <div 
-                            className={`h-full ${devotee.engagementScore > 80 ? 'bg-amber-500' : 'bg-slate-300'}`}
-                            style={{ width: `${Math.min(devotee.engagementScore, 100)}%` }}
-                          />
-                        </div>
-                      </div>
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[9px] font-semibold bg-indigo-50 text-indigo-600 border border-indigo-100/60 whitespace-nowrap">
+                        {devotee.type}
+                      </span>
                     </td>
                     <td className="px-4 py-3">
                       <span
