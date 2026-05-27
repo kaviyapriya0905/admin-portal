@@ -22,7 +22,7 @@ const VisualStep: React.FC<WizardStepProps> = ({
   onImageLinkPaste,
 }) => {
   return (
-    <div className="space-y-10">
+    <div className="space-y-5 sm:space-y-8">
       <div className="space-y-1">
         <h2 className="text-xl font-medium text-slate-900 tracking-tight">
           Visual & Historical Protocol
@@ -32,7 +32,7 @@ const VisualStep: React.FC<WizardStepProps> = ({
         </p>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-4 sm:space-y-4">
         <div className="relative group mb-12">
           <div className="flex items-center gap-2 mb-4">
             <Camera className="w-4 h-4 text-slate-400" />
@@ -54,7 +54,7 @@ const VisualStep: React.FC<WizardStepProps> = ({
                 className="w-full h-full object-cover"
               />
             ) : (
-              <div className="text-center p-8">
+              <div className="text-center p-4 sm:p-4">
                 <div className="w-10 h-10 border border-slate-100 rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm group-hover/hero:scale-110 transition-transform duration-300">
                   <Maximize2 className="w-4 h-4 text-slate-300" />
                 </div>
@@ -110,7 +110,7 @@ const VisualStep: React.FC<WizardStepProps> = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <SmartField
             icon={LinkIcon}
             label="Or paste Facade Image URL"
@@ -131,7 +131,7 @@ const VisualStep: React.FC<WizardStepProps> = ({
           />
         </div>
 
-        <div className="pt-4 grid grid-cols-1 gap-6">
+        <div className="pt-4 grid grid-cols-1 gap-4">
           <div className="flex items-center gap-2 mb-2">
             <History className="w-4 h-4 text-slate-400" />
             <span className="text-[11px] font-bold text-slate-400">

@@ -68,7 +68,7 @@ const TempleCard: React.FC<TempleCardProps> = ({
           );
         })()}
       </div>
-      <div className="p-6">
+      <div className="p-4">
         <div className="flex justify-between items-start mb-2">
           <div className="flex-1">
             <h3 className="font-semibold text-slate-800 text-sm mb-1">

@@ -90,11 +90,11 @@ const ForgotPassword: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f9fb] flex items-center justify-center p-6 font-sans selection:bg-brand-primary/10">
+    <div className="min-h-screen bg-[#f8f9fb] flex items-center justify-center p-4 font-sans selection:bg-brand-primary/10">
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white w-full max-w-[450px] p-10 rounded-2xl shadow-xl shadow-slate-900/5 border border-slate-100"
+        className="bg-white w-full max-w-[450px] p-5 sm:p-4 sm:p-4 rounded-2xl shadow-xl shadow-slate-900/5 border border-slate-100"
       >
         <div className="flex flex-col items-center text-center mb-8">
           <div className="w-12 h-12 bg-brand-primary/5 rounded-2xl flex items-center justify-center mb-4">
@@ -219,7 +219,7 @@ const ForgotPassword: React.FC = () => {
               key="success"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="text-center space-y-6"
+              className="text-center space-y-4"
             >
               <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-8 h-8 text-emerald-500" />

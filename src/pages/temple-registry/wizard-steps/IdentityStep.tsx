@@ -11,7 +11,7 @@ const IdentityStep: React.FC<WizardStepProps> = ({
   handleRealTimeValidation,
 }) => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <div className="space-y-1">
         <h2 className="text-xl font-medium text-slate-900 tracking-tight">
           Identity & Geolocation
@@ -21,7 +21,7 @@ const IdentityStep: React.FC<WizardStepProps> = ({
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6">
+      <div className="grid grid-cols-1 gap-4">
         <div className="space-y-1">
           <SmartField
             icon={Building2}
@@ -52,7 +52,7 @@ const IdentityStep: React.FC<WizardStepProps> = ({
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1">
             <SmartField
               icon={MapPin}

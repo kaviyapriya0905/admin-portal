@@ -165,7 +165,7 @@ const Devotees: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
         <div>
           <h1 className="text-xl font-semibold text-slate-800 flex items-center gap-3">
@@ -188,7 +188,7 @@ const Devotees: React.FC = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => navigate("/devotees/add")}
-              className="w-full sm:w-auto px-6 py-3 bg-brand-primary text-white rounded-xl text-sm font-bold hover:shadow-xl hover:shadow-brand-primary/20 transition-all flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto px-4 py-3 bg-brand-primary text-white rounded-xl text-sm font-bold hover:shadow-xl hover:shadow-brand-primary/20 transition-all flex items-center justify-center gap-2 group"
             >
               <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
               Add Devotee
@@ -197,7 +197,7 @@ const Devotees: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {stats.map((stat, i) => (
           <StatCard key={i} {...stat} />
         ))}
@@ -419,7 +419,7 @@ const Devotees: React.FC = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={6} className="px-4 py-12 text-center">
+                  <td colSpan={6} className="px-4 py-4 sm:py-10 text-center">
                     <div className="flex flex-col items-center gap-2">
                       <Users className="w-8 h-8 text-slate-200" />
                       <p className="text-[12px] font-medium text-slate-400">

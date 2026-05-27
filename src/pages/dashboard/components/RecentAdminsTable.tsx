@@ -21,7 +21,7 @@ const RecentAdminsTable: React.FC<RecentAdminsTableProps> = ({ recentAdmins }) =
 
   return (
     <div className="bg-white rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col h-full">
-      <div className="px-6 py-4 border-b border-slate-50 flex justify-between items-center shrink-0">
+      <div className="px-4 py-4 border-b border-slate-50 flex justify-between items-center shrink-0">
         <h2 className="text-[12px] font-semibold text-slate-800">
           Recent Administrators
         </h2>
@@ -36,13 +36,13 @@ const RecentAdminsTable: React.FC<RecentAdminsTableProps> = ({ recentAdmins }) =
         <table className="w-full text-left">
           <thead>
             <tr>
-              <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50/50">
+              <th className="px-4 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50/50">
                 Administrator
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50/50">
+              <th className="px-4 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50/50">
                 Role
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50/50">
+              <th className="px-4 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50/50">
                 Status
               </th>
             </tr>
@@ -53,7 +53,7 @@ const RecentAdminsTable: React.FC<RecentAdminsTableProps> = ({ recentAdmins }) =
                 key={i}
                 className="hover:bg-slate-50/30 transition-colors"
               >
-                <td className="px-6 py-4">
+                <td className="px-4 py-4">
                   <div className="flex items-center gap-4">
                     {admin.image ? (
                       <div className="w-9 h-9 rounded-full overflow-hidden border border-slate-100 shadow-sm">
@@ -78,10 +78,10 @@ const RecentAdminsTable: React.FC<RecentAdminsTableProps> = ({ recentAdmins }) =
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 text-[10px] text-slate-600 font-medium">
+                <td className="px-4 py-4 text-[10px] text-slate-600 font-medium">
                   {admin.role}
                 </td>
-                <td className="px-6 py-4">
+                <td className="px-4 py-4">
                   <span className="text-[11px] text-slate-500 font-medium flex items-center gap-1.5">
                     <span className={cn(
                       "w-1.5 h-1.5 rounded-full",

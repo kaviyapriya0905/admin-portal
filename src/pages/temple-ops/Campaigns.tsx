@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Megaphone, TrendingUp, Pencil, Trash2, BarChart3, Plus, ShieldAlert } from "lucide-react";
+import { Megaphone, TrendingUp, Pencil, Trash2, Plus, ShieldAlert } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { type RootState } from "@/store/store";
@@ -109,7 +109,7 @@ const Campaigns: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
         <div>
           <h1 className="text-xl font-semibold text-slate-800">Campaigns & Outreach</h1>
@@ -130,7 +130,7 @@ const Campaigns: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {stats.map((stat, i) => (
           <StatCard key={i} {...stat} />
         ))}
@@ -138,7 +138,7 @@ const Campaigns: React.FC = () => {
 
       <div className="bg-white rounded-xl border border-slate-100 overflow-hidden shadow-sm">
         <div className="p-4 border-b border-slate-50 flex flex-col sm:flex-row justify-between items-center gap-4 bg-slate-50/20">
-          <div className="flex gap-6 w-full sm:w-auto overflow-x-auto no-scrollbar">
+          <div className="flex gap-4 w-full sm:w-auto overflow-x-auto no-scrollbar">
             {["All", "Active", "Pending Approval", "Draft", "Completed"].map((tab) => (
               <button
                 key={tab}
@@ -213,9 +213,6 @@ const Campaigns: React.FC = () => {
                             </button>
                           </>
                         )}
-                        <button onClick={() => navigate(`/campaigns/${camp.id}`)} className="p-1.5 bg-white border border-slate-200 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-md shadow-sm transition-all" title="View Details">
-                          <BarChart3 className="w-3.5 h-3.5" />
-                        </button>
                         {canManage && (
                           <button onClick={() => navigate(`/campaigns/edit/${camp.id}`)} className="p-1.5 bg-white border border-slate-200 text-slate-400 hover:text-amber-600 hover:bg-amber-50 rounded-md shadow-sm transition-all" title="Edit">
                             <Pencil className="w-3.5 h-3.5" />
@@ -232,7 +229,7 @@ const Campaigns: React.FC = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={5} className="px-4 py-12 text-center">
+                  <td colSpan={5} className="px-4 py-4 sm:py-10 text-center">
                     <div className="flex flex-col items-center gap-2">
                       <Megaphone className="w-8 h-8 text-slate-200" />
                       <p className="text-[12px] font-medium text-slate-400">No campaigns found.</p>

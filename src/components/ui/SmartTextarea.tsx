@@ -20,6 +20,7 @@ const SmartTextarea: React.FC<SmartTextareaProps> = ({
   errorText,
   className = "",
   required,
+  placeholder: _placeholder,
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -34,7 +35,7 @@ const SmartTextarea: React.FC<SmartTextareaProps> = ({
       >
         {/* Leading Icon */}
         {Icon && (
-          <div className={`pl-4 pt-4 flex items-start justify-center transition-colors duration-300
+          <div className={`pl-3 pt-3 flex items-start justify-center transition-colors duration-300
             ${isFocused ? 'text-brand-primary' : 'text-slate-400'}
             ${value && !isFocused ? 'text-emerald-500' : ''}
           `}>
@@ -47,11 +48,11 @@ const SmartTextarea: React.FC<SmartTextareaProps> = ({
           <motion.label
             initial={false}
             animate={{
-              y: (isFocused || value) ? -10 : 0,
-              scale: (isFocused || value) ? 0.75 : 1,
+              y: (isFocused || value) ? -8 : 0,
+              scale: (isFocused || value) ? 0.8 : 1,
               color: isFocused ? '#a34015' : '#94a3b8'
             }}
-            className={`absolute left-4 top-4 origin-left pointer-events-none font-bold uppercase tracking-wider
+            className={`absolute left-4 top-3 origin-left pointer-events-none font-medium tracking-wide text-sm
               ${(isFocused || value) ? 'opacity-100' : 'opacity-80'}
             `}
           >
@@ -64,20 +65,20 @@ const SmartTextarea: React.FC<SmartTextareaProps> = ({
             onChange={(e) => onChange(e.target.value)}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            className="w-full bg-transparent px-4 pt-8 pb-3 outline-none text-sm font-semibold text-slate-800 resize-none min-h-[100px]"
+            className="w-full bg-transparent px-3 pt-6 pb-2 outline-none text-[11px] font-normal text-slate-800 resize-none min-h-[84px]"
             required={required}
           />
         </div>
       </div>
 
-      {/* Helper / Error Text */}
+      {/* Helper / Error Text (in normal flow to avoid overlap) */}
       <AnimatePresence>
         {errorText && (
           <motion.p
-            initial={{ opacity: 0, y: -5 }}
+            initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            className="absolute left-1 -bottom-5 text-[10px] font-bold text-rose-500"
+            exit={{ opacity: 0, y: -4 }}
+            className="mt-2 text-[10px] font-bold text-rose-500"
           >
             {errorText}
           </motion.p>
@@ -86,7 +87,8 @@ const SmartTextarea: React.FC<SmartTextareaProps> = ({
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="absolute left-1 -bottom-5 text-[10px] font-medium text-slate-400 w-full flex justify-between pr-2"
+            exit={{ opacity: 0 }}
+            className="mt-2 text-[10px] font-medium text-slate-400 w-full"
           >
             {helperText}
           </motion.p>

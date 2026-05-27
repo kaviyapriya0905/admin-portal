@@ -222,13 +222,13 @@ const RentalVenueForm: React.FC = () => {
 
       {/* Scrollable body */}
       <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-7xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
+        <div className="max-w-7xl mx-auto space-y-6 py-4 pb-12 animate-in fade-in duration-500">
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-6">
             {/* Left sidebar */}
-            <div className="lg:col-span-1 space-y-5 lg:sticky lg:top-0 self-start">
+            <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-0 self-start">
               {/* Availability Checker */}
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
                 <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
                   <CalendarSearch className="w-4 h-4 text-brand-primary" /> Live Availability
                 </h3>
@@ -277,7 +277,7 @@ const RentalVenueForm: React.FC = () => {
 
               {/* Billing Summary (shown from step 3 onwards) */}
               {step >= 3 && (
-                <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
                   <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
                     <PieChart className="w-4 h-4 text-indigo-500" /> Billable Summary
                   </h3>
@@ -311,17 +311,17 @@ const RentalVenueForm: React.FC = () => {
             </div>
 
             {/* Main content */}
-            <div className="lg:col-span-2 space-y-6">
+              <div className="lg:col-span-2 space-y-6">
               <AnimatePresence mode="wait">
                 {/* STEP 1: Select Venue */}
                 {step === 1 && (
-                  <motion.div key="step1" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-6">
+                  <motion.div key="step1" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-4">
                     <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
                       <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                         <span className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center"><Calendar className="w-4 h-4 text-indigo-600" /></span>
                         Search Filters & Linkage
                       </h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="sm:col-span-2">
                           <SmartSelect label="Linked Temple Unit" icon={Building2} value={formData.templeId} onChange={v => setFormData(p => ({ ...p, templeId: v }))} options={temples.map(t => ({ value: t.id, label: t.name }))} />
                         </div>
@@ -385,13 +385,13 @@ const RentalVenueForm: React.FC = () => {
 
                 {/* STEP 2: Devotee Details */}
                 {step === 2 && (
-                  <motion.div key="step2" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-6">
+                  <motion.div key="step2" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-4">
                     <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
                       <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                         <span className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center"><User className="w-4 h-4 text-indigo-600" /></span>
                         Devotee Attribution
                       </h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <SmartField
                           label="First Name"
                           icon={User}
@@ -425,12 +425,12 @@ const RentalVenueForm: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
                       <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                         <span className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center"><FileText className="w-4 h-4 text-amber-600" /></span>
                         Event Parameters
                       </h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <SmartSelect
                           label="Event Category"
                           icon={FileText}
@@ -465,7 +465,7 @@ const RentalVenueForm: React.FC = () => {
                 {/* STEP 3: Add-ons */}
                 {step === 3 && (
                   <motion.div key="step3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
-                    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
                       <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                         <span className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><Plus className="w-4 h-4 text-emerald-600" /></span>
                         Optional Services & Add-ons
@@ -514,8 +514,8 @@ const RentalVenueForm: React.FC = () => {
 
                 {/* STEP 4: Final Review */}
                 {step === 4 && (
-                  <motion.div key="step4" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-6">
-                    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                  <motion.div key="step4" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-4">
+                    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
                       <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                         <span className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center"><Receipt className="w-4 h-4 text-indigo-600" /></span>
                         Verification Audit
@@ -572,7 +572,7 @@ const RentalVenueForm: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => step > 1 ? setStep(s => s - 1) : navigate("/rental-venue")}
-                  className="w-full sm:w-auto px-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-4 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   {step > 1 ? "Back" : "Cancel"}
@@ -583,7 +583,7 @@ const RentalVenueForm: React.FC = () => {
                     type="button"
                     onClick={handleNext}
                     disabled={step === 1 && conflictStatus === "conflict"}
-                    className="w-full sm:w-auto px-8 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                    className="w-full sm:w-auto px-4 sm:px-4 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     Continue Phase <ArrowLeft className="w-4 h-4 rotate-180" />
                   </button>
@@ -592,7 +592,7 @@ const RentalVenueForm: React.FC = () => {
                     type="button"
                     onClick={handleSave}
                     disabled={conflictStatus === "conflict"}
-                    className="w-full sm:w-auto px-8 py-3 bg-emerald-600 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/30 hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                    className="w-full sm:w-auto px-4 sm:px-4 py-3 bg-emerald-600 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/30 hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     <Save className="w-5 h-5" />
                     Confirm & Pay Advance

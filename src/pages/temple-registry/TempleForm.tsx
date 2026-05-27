@@ -152,8 +152,8 @@ const TempleForm: React.FC = () => {
 
       {/* Scrollable body */}
       <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-3xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
-          <form onSubmit={handleSave} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 flex flex-col space-y-8">
+        <div className="max-w-3xl mx-auto space-y-4 py-4 pb-12 animate-in fade-in duration-500">
+          <form onSubmit={handleSave} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-4 sm:p-4 flex flex-col space-y-4 sm:space-y-4">
             
             <div className="space-y-4">
               <label className="block text-[11px] font-bold text-slate-400 normal-case tracking-normal ml-1">
@@ -209,10 +209,10 @@ const TempleForm: React.FC = () => {
               </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               <SmartField label="Temple / unit name" value={formData.name} onChange={(v) => setFormData({ ...formData, name: v })} />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <SmartField label="City hub" value={formData.city || ""} onChange={(v) => setFormData({ ...formData, city: v })} />
                 <SmartField label="State / region" value={formData.state || ""} onChange={(v) => setFormData({ ...formData, state: v })} />
               </div>
@@ -268,8 +268,8 @@ const TempleForm: React.FC = () => {
             </div>
 
             <div className="pt-6 border-t border-slate-100 flex justify-end gap-4">
-              <button type="button" onClick={() => navigate("/temple-onboard")} className="px-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">Discard</button>
-              <button type="submit" className="px-6 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2">
+              <button type="button" onClick={() => navigate("/temple-onboard")} className="px-4 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">Discard</button>
+              <button type="submit" className="px-4 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2">
                 <Save className="w-5 h-5" />
                 Update Registry
               </button>

@@ -16,7 +16,7 @@ interface PerformanceHubTableProps {
 const PerformanceHubTable: React.FC<PerformanceHubTableProps> = ({ recentTemples, tableMetrics }) => {
   return (
     <div className="bg-white rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] overflow-hidden">
-      <div className="px-6 py-4 border-b border-slate-50 flex justify-between items-center">
+      <div className="px-4 py-4 border-b border-slate-50 flex justify-between items-center">
         <div className="space-y-1">
           <h2 className="text-[12px] font-semibold text-slate-800 flex items-center gap-2">
             <Activity className="w-3.5 h-3.5 text-brand-primary" />
@@ -34,22 +34,22 @@ const PerformanceHubTable: React.FC<PerformanceHubTableProps> = ({ recentTemples
         <table className="w-full text-left">
           <thead>
             <tr>
-              <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50/50">
+              <th className="px-4 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50/50">
                 Temple Unit
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center bg-slate-50/50">
+              <th className="px-4 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center bg-slate-50/50">
                 Devotees
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center bg-slate-50/50">
+              <th className="px-4 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center bg-slate-50/50">
                 Donations (MTD)
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center bg-slate-50/50">
+              <th className="px-4 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center bg-slate-50/50">
                 Sevas Scheduled
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center bg-slate-50/50">
+              <th className="px-4 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center bg-slate-50/50">
                 Asset Value
               </th>
-              <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-right bg-slate-50/50">
+              <th className="px-4 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-right bg-slate-50/50">
                 Growth
               </th>
             </tr>
@@ -62,7 +62,7 @@ const PerformanceHubTable: React.FC<PerformanceHubTableProps> = ({ recentTemples
                   key={i}
                   className="hover:bg-slate-50/30 transition-colors group"
                 >
-                  <td className="px-6 py-3">
+                  <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
                       <div className="w-7 h-7 rounded-lg bg-brand-primary/5 flex items-center justify-center text-brand-primary/60 group-hover:bg-brand-primary group-hover:text-white transition-all">
                         <Building2 className="w-3.5 h-3.5 stroke-[1.5]" />
@@ -72,19 +72,19 @@ const PerformanceHubTable: React.FC<PerformanceHubTableProps> = ({ recentTemples
                       </span>
                     </div>
                   </td>
-                  <td className="px-6 py-3 text-[11px] text-slate-600 font-medium text-center">
+                  <td className="px-4 py-3 text-[11px] text-slate-600 font-medium text-center">
                     {metrics.devotees}
                   </td>
-                  <td className="px-6 py-3 text-[11px] text-slate-800 font-semibold text-center">
+                  <td className="px-4 py-3 text-[11px] text-slate-800 font-semibold text-center">
                     {metrics.donations}
                   </td>
-                  <td className="px-6 py-3 text-[11px] text-slate-600 font-medium text-center">
+                  <td className="px-4 py-3 text-[11px] text-slate-600 font-medium text-center">
                     {metrics.sevas}
                   </td>
-                  <td className="px-6 py-3 text-[11px] text-slate-600 font-medium text-center">
+                  <td className="px-4 py-3 text-[11px] text-slate-600 font-medium text-center">
                     {metrics.assets}
                   </td>
-                  <td className="px-6 py-3 text-right">
+                  <td className="px-4 py-3 text-right">
                     <div className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-50 text-emerald-600 text-[10px] font-bold group-hover:bg-emerald-100 transition-colors">
                       <TrendingUp className="w-3 h-3 text-emerald-500" />
                       +{metrics.growth}%

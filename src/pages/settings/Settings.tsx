@@ -61,7 +61,7 @@ const Settings: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8 pb-12 relative min-h-[calc(100vh-6rem)]">
+    <div className="max-w-6xl mx-auto space-y-4 sm:space-y-4 pb-12 relative min-h-[calc(100vh-6rem)]">
       {/* Decorative Background Gradients */}
       <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-slate-200/40 to-transparent pointer-events-none -z-10 rounded-3xl" />
       <div className="absolute top-20 right-20 w-96 h-96 bg-slate-400/10 blur-[120px] rounded-full pointer-events-none -z-10" />
@@ -70,32 +70,34 @@ const Settings: React.FC = () => {
       <motion.div 
         initial={{ opacity: 0, y: -20 }} 
         animate={{ opacity: 1, y: 0 }} 
-        className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 py-8 px-8"
+        className="shrink-0 bg-[#fafafa] border-b border-slate-100 px-4 py-4 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
       >
-        <div>
+        <div className="flex items-start sm:items-center gap-4">
           <button 
             type="button"
             onClick={() => navigate('/dashboard')} 
-            className="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 hover:text-brand-primary transition-colors mb-4 uppercase tracking-wider"
+            className="p-2 bg-white rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors shrink-0 mt-1 sm:mt-0"
           >
-            <ArrowLeft className="w-3.5 h-3.5" /> Back
+            <ArrowLeft className="w-5 h-5 text-slate-600" />
           </button>
-          
-          <div className="flex items-center gap-3 mb-2">
-            <div className="inline-flex items-center justify-center p-2 bg-white shadow-sm border border-slate-100 rounded-xl text-brand-primary">
-              <SettingsIcon className="w-5 h-5 animate-[spin_4s_linear_infinite]" />
+          <div>
+            <div className="flex items-center gap-3 mb-2">
+              <div className="inline-flex items-center justify-center p-2 bg-white shadow-sm border border-slate-100 rounded-xl text-brand-primary">
+                <SettingsIcon className="w-5 h-5" />
+              </div>
+              <h1 className="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">
+                Platform Settings
+              </h1>
             </div>
-            <h1 className="text-xl font-black text-slate-800 tracking-tight">
-              Platform Settings
-            </h1>
+            <p className="text-xs sm:text-sm text-slate-500 flex items-center gap-1.5 mt-0.5">
+              <Shield className="w-3.5 h-3.5 text-emerald-500" />
+              Manage your account preferences, security configurations, and personalize your experience.
+            </p>
           </div>
-          <p className="text-[11px] text-slate-500 font-medium max-w-lg leading-relaxed">
-            Manage your account preferences, security configurations, and personalize your administrative experience.
-          </p>
         </div>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mt-8 px-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-4 lg:gap-12 mt-8 px-4 sm:px-4">
         {/* Modern Sidebar Tabs */}
         <div className="lg:col-span-3 space-y-2">
           {tabs.map((tab) => {
@@ -135,7 +137,7 @@ const Settings: React.FC = () => {
         <div className="lg:col-span-9">
           <form onSubmit={handleSave} className="bg-white/80 backdrop-blur-xl rounded-3xl border border-slate-200 overflow-hidden min-h-[600px] flex flex-col relative">
             
-            <div className="p-8 sm:p-12 flex-1 relative z-10">
+            <div className="p-4 sm:p-4 sm:p-4 sm:p-10 flex-1 relative z-10">
               <AnimatePresence mode="wait">
                 
                 {/* ---------------- PROFILE TAB ---------------- */}
@@ -146,10 +148,10 @@ const Settings: React.FC = () => {
                     animate={{ opacity: 1, x: 0 }} 
                     exit={{ opacity: 0, x: -20 }} 
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="space-y-10"
+                    className="space-y-5 sm:space-y-8"
                   >
                     {/* Avatar Section */}
-                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 pb-10 border-b border-slate-100/80">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-4 pb-10 border-b border-slate-100/80">
                       <div 
                         className="relative group cursor-pointer"
                         onMouseEnter={() => setIsHoveringAvatar(true)}
@@ -232,7 +234,7 @@ const Settings: React.FC = () => {
                          </div>
                       </div>
                       
-                      <div className="space-y-6 max-w-xl">
+                      <div className="space-y-4 max-w-xl">
                         <SmartField label="Current Password" type="password" value={securityData.currentPassword} onChange={v => setSecurityData(p => ({...p, currentPassword: v}))} />
                         <SmartField label="New Password" type="password" value={securityData.newPassword} onChange={v => setSecurityData(p => ({...p, newPassword: v}))} />
                         <SmartField label="Confirm New Password" type="password" value={securityData.confirmPassword} onChange={v => setSecurityData(p => ({...p, confirmPassword: v}))} />
@@ -252,7 +254,7 @@ const Settings: React.FC = () => {
                          </div>
                       </div>
                       
-                      <div className="flex flex-col sm:flex-row items-center justify-between p-6 border border-slate-200 rounded-2xl bg-slate-50/50 hover:border-slate-300 transition-colors group">
+                      <div className="flex flex-col sm:flex-row items-center justify-between p-4 border border-slate-200 rounded-2xl bg-slate-50/50 hover:border-slate-300 transition-colors group">
                         <div className="flex-1 pr-6 text-center sm:text-left mb-4 sm:mb-0">
                           <p className="text-[13px] font-bold text-slate-800 flex items-center justify-center sm:justify-start gap-2">
                              Authenticator App
@@ -340,7 +342,7 @@ const Settings: React.FC = () => {
                          </div>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4">
                          <SmartSelect label="Interface Language" value={preferencesData.language} onChange={v => setPreferencesData(p => ({...p, language: v}))} options={["English", "Hindi", "Tamil", "Telugu"]} />
                          <SmartSelect label="UI Theme" value={preferencesData.theme} onChange={v => setPreferencesData(p => ({...p, theme: v}))} options={["Light Mode", "System Default"]} />
                       </div>
@@ -351,14 +353,14 @@ const Settings: React.FC = () => {
             </div>
 
             {/* Premium Sticky Footer */}
-            <div className="relative z-20 p-6 sm:px-12 sm:py-6 border-t border-slate-200/60 bg-white/90 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="relative z-20 p-4 sm:px-4 sm:px-10 sm:py-4 border-t border-slate-200/60 bg-white/90 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4">
               <p className="text-[11px] font-semibold text-slate-400 text-center sm:text-left">
                  Last saved: <span className="text-slate-600">Today at 10:42 AM</span>
               </p>
               <button 
                 type="submit" 
                 disabled={isSaving}
-                className="w-full sm:w-auto px-8 py-3 text-sm bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:translate-y-0"
+                className="w-full sm:w-auto px-4 sm:px-4 py-3 text-sm bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:translate-y-0"
               >
                 {isSaving ? (
                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

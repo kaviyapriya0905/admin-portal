@@ -334,9 +334,9 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000 max-w-7xl mx-auto">
+    <div className="space-y-4 sm:space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 max-w-7xl mx-auto">
       {/* Header Section */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 pb-4 border-b border-slate-100">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-4 border-b border-slate-100">
         <div className="space-y-1.5">
           <h1 className="text-lg font-semibold text-slate-800 tracking-tight">
             {canManage ? "Global Overview" : "Unit Oversight"}
@@ -370,7 +370,7 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4">
         <StatCard
           title="Total Temples"
           value={stats?.totalTemples.toString().padStart(2, "0") || "00"}
@@ -398,7 +398,7 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <RecentAdminsTable recentAdmins={recentAdmins} />
         <TempleBranchList recentTemples={recentTemples} />
       </div>

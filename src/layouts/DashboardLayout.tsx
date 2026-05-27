@@ -226,7 +226,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
           </button>
         </div>
 
-        <nav className="flex-1 px-4 py-8 space-y-1 overflow-y-auto custom-scrollbar">
+        <nav className="flex-1 px-4 py-4 sm:py-4 space-y-1 overflow-y-auto custom-scrollbar">
           {menuItems.map((item) => (
             <SidebarItem
               key={item.label}
@@ -273,7 +273,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
           )}
         </AnimatePresence>
 
-        <header className="h-16 bg-white/80 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between px-4 sm:px-8 sticky top-0 z-40 transition-all duration-300">
+        <header className="h-16 bg-white/80 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between px-4 sm:px-4 sm:px-4 sticky top-0 z-40 transition-all duration-300">
           <div className="flex items-center gap-4 flex-1 max-w-xl">
             <button
               onClick={() => setIsSidebarOpen(true)}
@@ -307,7 +307,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
               />
             )}
           </div>
-          <div className="flex items-center gap-3 sm:gap-6 ml-4">
+          <div className="flex items-center gap-3 sm:gap-4 ml-4">
             <button className="hidden sm:flex p-2.5 text-slate-300 hover:text-brand-primary hover:bg-brand-primary/5 rounded-md transition-all relative group">
               <Bell className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-brand-primary rounded-full border-2 border-white ring-2 ring-brand-primary/20"></span>
@@ -350,7 +350,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
             />
           </div>
         </header>
-        <div className="p-4 sm:p-8 flex-1 relative min-h-0 overflow-y-auto custom-scrollbar">
+        <div className="p-4 sm:p-4 sm:p-4 flex-1 relative min-h-0 overflow-y-auto custom-scrollbar">
           <AnimatePresence>
             {isNavigating && (
               <motion.div
@@ -360,7 +360,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
                 exit={{ opacity: 0 }}
                 className="absolute inset-0 flex items-center justify-center bg-white/40 backdrop-blur-[4px] z-50 pointer-events-none"
               >
-                <div className="flex flex-col items-center gap-6">
+                <div className="flex flex-col items-center gap-4">
                   <div className="relative w-12 h-12">
                     <div className="absolute inset-0 border-4 border-slate-100 rounded-full opacity-20"></div>
                     <div className="absolute inset-0 border-4 border-brand-primary rounded-full border-t-transparent animate-spin shadow-[0_0_15px_rgba(183,65,14,0.2)]"></div>

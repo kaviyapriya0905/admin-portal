@@ -41,7 +41,7 @@ export const TH: React.FC<
   <th
     {...props}
     className={cn(
-      "px-6 py-3 text-[9px] font-bold text-slate-400 uppercase tracking-widest",
+      "px-4 py-3 text-[9px] font-bold text-slate-400 uppercase tracking-widest",
       align === "center" && "text-center",
       align === "right" && "text-right",
       className,
@@ -60,7 +60,7 @@ export const TD: React.FC<
   <td
     {...props}
     className={cn(
-      "px-6 py-3 text-[13px] text-slate-700",
+      "px-4 py-3 text-[13px] text-slate-700",
       align === "center" && "text-center",
       align === "right" && "text-right",
       className,

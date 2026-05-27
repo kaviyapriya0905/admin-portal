@@ -188,7 +188,7 @@ const AdminOnboard: React.FC = () => {
     );
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-700 p-1">
+    <div className="space-y-4 animate-in fade-in duration-700 p-1">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-2">
         <div>
           <h1 className="text-xl font-semibold text-slate-800 tracking-tight">
@@ -209,7 +209,7 @@ const AdminOnboard: React.FC = () => {
         )}
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4">
         <StatCard
           title="Total Executives"
           value={admins.length.toString().padStart(2, "0")}

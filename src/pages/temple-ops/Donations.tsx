@@ -226,7 +226,7 @@ const Donations: React.FC = () => {
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
-    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
         <div>
@@ -255,7 +255,7 @@ const Donations: React.FC = () => {
       {/* Live Ticker */}
       <LiveDonationTicker />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {stats.map((stat, i) => (
           <StatCard key={i} {...stat} />
         ))}
@@ -387,7 +387,7 @@ const Donations: React.FC = () => {
                 <tr>
                   <td
                     colSpan={7}
-                    className="px-4 py-12 text-center text-slate-400 text-[12px]"
+                    className="px-4 py-4 sm:py-10 text-center text-slate-400 text-[12px]"
                   >
                     Loading donations…
                   </td>
@@ -502,7 +502,7 @@ const Donations: React.FC = () => {
                 </AnimatePresence>
               ) : (
                 <tr>
-                  <td colSpan={7} className="px-4 py-12 text-center">
+                  <td colSpan={7} className="px-4 py-4 sm:py-10 text-center">
                     <div className="flex flex-col items-center gap-2">
                       <HeartHandshake className="w-8 h-8 text-slate-200" />
                       <p className="text-[12px] font-medium text-slate-400">

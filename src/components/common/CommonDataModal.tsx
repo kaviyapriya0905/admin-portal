@@ -130,7 +130,7 @@ const CommonDataModal: React.FC<CommonDataModalProps> = ({
             transition={{ type: "spring", damping: 28, stiffness: 220 }}
             className="relative bg-white w-full max-w-lg h-full shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.2)] flex flex-col"
           >
-            <div className="p-8 border-b border-slate-100 flex justify-between items-center bg-white sticky top-0 z-20">
+            <div className="p-4 sm:p-4 border-b border-slate-100 flex justify-between items-center bg-white sticky top-0 z-20">
               <div className="flex items-center gap-5">
                 <div className="w-12 h-12 rounded-md bg-brand-primary/5 flex items-center justify-center border border-brand-primary/10">
                   <div className="w-8 h-8 rounded-md bg-brand-primary flex items-center justify-center shadow-lg shadow-brand-primary/20">
@@ -155,8 +155,8 @@ const CommonDataModal: React.FC<CommonDataModalProps> = ({
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-8 custom-scrollbar bg-white">
-              <div className="space-y-6">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-4 custom-scrollbar bg-white">
+              <div className="space-y-4">
                 <div className="space-y-5">
                   <div className="grid grid-cols-1 gap-5">
                     {fields.map((field) => {
@@ -236,11 +236,11 @@ const CommonDataModal: React.FC<CommonDataModalProps> = ({
               </div>
             </div>
 
-            <div className="p-8 bg-slate-50/50 border-t border-slate-100 flex gap-4">
+            <div className="p-4 sm:p-4 bg-slate-50/50 border-t border-slate-100 flex gap-4">
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 px-8 py-4 bg-white border border-slate-100 text-slate-400 text-xs font-bold rounded-md hover:bg-slate-100 hover:text-slate-600 transition-all shadow-sm"
+                className="flex-1 px-4 sm:px-4 py-4 bg-white border border-slate-100 text-slate-400 text-xs font-bold rounded-md hover:bg-slate-100 hover:text-slate-600 transition-all shadow-sm"
               >
                 Discard
               </button>
@@ -249,7 +249,7 @@ const CommonDataModal: React.FC<CommonDataModalProps> = ({
                   type="button"
                   onClick={handleSave}
                   disabled={isSaving}
-                  className="flex-[2] px-8 py-4 bg-brand-primary text-white text-xs font-bold rounded-md hover:bg-[#8e330b] transition-all shadow-xl shadow-brand-primary/20 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="flex-[2] px-4 sm:px-4 py-4 bg-brand-primary text-white text-xs font-bold rounded-md hover:bg-[#8e330b] transition-all shadow-xl shadow-brand-primary/20 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {isSaving ? "Saving..." : "Save Changes"}
                 </button>

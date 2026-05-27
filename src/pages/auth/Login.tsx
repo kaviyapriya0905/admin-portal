@@ -42,7 +42,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen relative flex items-center justify-center p-4 lg:p-10 font-sans selection:bg-brand-primary/10">
+    <div className="min-h-screen relative flex items-center justify-center p-4 lg:p-5 sm:p-4 sm:p-4 font-sans selection:bg-brand-primary/10">
       <img
         src="/temple_login_bg.png"
         alt="Spiritual Foundation"
@@ -62,7 +62,7 @@ const Login: React.FC = () => {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.6 }}
-        className="relative z-40 bg-white/95 backdrop-blur-xl w-full max-w-[450px] p-6 sm:p-10 rounded-xl border border-white/40 shadow-2xl shadow-slate-900/10"
+        className="relative z-40 bg-white/95 backdrop-blur-xl w-full max-w-[450px] p-4 sm:p-5 sm:p-4 sm:p-4 rounded-xl border border-white/40 shadow-2xl shadow-slate-900/10"
       >
         <div className="text-center mb-6">
           <div className="flex justify-center mb-6">
@@ -87,6 +87,7 @@ const Login: React.FC = () => {
             onChange={setEmail}
             type="email"
             placeholder="Enter admin email"
+            labelClassName="text-[12px]"
           />
 
           <SmartField
@@ -95,6 +96,7 @@ const Login: React.FC = () => {
             onChange={setPassword}
             type="password"
             placeholder="Enter password"
+            labelClassName="text-[12px]"
           />
 
           <motion.button

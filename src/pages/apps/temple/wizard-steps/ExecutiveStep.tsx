@@ -8,7 +8,7 @@ import {
 import SmartField from "@/components/ui/SmartField";
 import SmartSelect from "@/components/ui/SmartSelect";
 import SmartTextarea from "@/components/ui/SmartTextarea";
-import type { WizardStepProps } from "@/pages/temple-registry/wizard-steps/types";
+import type { WizardStepProps } from "@/pages/apps/temple/wizard-steps/types";
 
 const ExecutiveStep: React.FC<WizardStepProps> = ({
   formData,
@@ -23,7 +23,7 @@ const ExecutiveStep: React.FC<WizardStepProps> = ({
   onImageLinkPaste,
 }) => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="space-y-1">
         <h2 className="text-xl font-medium text-slate-900 tracking-tight">
           Executive Authority
@@ -33,7 +33,7 @@ const ExecutiveStep: React.FC<WizardStepProps> = ({
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         {mode === "admin" && (
           <div className="p-4 bg-brand-primary/5 border border-brand-primary/10 rounded-xl space-y-3 animate-in fade-in slide-in-from-top-4 duration-500">
             <div className="flex items-center gap-2">
@@ -127,7 +127,7 @@ const ExecutiveStep: React.FC<WizardStepProps> = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-1">
             <SmartField
               icon={User}
@@ -164,7 +164,7 @@ const ExecutiveStep: React.FC<WizardStepProps> = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-1">
             <SmartField
               icon={Mail}
@@ -205,7 +205,6 @@ const ExecutiveStep: React.FC<WizardStepProps> = ({
         <div className="space-y-1">
           <SmartTextarea
             label="Residential Residency Address"
-            className=""
             required
             value={formData.superadmin.residentialAddress}
             onChange={(val) => {
@@ -215,7 +214,7 @@ const ExecutiveStep: React.FC<WizardStepProps> = ({
               }));
               handleRealTimeValidation("residentialAddress", val);
             }}
-            // placeholder="Full residential details for verification"
+            placeholder="Full residential details for verification"
             errorText={validationErrors.residentialAddress}
           />
         </div>

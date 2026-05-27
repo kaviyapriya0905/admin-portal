@@ -174,17 +174,17 @@ const EventForm: React.FC = () => {
 
       {/* Scrollable body */}
       <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-7xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
+        <div className="max-w-7xl mx-auto space-y-4 py-4 pb-12 animate-in fade-in duration-500">
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-4">
           {/* Left sidebar */}
-          <div className="lg:col-span-1 space-y-5 lg:sticky lg:top-0 self-start">
+          <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-0 self-start">
           {/* Weather Forecast */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-            <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+            <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
               <Sun className="w-4 h-4 text-amber-500" /> Event Weather
             </h3>
-            <p className="text-[11px] text-slate-400 mb-5">Select a date for live meteorological forecast.</p>
+            <p className="text-[11px] text-slate-400 mb-4">Select a date for live meteorological forecast.</p>
 
             {!weather ? (
               <div className="p-4 bg-slate-50 border border-slate-100 rounded-xl text-center text-slate-400">
@@ -212,7 +212,7 @@ const EventForm: React.FC = () => {
           </div>
 
           {/* Event Summary */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
             <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
               <ClipboardCheck className="w-4 h-4 text-indigo-500" /> Event Summary
             </h3>
@@ -238,15 +238,15 @@ const EventForm: React.FC = () => {
 
         {/* Main form */}
         <div className="lg:col-span-2">
-          <form onSubmit={handleSave} className="space-y-6">
+          <form onSubmit={handleSave} className="space-y-4">
 
             {/* Section 1: Identity & Event Mapping */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center"><Star className="w-4 h-4 text-indigo-600" /></span>
                 1. Identity & Event Mapping
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="sm:col-span-2">
                   <SmartField
                     label="Event / Pooja Name"
@@ -299,12 +299,12 @@ const EventForm: React.FC = () => {
             </div>
 
             {/* Section 2: Logistics & Resources */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><Package className="w-4 h-4 text-emerald-600" /></span>
                 2. Logistics & Resources
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <SmartSelect
                   label="Venue / Premises"
                   icon={MapPin}
@@ -340,12 +340,12 @@ const EventForm: React.FC = () => {
             </div>
 
             {/* Section 3: Sequence Timing */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center"><Clock className="w-4 h-4 text-amber-600" /></span>
                 3. Sequence Timing
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <SmartField
                   label="Event Registry Date"
                   icon={Calendar}
@@ -385,7 +385,7 @@ const EventForm: React.FC = () => {
 
             {/* Section 4: Recurring (only on create) */}
             {!isEdit && (
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-3">
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="text-sm font-bold text-slate-800 flex items-center gap-2">
@@ -443,13 +443,13 @@ const EventForm: React.FC = () => {
 
             {/* Footer */}
             <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-2">
-              <button type="button" onClick={() => navigate("/events")} className="w-full sm:w-auto px-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">
+              <button type="button" onClick={() => navigate("/events")} className="w-full sm:w-auto px-4 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">
                 Discard Changes
               </button>
               <button
                 type="submit"
                 
-                className="w-full sm:w-auto px-8 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full sm:w-auto px-4 sm:px-4 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 <Save className="w-5 h-5" />
                 {isEdit ? "Complete Registry Entry" : formData.isRecurring ? `Create ${formData.totalDays} Events` : "Complete Registry Entry"}

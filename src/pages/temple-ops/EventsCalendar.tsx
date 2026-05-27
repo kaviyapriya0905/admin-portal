@@ -279,8 +279,8 @@ const EventsCalendar: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-700 pb-10">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 relative z-20">
+    <div className="space-y-4 sm:space-y-4 animate-in fade-in duration-700 pb-10">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 relative z-20">
         <div className="space-y-1">
           <h1 className="text-base sm:text-lg font-semibold text-slate-800 tracking-tight">
             Events & Calendar
@@ -294,7 +294,7 @@ const EventsCalendar: React.FC = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => navigate("/events/add")}
-            className="w-full sm:w-auto px-6 py-3 bg-brand-primary text-white rounded-xl text-sm font-bold hover:shadow-xl hover:shadow-brand-primary/20 transition-all flex items-center justify-center gap-2 group"
+            className="w-full sm:w-auto px-4 py-3 bg-brand-primary text-white rounded-xl text-sm font-bold hover:shadow-xl hover:shadow-brand-primary/20 transition-all flex items-center justify-center gap-2 group"
           >
             <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
             Create Event
@@ -304,10 +304,10 @@ const EventsCalendar: React.FC = () => {
 
       <UpcomingEventCountdown />
 
-      <div className="flex flex-col xl:flex-row gap-8">
+      <div className="flex flex-col xl:flex-row gap-4 sm:gap-4">
         <div className="xl:w-2/3 flex flex-col relative z-10">
           <div className="bg-white/80 backdrop-blur-2xl rounded-3xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden flex flex-col">
-            <div className="p-6 sm:p-8 border-b border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50/50">
+            <div className="p-4 sm:p-4 sm:p-4 border-b border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50/50">
               <div className="flex items-center gap-4">
                 <h2 className="text-base sm:text-lg font-semibold text-slate-800 tracking-tight">
                   {MONTHS[month]}{" "}
@@ -340,7 +340,7 @@ const EventsCalendar: React.FC = () => {
             </div>
 
             {/* Calendar Body */}
-            <div className="flex-1 flex flex-col p-6 sm:p-8 pt-4 bg-slate-50/30">
+            <div className="flex-1 flex flex-col p-4 sm:p-4 sm:p-4 pt-4 bg-slate-50/30">
               <div className="grid grid-cols-7 gap-1 mb-3">
                 {DAYS_OF_WEEK.map((day) => (
                   <div
@@ -368,8 +368,8 @@ const EventsCalendar: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="xl:w-1/3 flex flex-col gap-6 relative z-10">
-          <div className="bg-white/90 backdrop-blur-2xl rounded-3xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-6 sm:p-8 flex flex-col h-[500px] xl:h-auto xl:min-h-[500px] overflow-hidden relative">
+        <div className="xl:w-1/3 flex flex-col gap-4 relative z-10">
+          <div className="bg-white/90 backdrop-blur-2xl rounded-3xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-4 sm:p-4 sm:p-4 flex flex-col h-[500px] xl:h-auto xl:min-h-[500px] overflow-hidden relative">
             <div className="flex flex-col gap-2 mb-8 relative z-10">
               <h3 className="text-sm font-semibold text-slate-800 tracking-tight flex items-center gap-2">
                 {selectedDate?.toDateString() === new Date().toDateString()
@@ -486,7 +486,7 @@ const EventsCalendar: React.FC = () => {
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="flex flex-col items-center justify-center h-full text-center py-12 px-6"
+                    className="flex flex-col items-center justify-center h-full text-center py-4 sm:py-10 px-4"
                   >
                     <div className="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center mb-5 rotate-3 shadow-inner border border-slate-100">
                       <Star className="w-8 h-8 text-slate-300" />

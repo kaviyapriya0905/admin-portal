@@ -34,7 +34,7 @@ const ReviewSection = ({
   stepId,
   goToStepById,
 }: ReviewSectionProps) => (
-  <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+  <div className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-300 group">
     <div className="flex items-center justify-between pb-4 border-b border-slate-50 mb-5">
       <div className="flex items-center gap-3">
         <div className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center group-hover:bg-brand-primary/5 transition-colors">
@@ -105,7 +105,7 @@ const ReviewStep: React.FC<WizardStepProps> = ({
         </div>
       </div>
 
-      <div className="space-y-10">
+      <div className="space-y-5 sm:space-y-8">
         {/* Visual Brand Portfolio Section */}
         {(mode === "full" || mode === "temple") && (
           <div className="relative rounded-[2rem] overflow-hidden border border-slate-100 shadow-2xl bg-white group/portfolio">
@@ -126,7 +126,7 @@ const ReviewStep: React.FC<WizardStepProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent"></div>
             </div>
 
-            <div className="absolute bottom-8 left-6 right-6 sm:left-10 sm:right-auto flex flex-col sm:flex-row items-center sm:items-end gap-6 sm:gap-8">
+            <div className="absolute bottom-8 left-6 right-6 sm:left-10 sm:right-auto flex flex-col sm:flex-row items-center sm:items-end gap-4 sm:gap-4 sm:gap-4">
               <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-white p-1.5 shadow-2xl border border-white/50 backdrop-blur-sm relative group/logo-rev">
                 {previewLogo ? (
                   <img
@@ -154,7 +154,7 @@ const ReviewStep: React.FC<WizardStepProps> = ({
                   </h3>
                   <Zap className="w-5 h-5 text-amber-400 fill-amber-400" />
                 </div>
-                <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 sm:gap-6">
+                <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 sm:gap-4">
                   <p className="text-white/70 text-[12px] font-bold flex items-center gap-2">
                     <MapPin className="w-3.5 h-3.5 text-brand-primary" />
                     {formData.city || "No City"}, {formData.state || "No State"}
@@ -171,7 +171,7 @@ const ReviewStep: React.FC<WizardStepProps> = ({
         )}
 
         {/* Structured Data Grids */}
-        <div className="grid grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 gap-4 sm:gap-4">
           {(mode === "full" || mode === "temple") && (
             <ReviewSection
               title="Unit Identity & Geolocation"
@@ -225,7 +225,7 @@ const ReviewStep: React.FC<WizardStepProps> = ({
               stepId={2}
               goToStepById={goToStepById}
             >
-              <div className="col-span-1 sm:col-span-2 flex flex-col sm:flex-row items-center gap-6 sm:gap-8 p-6 bg-slate-50/50 rounded-2xl border border-slate-100 mb-2 relative group/admin-rev">
+              <div className="col-span-1 sm:col-span-2 flex flex-col sm:flex-row items-center gap-4 sm:gap-4 sm:gap-4 p-4 bg-slate-50/50 rounded-2xl border border-slate-100 mb-2 relative group/admin-rev">
                 <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-xl bg-white relative shrink-0">
                   {previewAdmin ? (
                     <img

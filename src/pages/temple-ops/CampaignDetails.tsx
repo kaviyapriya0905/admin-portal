@@ -61,7 +61,7 @@ const CampaignDetails: React.FC = () => {
   const roi = totalExpense > 0 ? (((campaign.fundsRaised || 0) - totalExpense) / totalExpense * 100).toFixed(1) : "0";
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6 pb-12 relative">
+    <div className="max-w-7xl mx-auto space-y-4 pb-12 relative">
       <div className="flex items-center gap-2 mb-4">
         <button onClick={() => navigate("/campaigns")} className="p-2 text-slate-500 hover:text-brand-primary hover:bg-brand-primary/10 rounded-full transition-colors">
           <ArrowLeft className="w-4 h-4" />
@@ -105,17 +105,17 @@ const CampaignDetails: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <StatCard title="Total Collection" value={`₹${(campaign.fundsRaised || 0).toLocaleString()}`} icon={Coins} color="bg-emerald-50 text-emerald-600" />
         <StatCard title="Total Expenses" value={`₹${totalExpense.toLocaleString()}`} icon={Receipt} color="bg-rose-50 text-rose-600" />
         <StatCard title="Net Collection" value={`₹${netCollection.toLocaleString()}`} icon={Activity} color="bg-brand-primary/10 text-brand-primary" />
         <StatCard title="Est. ROI" value={`${roi}%`} icon={TrendingUp} color="bg-blue-50 text-blue-600" />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Left Column - Transactions & Config */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+        <div className="lg:col-span-2 space-y-4">
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4">
             <h3 className="text-sm font-bold text-slate-800 mb-4">Recent Transactions</h3>
             <div className="space-y-3">
               {campaign.transactions?.length > 0 ? campaign.transactions.map(txn => (
@@ -134,8 +134,8 @@ const CampaignDetails: React.FC = () => {
         </div>
 
         {/* Right Column - Expenses */}
-        <div className="space-y-6">
-          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+        <div className="space-y-4">
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-sm font-bold text-slate-800">Expense Tracker</h3>
               {campaign.status !== "Completed" && (

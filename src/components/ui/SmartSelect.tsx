@@ -47,7 +47,7 @@ const SmartSelect: React.FC<SmartSelectProps> = ({
               >
                 {/* Leading Icon */}
                 {Icon && (
-                  <div className={`pl-4 flex items-center justify-center transition-colors duration-300
+                  <div className={`pl-3 flex items-center justify-center transition-colors duration-300
                     ${open ? 'text-brand-primary' : 'text-slate-400'}
                     ${value && !open ? 'text-emerald-500' : ''}
                   `}>
@@ -60,18 +60,18 @@ const SmartSelect: React.FC<SmartSelectProps> = ({
                   <motion.label
                     initial={false}
                     animate={{
-                      y: (open || value) ? -10 : 0,
-                      scale: (open || value) ? 0.75 : 1,
+                      y: (open || value) ? -8 : 0,
+                      scale: (open || value) ? 0.8 : 1,
                       color: open ? '#a34015' : '#94a3b8'
                     }}
-                    className={`absolute left-4 top-3.5 origin-left pointer-events-none font-bold uppercase tracking-wider text-[10px]
+                    className={`absolute left-4 top-3 origin-left pointer-events-none font-medium tracking-wider text-[10px]
                       ${(open || value) ? 'opacity-100' : 'opacity-80'}
                     `}
                   >
                     {label} {required && <span className="text-rose-500 ml-0.5">*</span>}
                   </motion.label>
                   
-                  <div className="w-full px-4 pt-6 pb-2 text-[13px] font-semibold text-slate-800 truncate">
+                  <div className="w-full px-3 pt-5 pb-2 text-[13px] font-semibold text-slate-800 truncate">
                     {selectedOption ? selectedOption.label : <span className="opacity-0">Placeholder</span>}
                   </div>
                 </div>
@@ -108,14 +108,14 @@ const SmartSelect: React.FC<SmartSelectProps> = ({
         }}
       </Listbox>
 
-      {/* Helper / Error Text */}
+      {/* Helper / Error Text (in normal flow to avoid overlap) */}
       <AnimatePresence>
         {errorText && (
           <motion.p
-            initial={{ opacity: 0, y: -5 }}
+            initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            className="absolute left-1 -bottom-5 text-[10px] font-bold text-rose-500"
+            exit={{ opacity: 0, y: -4 }}
+            className="mt-2 text-[10px] font-bold text-rose-500"
           >
             {errorText}
           </motion.p>
@@ -124,7 +124,8 @@ const SmartSelect: React.FC<SmartSelectProps> = ({
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="absolute left-1 -bottom-5 text-[10px] font-medium text-slate-400"
+            exit={{ opacity: 0 }}
+            className="mt-2 text-[10px] font-medium text-slate-400"
           >
             {helperText}
           </motion.p>

@@ -20,7 +20,7 @@ const TempleBranchList: React.FC<TempleBranchListProps> = ({ recentTemples }) =>
 
   return (
     <div className="bg-white rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col h-full">
-      <div className="px-6 py-4 border-b border-slate-50 flex justify-between items-center shrink-0">
+      <div className="px-4 py-4 border-b border-slate-50 flex justify-between items-center shrink-0">
         <h2 className="text-[12px] font-semibold text-slate-800">
           Branch Status
         </h2>

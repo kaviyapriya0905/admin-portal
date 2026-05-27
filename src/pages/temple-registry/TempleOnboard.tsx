@@ -178,7 +178,7 @@ const TempleOnboard: React.FC = () => {
     );
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-700">
+    <div className="space-y-4 animate-in fade-in duration-700">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
         <div>
           <h1 className="text-xl font-semibold text-slate-800">
@@ -199,7 +199,7 @@ const TempleOnboard: React.FC = () => {
         )}
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4">
         <StatCard
           title="Total Units"
           value={temples.length.toString().padStart(2, "0")}
@@ -234,7 +234,7 @@ const TempleOnboard: React.FC = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {temples.length > 0 ? (
           temples.map((t) => (
             <TempleCard
@@ -258,7 +258,7 @@ const TempleOnboard: React.FC = () => {
             {canManage && (
               <button
                 onClick={() => setShowForm(true)}
-                className="mt-6 px-6 py-2 bg-brand-primary/5 text-brand-primary text-[11px] font-bold rounded-lg hover:bg-brand-primary hover:text-white transition-all"
+                className="mt-6 px-4 py-2 bg-brand-primary/5 text-brand-primary text-[11px] font-bold rounded-lg hover:bg-brand-primary hover:text-white transition-all"
               >
                 Start Enrollment
               </button>

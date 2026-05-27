@@ -123,10 +123,10 @@ const AdminForm: React.FC = () => {
 
       {/* Scrollable body */}
       <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-3xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
-          <form onSubmit={handleSave} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 flex flex-col space-y-8">
+        <div className="max-w-3xl mx-auto space-y-4 py-4 pb-12 animate-in fade-in duration-500">
+          <form onSubmit={handleSave} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-4 sm:p-4 flex flex-col space-y-4 sm:space-y-4">
             
-            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 flex flex-col items-center gap-4 group/avatar relative overflow-hidden">
+            <div className="bg-slate-50 rounded-2xl p-4 sm:p-4 border border-slate-100 flex flex-col items-center gap-4 group/avatar relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 rounded-full -mr-16 -mt-16 blur-3xl" />
 
               <div
@@ -179,7 +179,7 @@ const AdminForm: React.FC = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 gap-4">
               <SmartField 
                 label="Legal full name" 
                 value={formData.name} 
@@ -217,8 +217,8 @@ const AdminForm: React.FC = () => {
             </div>
 
             <div className="pt-6 border-t border-slate-100 flex justify-end gap-4">
-              <button type="button" onClick={() => navigate("/admin-onboard")} className="px-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">Discard</button>
-              <button type="submit" className="px-6 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2">
+              <button type="button" onClick={() => navigate("/admin-onboard")} className="px-4 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">Discard</button>
+              <button type="submit" className="px-4 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2">
                 <Save className="w-5 h-5" />
                 Synchronize Registry
               </button>

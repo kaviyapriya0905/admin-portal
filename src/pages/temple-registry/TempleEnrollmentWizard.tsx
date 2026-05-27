@@ -393,7 +393,7 @@ const TempleEnrollmentWizard: React.FC<TempleEnrollmentWizardProps> = ({
 
   if (submitted) {
     return (
-      <div className="bg-white flex items-center justify-center p-6 min-h-[500px] animate-in fade-in duration-500">
+      <div className="bg-white flex items-center justify-center p-4 min-h-[500px] animate-in fade-in duration-500">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -533,7 +533,7 @@ const TempleEnrollmentWizard: React.FC<TempleEnrollmentWizardProps> = ({
 
   return (
     <div className="bg-white flex flex-col lg:flex-row overflow-hidden min-h-screen lg:min-h-0 lg:h-[820px] border border-slate-100 rounded-xl shadow-sm relative">
-      <div className="w-full lg:w-[360px] bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200 flex flex-col p-6 lg:p-8 shrink-0">
+      <div className="w-full lg:w-[360px] bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200 flex flex-col p-4 lg:p-4 sm:p-4 shrink-0">
         <div className="mb-4 lg:mb-10">
           <div className="flex items-center gap-3 mb-2 lg:mb-4">
             <div className="w-8 h-8 bg-brand-primary rounded flex items-center justify-center shadow-md shrink-0">
@@ -550,13 +550,13 @@ const TempleEnrollmentWizard: React.FC<TempleEnrollmentWizardProps> = ({
           </h1>
         </div>
 
-        <div className="flex-1 space-y-4 lg:space-y-8 mb-4 lg:mb-0 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 no-scrollbar flex lg:block gap-6">
+        <div className="flex-1 space-y-4 lg:space-y-4 sm:space-y-4 mb-4 lg:mb-0 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 no-scrollbar flex lg:block gap-4">
           {filteredSteps.map((step, idx) => {
             const isActive = currentStepIndex === idx;
             const isDone = currentStepIndex > idx;
             return (
               <div key={step.id} className="relative shrink-0 lg:shrink">
-                <div className="flex items-center lg:items-start gap-3 lg:gap-6 group cursor-default">
+                <div className="flex items-center lg:items-start gap-3 lg:gap-4 group cursor-default">
                   <div
                     className={cn(
                       "w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-medium transition-all shrink-0 relative z-10",
@@ -620,7 +620,7 @@ const TempleEnrollmentWizard: React.FC<TempleEnrollmentWizardProps> = ({
       {/* Main Content Viewport */}
       <div className="flex-1 flex flex-col relative overflow-hidden bg-white">
         {/* Header Controls */}
-        <div className="h-16 flex items-center justify-between px-6 lg:px-12 border-b border-slate-100 bg-white z-40 shrink-0">
+        <div className="h-16 flex items-center justify-between px-4 lg:px-4 sm:px-10 border-b border-slate-100 bg-white z-40 shrink-0">
           <div className="flex items-center gap-5 text-slate-400">
             <div className="w-8 h-8 rounded-lg bg-slate-50 hidden sm:flex items-center justify-center">
               <Layout className="w-4 h-4 text-slate-300" />
@@ -644,11 +644,11 @@ const TempleEnrollmentWizard: React.FC<TempleEnrollmentWizardProps> = ({
         </div>
 
         {/* Scrollable Form Content */}
-        <div className="flex-1 overflow-y-auto p-6 lg:p-12 bg-slate-50/10">
+        <div className="flex-1 overflow-y-auto p-4 lg:p-4 sm:p-10 bg-slate-50/10">
           <form
             id="enrollment-form"
             onSubmit={handleSubmit}
-            className="max-w-2xl mx-auto space-y-8 pb-12"
+            className="max-w-2xl mx-auto space-y-4 sm:space-y-4 pb-12"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -665,13 +665,13 @@ const TempleEnrollmentWizard: React.FC<TempleEnrollmentWizardProps> = ({
         </div>
 
         {/* Fixed Navigation Actions Footer */}
-        <div className="px-6 lg:px-10 py-4 lg:py-6 flex items-center justify-between border-t border-slate-100 bg-white z-40 shrink-0">
+        <div className="px-4 lg:px-5 sm:px-4 sm:px-4 py-4 lg:py-4 flex items-center justify-between border-t border-slate-100 bg-white z-40 shrink-0">
           <button
             type="button"
             onClick={prevStep}
             disabled={currentStepIndex === 0}
             className={cn(
-              "px-4 lg:px-6 py-2 rounded-xl font-bold text-[10px] lg:text-[11px] transition-all flex items-center gap-2",
+              "px-4 lg:px-4 py-2 rounded-xl font-bold text-[10px] lg:text-[11px] transition-all flex items-center gap-2",
               currentStepIndex === 0
                 ? "opacity-0 pointer-events-none"
                 : "text-slate-400 hover:text-slate-900",
@@ -681,7 +681,7 @@ const TempleEnrollmentWizard: React.FC<TempleEnrollmentWizardProps> = ({
             <span className="hidden sm:inline">Previous Phase</span>
           </button>
 
-          <div className="flex gap-4 lg:gap-6 items-center">
+          <div className="flex gap-4 lg:gap-4 items-center">
             <button
               type="button"
               onClick={handleSaveDraft}
@@ -694,7 +694,7 @@ const TempleEnrollmentWizard: React.FC<TempleEnrollmentWizardProps> = ({
               <button
                 onClick={nextStep}
                 disabled={Object.keys(validationErrors).length > 0}
-                className="px-6 lg:px-8 py-2.5 lg:py-3 bg-brand-primary text-white font-bold rounded-xl hover:bg-brand-secondary transition-all flex items-center gap-2 lg:gap-3 disabled:opacity-50 text-[10px] lg:text-[11px] shadow-xl shadow-brand-primary/20 hover:scale-105 active:scale-95"
+                className="px-4 lg:px-4 sm:px-4 py-2.5 lg:py-3 bg-brand-primary text-white font-bold rounded-xl hover:bg-brand-secondary transition-all flex items-center gap-2 lg:gap-3 disabled:opacity-50 text-[10px] lg:text-[11px] shadow-xl shadow-brand-primary/20 hover:scale-105 active:scale-95"
               >
                 {currentStepIndex === filteredSteps.length - 2
                   ? "Finalize Audit"
@@ -706,7 +706,7 @@ const TempleEnrollmentWizard: React.FC<TempleEnrollmentWizardProps> = ({
                 type="submit"
                 form="enrollment-form"
                 disabled={Object.keys(validationErrors).length > 0}
-                className="px-8 lg:px-12 py-2.5 lg:py-3 bg-brand-primary text-white font-bold rounded-xl hover:bg-brand-secondary transition-all flex items-center gap-2 lg:gap-3 text-[10px] lg:text-[11px] shadow-2xl shadow-brand-primary/30 hover:scale-105 active:scale-95 animate-pulse disabled:animate-none"
+                className="px-4 sm:px-4 lg:px-4 sm:px-10 py-2.5 lg:py-3 bg-brand-primary text-white font-bold rounded-xl hover:bg-brand-secondary transition-all flex items-center gap-2 lg:gap-3 text-[10px] lg:text-[11px] shadow-2xl shadow-brand-primary/30 hover:scale-105 active:scale-95 animate-pulse disabled:animate-none"
               >
                 Register
                 <CheckCircle2 className="w-4 h-4" />

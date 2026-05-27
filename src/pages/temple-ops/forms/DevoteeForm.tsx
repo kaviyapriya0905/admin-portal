@@ -217,8 +217,8 @@ const DevoteeForm: React.FC = () => {
     switch (activeTab) {
       case "Personal":
         return (
-          <div className="space-y-6">
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <div className="space-y-4">
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
               <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
                 <ScanFace className="w-5 h-5 text-brand-primary" />
                 Biometric Registration
@@ -250,7 +250,7 @@ const DevoteeForm: React.FC = () => {
               )}
             </div>
 
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
               <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
                 <QrCode className="w-5 h-5 text-indigo-500" />
                 Digital ID Card
@@ -290,7 +290,7 @@ const DevoteeForm: React.FC = () => {
         );
       case "Membership":
         return (
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 lg:sticky lg:top-24">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 lg:sticky lg:top-24">
             <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
               <Award className="w-5 h-5 text-amber-500" />
               Engagement Score
@@ -304,7 +304,7 @@ const DevoteeForm: React.FC = () => {
         );
       case "History":
         return (
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 lg:sticky lg:top-24">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 lg:sticky lg:top-24">
             <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
               <Activity className="w-5 h-5 text-brand-primary" />
               Recent Activity Snapshot
@@ -322,7 +322,7 @@ const DevoteeForm: React.FC = () => {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-6 text-slate-400">
+              <div className="text-center py-4 text-slate-400">
                 <History className="w-8 h-8 mx-auto mb-2 opacity-50" />
                 <p className="text-xs">No recent activity found.</p>
               </div>
@@ -336,10 +336,10 @@ const DevoteeForm: React.FC = () => {
     switch (activeTab) {
       case "Personal":
         return (
-          <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="space-y-8">
+          <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="space-y-4 sm:space-y-4">
 
             {/* Primary Details Card */}
-            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
+            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center"><User className="w-4 h-4 text-indigo-600" /></span>
                 Primary Details
@@ -358,7 +358,7 @@ const DevoteeForm: React.FC = () => {
             </div>
 
             {/* Demographics Card */}
-            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
+            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><Activity className="w-4 h-4 text-emerald-600" /></span>
                 Demographics
@@ -371,7 +371,7 @@ const DevoteeForm: React.FC = () => {
             </div>
 
             {/* Spiritual Identity Card */}
-            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
+            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center"><BookOpen className="w-4 h-4 text-amber-600" /></span>
                 Spiritual Identity
@@ -384,7 +384,7 @@ const DevoteeForm: React.FC = () => {
             </div>
 
             {/* Location Card */}
-            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
+            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-rose-50 flex items-center justify-center"><MapPin className="w-4 h-4 text-rose-600" /></span>
                 Location
@@ -400,7 +400,7 @@ const DevoteeForm: React.FC = () => {
             </div>
 
             {/* Family & Emergency Card */}
-            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
+            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center"><Users className="w-4 h-4 text-brand-primary" /></span>
                 Family & Emergency
@@ -414,9 +414,9 @@ const DevoteeForm: React.FC = () => {
         );
       case "Membership":
         return (
-          <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="space-y-8">
+          <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="space-y-4 sm:space-y-4">
             {/* Membership Status */}
-            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
+            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center"><Award className="w-4 h-4 text-indigo-600" /></span>
                 Membership Status
@@ -428,62 +428,62 @@ const DevoteeForm: React.FC = () => {
             </div>
 
             {/* Communication Preferences */}
-            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
+            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><Mail className="w-4 h-4 text-emerald-600" /></span>
                 Communication Preferences
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <SmartCheckbox 
-                  label="WhatsApp" 
-                  checked={formData.whatsapp} 
-                  onChange={(c) => setFormData(p => ({ ...p, whatsapp: c }))} 
+                <SmartCheckbox
+                  label="WhatsApp"
+                  checked={formData.whatsapp}
+                  onChange={(c) => setFormData(p => ({ ...p, whatsapp: c }))}
                 />
-                <SmartCheckbox 
-                  label="SMS" 
-                  checked={formData.sms} 
-                  onChange={(c) => setFormData(p => ({ ...p, sms: c }))} 
+                <SmartCheckbox
+                  label="SMS"
+                  checked={formData.sms}
+                  onChange={(c) => setFormData(p => ({ ...p, sms: c }))}
                 />
-                <SmartCheckbox 
-                  label="Email" 
-                  checked={formData.emailAlerts} 
-                  onChange={(c) => setFormData(p => ({ ...p, emailAlerts: c }))} 
+                <SmartCheckbox
+                  label="Email"
+                  checked={formData.emailAlerts}
+                  onChange={(c) => setFormData(p => ({ ...p, emailAlerts: c }))}
                 />
               </div>
             </div>
 
             {/* Reminders */}
-            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
+            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center"><Phone className="w-4 h-4 text-amber-600" /></span>
                 Automated Reminders
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <SmartCheckbox 
-                  label="Birthday" 
-                  checked={formData.reminderBirthday} 
-                  onChange={(c) => setFormData(p => ({ ...p, reminderBirthday: c }))} 
+                <SmartCheckbox
+                  label="Birthday"
+                  checked={formData.reminderBirthday}
+                  onChange={(c) => setFormData(p => ({ ...p, reminderBirthday: c }))}
                 />
-                <SmartCheckbox 
-                  label="Nakshatra" 
-                  checked={formData.reminderNakshatra} 
-                  onChange={(c) => setFormData(p => ({ ...p, reminderNakshatra: c }))} 
+                <SmartCheckbox
+                  label="Nakshatra"
+                  checked={formData.reminderNakshatra}
+                  onChange={(c) => setFormData(p => ({ ...p, reminderNakshatra: c }))}
                 />
-                <SmartCheckbox 
-                  label="Festivals" 
-                  checked={formData.reminderFestivalGreetings} 
-                  onChange={(c) => setFormData(p => ({ ...p, reminderFestivalGreetings: c }))} 
+                <SmartCheckbox
+                  label="Festivals"
+                  checked={formData.reminderFestivalGreetings}
+                  onChange={(c) => setFormData(p => ({ ...p, reminderFestivalGreetings: c }))}
                 />
-                <SmartCheckbox 
-                  label="Donation Anniv." 
-                  checked={formData.reminderDonationAnniversary} 
-                  onChange={(c) => setFormData(p => ({ ...p, reminderDonationAnniversary: c }))} 
+                <SmartCheckbox
+                  label="Donation Anniv."
+                  checked={formData.reminderDonationAnniversary}
+                  onChange={(c) => setFormData(p => ({ ...p, reminderDonationAnniversary: c }))}
                 />
               </div>
             </div>
 
             {/* Volunteer Registration */}
-            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-6">
+            <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-rose-50 flex items-center justify-center"><User className="w-4 h-4 text-rose-600" /></span>
                 Volunteer Registration
@@ -496,7 +496,7 @@ const DevoteeForm: React.FC = () => {
         );
       case "History":
         return (
-          <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="flex flex-col items-center justify-center py-12 text-center">
+          <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="flex flex-col items-center justify-center py-4 sm:py-10 text-center">
             <History className="w-16 h-16 text-slate-200 mb-4" />
             <h3 className="text-lg font-bold text-slate-800 mb-2">Historical Records</h3>
             <p className="text-sm text-slate-500 max-w-sm">
@@ -536,9 +536,9 @@ const DevoteeForm: React.FC = () => {
 
       {/* Scrollable body */}
       <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-7xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
+        <div className="max-w-7xl mx-auto space-y-6 py-4 pb-12 animate-in fade-in duration-500">
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-6">
             <div className="lg:col-span-1">
               <AnimatePresence mode="wait">
                 <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
@@ -548,7 +548,7 @@ const DevoteeForm: React.FC = () => {
             </div>
 
             <div className="lg:col-span-2">
-              <form onSubmit={handleSave} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 flex flex-col">
+              <form onSubmit={handleSave} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-6 flex flex-col">
                 <div className="pb-6">
                   <AnimatePresence mode="wait">
                     <motion.div key={activeTab}>
@@ -558,8 +558,8 @@ const DevoteeForm: React.FC = () => {
                 </div>
 
                 <div className="pt-6 border-t border-slate-100 flex flex-col-reverse sm:flex-row justify-end gap-4 mt-auto">
-                  <button type="button" onClick={() => navigate("/devotees")} className="w-full sm:w-auto px-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">Cancel</button>
-                  <button type="submit" disabled={!formData.firstName || !formData.phone} className="w-full sm:w-auto px-6 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50">
+                  <button type="button" onClick={() => navigate("/devotees")} className="w-full sm:w-auto px-4 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">Cancel</button>
+                  <button type="submit" disabled={!formData.firstName || !formData.phone} className="w-full sm:w-auto px-4 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50">
                     <Save className="w-5 h-5" />
                     {isEdit ? "Update Profile" : "Register Profile"}
                   </button>

@@ -210,9 +210,9 @@ const DonationForm: React.FC = () => {
 
       {/* Scrollable body */}
       <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-7xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
+        <div className="max-w-7xl mx-auto space-y-6 py-4 pb-12 animate-in fade-in duration-500">
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-6">
         {/* Left sidebar */}
         <div className="lg:col-span-1 space-y-5 lg:sticky lg:top-0 self-start">
           {/* Gateway Sync */}
@@ -283,7 +283,25 @@ const DonationForm: React.FC = () => {
 
         {/* Main form */}
         <div className="lg:col-span-2">
-          <form onSubmit={handleSave} className="space-y-6">
+          <form onSubmit={handleSave} className="flex flex-col">
+
+            <div className="sticky top-4 z-20 bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-slate-100 mb-4 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="inline-flex items-center justify-center p-2 bg-white shadow-sm border border-slate-100 rounded-xl text-brand-primary">
+                  <IndianRupee className="w-5 h-5" />
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold text-slate-800">Transaction Details</h2>
+                  <p className="text-xs text-slate-500">Enter donor, amount and payment details</p>
+                </div>
+              </div>
+              <div className="text-right text-sm">
+                <div className="text-[12px] font-bold text-slate-800">Total: {rawAmount > 0 ? `₹${rawAmount.toLocaleString("en-IN")}` : '₹0'}</div>
+                <div className="text-xs text-slate-400">{formData.channel} · {formData.paymentMethod}</div>
+              </div>
+            </div>
+
+            <div className="overflow-y-auto max-h-[calc(100vh-20rem)] space-y-6 pr-2"> 
 
             {/* Section 1: Devotee Association */}
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
@@ -354,7 +372,7 @@ const DonationForm: React.FC = () => {
                   )}
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <SmartSelect
                     label="Fund Category"
                     icon={Target}
@@ -558,7 +576,7 @@ const DonationForm: React.FC = () => {
                         </span>
                         <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Scan & Pay via UPI</span>
                       </div>
-                      <div className="flex flex-col items-center gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                      <div className="flex flex-col items-center gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-200">
                         <div className="w-36 h-36 bg-white rounded-2xl border border-slate-200 shadow-md flex items-center justify-center">
                           <QrCode className="w-20 h-20 text-brand-primary opacity-70" />
                         </div>
@@ -604,12 +622,12 @@ const DonationForm: React.FC = () => {
             </div>
 
             {/* Section 3: Reference & Notes */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center"><FileText className="w-4 h-4 text-amber-600" /></span>
                 Internal Reference & Notes
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <SmartField
                   label="PAN (for 80G Receipt)"
                   icon={FileText}
@@ -634,15 +652,16 @@ const DonationForm: React.FC = () => {
               </div>
             </div>
 
+            </div>
+
             {/* Footer Actions */}
-            <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-2">
-              <button type="button" onClick={() => navigate("/donations")} className="w-full sm:w-auto px-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">
+            <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-2 mt-4">
+              <button type="button" onClick={() => navigate("/donations")} className="w-full sm:w-auto px-4 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">
                 Discard
               </button>
               <button
                 type="submit"
-                
-                className="w-full sm:w-auto px-8 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full sm:w-auto px-4 sm:px-4 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 <Save className="w-5 h-5" />
                 {isEdit ? "Update Donation" : "Complete & Issue Receipt"}

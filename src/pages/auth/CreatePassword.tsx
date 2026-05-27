@@ -71,11 +71,11 @@ const CreatePassword: React.FC = () => {
 
   if (completed) {
     return (
-      <div className="min-h-screen bg-[#f8f9fb] flex items-center justify-center p-6 selection:bg-brand-primary/10">
+      <div className="min-h-screen bg-[#f8f9fb] flex items-center justify-center p-4 selection:bg-brand-primary/10">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="bg-white w-full max-w-[500px] p-10 rounded-2xl shadow-xl shadow-slate-900/5 border border-slate-100 text-center space-y-6"
+          className="bg-white w-full max-w-[500px] p-5 sm:p-4 sm:p-4 rounded-2xl shadow-xl shadow-slate-900/5 border border-slate-100 text-center space-y-4"
         >
           <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-8 h-8 text-emerald-500" />
@@ -106,11 +106,11 @@ const CreatePassword: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8f9fb] flex items-center justify-center p-6 font-sans selection:bg-brand-primary/10">
+    <div className="min-h-screen bg-[#f8f9fb] flex items-center justify-center p-4 font-sans selection:bg-brand-primary/10">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white w-full max-w-[540px] p-10 rounded-2xl shadow-xl shadow-slate-900/5 border border-slate-100 space-y-8"
+        className="bg-white w-full max-w-[540px] p-5 sm:p-4 sm:p-4 rounded-2xl shadow-xl shadow-slate-900/5 border border-slate-100 space-y-4 sm:space-y-4"
       >
         <div className="space-y-3 text-center flex flex-col items-center">
           <div className="w-11 h-11 bg-brand-primary/5 rounded-2xl flex items-center justify-center mb-1">
@@ -126,8 +126,8 @@ const CreatePassword: React.FC = () => {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-4">
             <SmartField
               label="New password"
               icon={Lock}

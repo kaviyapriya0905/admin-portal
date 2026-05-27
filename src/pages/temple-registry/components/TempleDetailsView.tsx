@@ -122,7 +122,7 @@ const TempleDetailsView: React.FC<TempleDetailsViewProps> = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className="space-y-8"
+      className="space-y-4 sm:space-y-4"
     >
       <div className="flex items-center justify-between">
         <button
@@ -138,8 +138,8 @@ const TempleDetailsView: React.FC<TempleDetailsViewProps> = ({
         </button>
       </div>
 
-      <div className="grid grid-rows-1 lg:grid-rows-5 gap-8">
-        <div className="lg:row-span-2 space-y-6">
+      <div className="grid grid-rows-1 lg:grid-rows-5 gap-4 sm:gap-4">
+        <div className="lg:row-span-2 space-y-4">
           <div className="bg-white rounded-md border border-slate-100 overflow-hidden shadow-sm flex flex-col md:flex-row h-auto md:h-[420px]">
             <div className="md:w-2/5 relative bg-slate-50 shrink-0 h-[320px] md:h-full">
               {(() => {
@@ -163,7 +163,7 @@ const TempleDetailsView: React.FC<TempleDetailsViewProps> = ({
                 );
               })()}
             </div>
-            <div className="p-6 flex-1 overflow-y-auto custom-scrollbar">
+            <div className="p-4 flex-1 overflow-y-auto custom-scrollbar">
               <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
                 {temple.name}
               </h2>
@@ -216,7 +216,7 @@ const TempleDetailsView: React.FC<TempleDetailsViewProps> = ({
             </div>
           </div>
         </div>
-        <div className="lg:row-span-3 space-y-6">
+        <div className="lg:row-span-3 space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-white p-5 rounded-md border border-slate-100 flex items-center gap-4">
               <div className="w-12 h-12 rounded-md bg-brand-primary/5 flex items-center justify-center border border-brand-primary/10">
@@ -272,7 +272,7 @@ const TempleDetailsView: React.FC<TempleDetailsViewProps> = ({
           </div>
 
           <div className="bg-white rounded-md border border-slate-100 overflow-hidden">
-            <div className="p-6 border-b border-slate-50 flex justify-between items-center bg-white/50 backdrop-blur-sm sticky top-0 z-10">
+            <div className="p-4 border-b border-slate-50 flex justify-between items-center bg-white/50 backdrop-blur-sm sticky top-0 z-10">
               <div className="flex items-center gap-3">
                 <Shield className="w-5 h-5 text-slate-400" />
                 <h3 className="text-sm font-bold text-slate-800">
@@ -356,7 +356,7 @@ const TempleDetailsView: React.FC<TempleDetailsViewProps> = ({
                   </div>
                 ))
               ) : (
-                <div className="py-20 flex flex-col items-center justify-center text-center px-8">
+                <div className="py-20 flex flex-col items-center justify-center text-center px-4 sm:px-4">
                   <div className="w-12 h-12 bg-slate-50 rounded-md border border-dashed border-slate-200 flex items-center justify-center mb-4 text-slate-300">
                     <Users className="w-6 h-6" />
                   </div>

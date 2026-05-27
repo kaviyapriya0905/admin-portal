@@ -60,7 +60,7 @@ const CampaignForm: React.FC = () => {
           startDate: new Date().toISOString().split('T')[0],
           endDate: (existing.end as string) || "",
           targetAmount: parseInt((existing.budget as string) || "50000"),
-          description: existing.funds as string || "", 
+          description: existing.funds as string || "",
           visibility: "Public",
           priority: "Medium",
           dailyBudget: parseInt(existing.dailyLimit as string || "5000"),
@@ -125,19 +125,19 @@ const CampaignForm: React.FC = () => {
     switch (currentStep) {
       case 0:
         return (
-          <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
+          <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-10">
             <div className="sm:col-span-2">
-              <SmartField label="Campaign Name" icon={Megaphone} value={formData.name || ""} onChange={v => setFormData(p => ({...p, name: v}))} required />
+              <SmartField label="Campaign Name" icon={Megaphone} value={formData.name || ""} onChange={v => setFormData(p => ({ ...p, name: v }))} required />
             </div>
-            <SmartSelect label="Campaign Type" icon={Target} value={formData.type || "Donation"} onChange={v => setFormData(p => ({...p, type: v as any}))} options={["Donation", "Event", "Festival", "Annadhanam", "Renovation"]} />
-            <SmartField label="Target Amount (₹)" type="number" icon={Coins} value={formData.targetAmount?.toString() || ""} onChange={v => setFormData(p => ({...p, targetAmount: parseInt(v) || 0}))} />
-            
-            <SmartField label="Start Date" icon={CalendarDays} type="date" value={formData.startDate || ""} onChange={v => setFormData(p => ({...p, startDate: v}))} />
-            <SmartField label="End Date" icon={CalendarDays} type="date" value={formData.endDate || ""} onChange={v => setFormData(p => ({...p, endDate: v}))} />
+            <SmartSelect label="Campaign Type" icon={Target} value={formData.type || "Donation"} onChange={v => setFormData(p => ({ ...p, type: v as any }))} options={["Donation", "Event", "Festival", "Annadhanam", "Renovation"]} />
+            <SmartField label="Target Amount (₹)" type="number" icon={Coins} value={formData.targetAmount?.toString() || ""} onChange={v => setFormData(p => ({ ...p, targetAmount: parseInt(v) || 0 }))} />
+
+            <SmartField label="Start Date" icon={CalendarDays} type="date" value={formData.startDate || ""} onChange={v => setFormData(p => ({ ...p, startDate: v }))} />
+            <SmartField label="End Date" icon={CalendarDays} type="date" value={formData.endDate || ""} onChange={v => setFormData(p => ({ ...p, endDate: v }))} />
 
             <div className="sm:col-span-2">
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Outreach Channels</label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">Outreach Channels</label>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {[
                   { id: "SMS", label: "SMS Broadcast", icon: MessageSquare },
                   { id: "WhatsApp", label: "WhatsApp Campaign", icon: Smartphone },
@@ -146,14 +146,14 @@ const CampaignForm: React.FC = () => {
                   const isSelected = formData.channels?.includes(channel.id);
                   const Icon = channel.icon;
                   return (
-                    <div 
+                    <div
                       key={channel.id}
                       onClick={() => {
                         const current = formData.channels || [];
-                        const updated = current.includes(channel.id) 
-                          ? current.filter(c => c !== channel.id) 
+                        const updated = current.includes(channel.id)
+                          ? current.filter(c => c !== channel.id)
                           : [...current, channel.id];
-                        setFormData(p => ({...p, channels: updated}));
+                        setFormData(p => ({ ...p, channels: updated }));
                       }}
                       className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${isSelected ? 'border-brand-primary bg-brand-primary/5' : 'border-slate-100 bg-white hover:border-slate-200'}`}
                     >
@@ -167,14 +167,14 @@ const CampaignForm: React.FC = () => {
               </div>
             </div>
 
-            <SmartField label="Target Audience Count" type="number" icon={UsersIcon} value={formData.audienceCount?.toString() || ""} onChange={v => setFormData(p => ({...p, audienceCount: parseInt(v) || 0}))} />
+            <SmartField label="Target Audience Count" type="number" icon={UsersIcon} value={formData.audienceCount?.toString() || ""} onChange={v => setFormData(p => ({ ...p, audienceCount: parseInt(v) || 0 }))} />
 
             <div className="sm:col-span-2">
-              <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 relative overflow-hidden">
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
-                <h4 className="text-sm font-semibold text-slate-800 flex items-center gap-2 mb-4">Estimated Outreach Cost</h4>
-                
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                <h4 className="text-sm font-semibold text-slate-800 flex items-center gap-2 mb-6">Estimated Outreach Cost</h4>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-6">
                   <div>
                     <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Audience</div>
                     <div className="font-semibold text-slate-800">{formData.audienceCount?.toLocaleString()}</div>
@@ -201,7 +201,7 @@ const CampaignForm: React.FC = () => {
             </div>
 
             <div className="sm:col-span-2">
-              <SmartTextarea label="Description / Cause" required rows={3} value={formData.description || ""} onChange={v => setFormData(p => ({...p, description: v}))} />
+              <SmartTextarea label="Description / Cause" required rows={3} value={formData.description || ""} onChange={v => setFormData(p => ({ ...p, description: v }))} />
             </div>
           </motion.div>
         );
@@ -209,42 +209,42 @@ const CampaignForm: React.FC = () => {
         return (
           <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className="space-y-6">
             <div className="bg-amber-50 border border-amber-100 rounded-xl p-4 flex gap-4 text-amber-800">
-               <ShieldAlert className="w-6 h-6 shrink-0" />
-               <div>
-                  <h4 className="font-bold text-sm">Approval Required</h4>
-                  <p className="text-xs mt-1">This campaign will be submitted to the Super Admin for review. It will not be active until approved.</p>
-               </div>
+              <ShieldAlert className="w-6 h-6 shrink-0" />
+              <div>
+                <h4 className="font-bold text-sm">Approval Required</h4>
+                <p className="text-xs mt-1">This campaign will be submitted to the Super Admin for review. It will not be active until approved.</p>
+              </div>
             </div>
-            
+
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 grid grid-cols-2 gap-4 text-sm">
-               <div>
-                 <span className="block text-slate-400 text-[10px] font-bold uppercase tracking-wider">Name</span>
-                 <span className="font-bold text-slate-800">{formData.name}</span>
-               </div>
-               <div>
-                 <span className="block text-slate-400 text-[10px] font-bold uppercase tracking-wider">Type</span>
-                 <span className="font-bold text-slate-800">{formData.type}</span>
-               </div>
-               <div>
-                 <span className="block text-slate-400 text-[10px] font-bold uppercase tracking-wider">Target</span>
-                 <span className="font-bold text-emerald-600">₹{formData.targetAmount?.toLocaleString()}</span>
-               </div>
-               <div>
-                 <span className="block text-slate-400 text-[10px] font-bold uppercase tracking-wider">Channels</span>
-                 <div className="flex gap-1 mt-1">
-                   {formData.channels?.map(c => (
-                     <span key={c} className="px-1.5 py-0.5 bg-slate-100 text-slate-600 rounded text-[9px] font-bold">{c}</span>
-                   )) || <span className="text-slate-400 text-[9px]">None</span>}
-                 </div>
-               </div>
-               <div>
-                 <span className="block text-slate-400 text-[10px] font-bold uppercase tracking-wider">Est. Outreach Cost</span>
-                 <span className={`font-bold ${isOverBudget ? 'text-rose-600' : 'text-slate-800'}`}>₹{estimatedCost.toLocaleString()}</span>
-               </div>
-               <div className="col-span-2 mt-2">
-                 <span className="block text-slate-400 text-[10px] font-bold uppercase tracking-wider">Description</span>
-                 <span className="font-medium text-slate-700">{formData.description || "N/A"}</span>
-               </div>
+              <div>
+                <span className="block text-slate-400 text-[10px] font-bold uppercase tracking-wider">Name</span>
+                <span className="font-bold text-slate-800">{formData.name}</span>
+              </div>
+              <div>
+                <span className="block text-slate-400 text-[10px] font-bold uppercase tracking-wider">Type</span>
+                <span className="font-bold text-slate-800">{formData.type}</span>
+              </div>
+              <div>
+                <span className="block text-slate-400 text-[10px] font-bold uppercase tracking-wider">Target</span>
+                <span className="font-bold text-emerald-600">₹{formData.targetAmount?.toLocaleString()}</span>
+              </div>
+              <div>
+                <span className="block text-slate-400 text-[10px] font-bold uppercase tracking-wider">Channels</span>
+                <div className="flex gap-1 mt-1">
+                  {formData.channels?.map(c => (
+                    <span key={c} className="px-1.5 py-0.5 bg-slate-100 text-slate-600 rounded text-[9px] font-bold">{c}</span>
+                  )) || <span className="text-slate-400 text-[9px]">None</span>}
+                </div>
+              </div>
+              <div>
+                <span className="block text-slate-400 text-[10px] font-bold uppercase tracking-wider">Est. Outreach Cost</span>
+                <span className={`font-bold ${isOverBudget ? 'text-rose-600' : 'text-slate-800'}`}>₹{estimatedCost.toLocaleString()}</span>
+              </div>
+              <div className="col-span-2 mt-2">
+                <span className="block text-slate-400 text-[10px] font-bold uppercase tracking-wider">Description</span>
+                <span className="font-medium text-slate-700">{formData.description || "N/A"}</span>
+              </div>
             </div>
           </motion.div>
         );
@@ -252,14 +252,14 @@ const CampaignForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 pb-12 relative min-h-[calc(100vh-6rem)]">
+    <div className="max-w-5xl mx-auto space-y-10 pb-12 relative min-h-[calc(100vh-6rem)]">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="pt-8 px-4">
         <button type="button" onClick={() => navigate("/campaigns")} className="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 hover:text-brand-primary transition-colors mb-4 uppercase tracking-wider">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Campaigns
         </button>
-        
-        <h1 className="text-2xl font-semibold text-slate-800 tracking-tight">
+
+        <h1 className="text-2xl font-black text-slate-800 tracking-tight">
           {isEdit ? "Edit Campaign" : "Create New Campaign"}
         </h1>
         <p className="text-[12px] text-slate-500 font-medium max-w-lg mt-1">
@@ -285,7 +285,7 @@ const CampaignForm: React.FC = () => {
       </motion.div>
 
       <form onSubmit={handleSave} className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden flex flex-col relative mx-4">
-        <div className="p-6 sm:p-10 flex-1 relative z-10 min-h-[400px]">
+        <div className="p-8 sm:p-12 flex-1 relative z-10 min-h-[420px]">
           <AnimatePresence mode="wait">
             <motion.div key={currentStep}>
               {renderStep()}
@@ -293,33 +293,33 @@ const CampaignForm: React.FC = () => {
           </AnimatePresence>
         </div>
 
-        <div className="p-6 border-t border-slate-100 bg-slate-50/50 flex justify-between items-center">
-           <button 
-             type="button" 
-             onClick={handleBack} 
-             disabled={currentStep === 0}
-             className="px-6 py-2.5 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors text-sm disabled:opacity-50"
-           >
-             Back
-           </button>
-           {currentStep < STEPS.length - 1 ? (
-             <button 
-               type="button" 
-               onClick={handleNext}
-               disabled={!formData.name}
-               className="px-8 py-2.5 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/20 hover:bg-[#8e330b] transition-all text-sm disabled:opacity-50"
-             >
-               Next Step
-             </button>
-           ) : (
-             <button 
-               type="submit" 
-               className="px-8 py-2.5 bg-emerald-600 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 transition-all text-sm flex items-center gap-2"
-             >
-               <Save className="w-4 h-4" />
-               Submit for Approval
-             </button>
-           )}
+        <div className="p-8 border-t border-slate-100 bg-slate-50/50 flex justify-between items-center">
+          <button
+            type="button"
+            onClick={handleBack}
+            disabled={currentStep === 0}
+            className="px-6 py-2.5 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors text-sm disabled:opacity-50"
+          >
+            Back
+          </button>
+          {currentStep < STEPS.length - 1 ? (
+            <button
+              type="button"
+              onClick={handleNext}
+              disabled={!formData.name}
+              className="px-8 py-2.5 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/20 hover:bg-[#8e330b] transition-all text-sm disabled:opacity-50"
+            >
+              Next Step
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="px-8 py-2.5 bg-emerald-600 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 transition-all text-sm flex items-center gap-2"
+            >
+              <Save className="w-4 h-4" />
+              Submit for Approval
+            </button>
+          )}
         </div>
       </form>
     </div>

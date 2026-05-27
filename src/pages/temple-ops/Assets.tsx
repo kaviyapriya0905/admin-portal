@@ -178,7 +178,7 @@ const Assets: React.FC = () => {
 
 
   return (
-    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
         <div>
           <h1 className="text-xl font-semibold text-slate-800">
@@ -210,7 +210,7 @@ const Assets: React.FC = () => {
 
       <LiveInventoryMovement />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {stats.map((stat, i) => (
           <StatCard key={i} {...stat} />
         ))}
@@ -415,7 +415,7 @@ const Assets: React.FC = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={6} className="px-4 py-12 text-center">
+                  <td colSpan={6} className="px-4 py-4 sm:py-10 text-center">
                     <div className="flex flex-col items-center gap-2">
                       <Package className="w-8 h-8 text-slate-200" />
                       <p className="text-[12px] font-medium text-slate-400">
@@ -455,7 +455,7 @@ const Assets: React.FC = () => {
                initial={{ y: 100, opacity: 0 }}
                animate={{ y: 0, opacity: 1 }}
                exit={{ y: 100, opacity: 0 }}
-               className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white border border-slate-200 shadow-2xl rounded-2xl p-4 flex items-center gap-6 z-50 w-full max-w-lg"
+               className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white border border-slate-200 shadow-2xl rounded-2xl p-4 flex items-center gap-4 z-50 w-full max-w-lg"
             >
                <div className="flex flex-col">
                   <span className="text-sm font-bold text-slate-800">{selectedAssets.length} Assets Selected</span>

@@ -38,7 +38,7 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             className="relative bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden"
           >
-            <div className="p-8 text-center">
+            <div className="p-4 sm:p-4 text-center">
               <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6">
                 <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-red-600">
                   <AlertTriangle className="w-6 h-6" />
@@ -53,12 +53,12 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({
                 <span className="font-bold text-slate-800">"{itemName}"</span>
               </p>
             </div>
-            <div className="p-8 flex gap-3">
+            <div className="p-4 sm:p-4 flex gap-3">
               <button
                 type="button"
                 onClick={onClose}
                 disabled={loading}
-                className="flex-1 px-6 py-3 border border-slate-200 text-slate-500 text-[11px] font-bold rounded-md hover:bg-slate-50 transition-all disabled:opacity-50"
+                className="flex-1 px-4 py-3 border border-slate-200 text-slate-500 text-[11px] font-bold rounded-md hover:bg-slate-50 transition-all disabled:opacity-50"
               >
                 Cancel
               </button>
@@ -66,7 +66,7 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({
                 type="button"
                 onClick={onConfirm}
                 disabled={loading}
-                className="flex-1 px-6 py-3 bg-brand-primary text-white text-[11px] font-bold rounded-md hover:bg-brand-secondary transition-all shadow-lg shadow-brand-primary/20 flex items-center justify-center gap-2 disabled:opacity-70"
+                className="flex-1 px-4 py-3 bg-brand-primary text-white text-[11px] font-bold rounded-md hover:bg-brand-secondary transition-all shadow-lg shadow-brand-primary/20 flex items-center justify-center gap-2 disabled:opacity-70"
               >
                 {loading ? (
                   <>

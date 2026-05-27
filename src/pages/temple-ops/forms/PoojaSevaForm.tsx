@@ -175,11 +175,11 @@ const PoojaSevaForm: React.FC = () => {
 
       {/* Scrollable body */}
       <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-7xl mx-auto space-y-6 py-6 pb-12 animate-in fade-in duration-500">
+        <div className="max-w-7xl mx-auto space-y-6 py-4 pb-12 animate-in fade-in duration-500">
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-6">
         {/* Left sidebar */}
-        <div className="lg:col-span-1 space-y-5 lg:sticky lg:top-0 self-start">
+        <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-0 self-start">
           {/* Live Panchang */}
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
             <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
@@ -209,11 +209,11 @@ const PoojaSevaForm: React.FC = () => {
           </div>
 
           {/* Booking Summary */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
             <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
               <Ticket className="w-4 h-4 text-indigo-500" /> Booking Summary
             </h3>
-            <div className="rounded-xl border border-brand-primary/10 bg-brand-primary/5 p-4 flex flex-col gap-1 text-center mb-4">
+            <div className="rounded-xl border border-brand-primary/10 bg-brand-primary/5 p-5 flex flex-col gap-1 text-center mb-4">
               <p className="text-[10px] font-bold uppercase tracking-wider text-brand-primary/60">Package Fee</p>
               <p className="text-2xl font-black text-slate-900">
                 {formData.amount > 0 ? `₹${formData.amount.toLocaleString("en-IN")}` : "₹0"}
@@ -224,7 +224,7 @@ const PoojaSevaForm: React.FC = () => {
                 </span>
               )}
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
                 { label: "Devotee", value: formData.devoteeName || "—" },
                 { label: "Date", value: formData.date || "—" },
@@ -243,7 +243,7 @@ const PoojaSevaForm: React.FC = () => {
         </div>
 
         {/* Main form */}
-        <div className="lg:col-span-2">
+          <div className="lg:col-span-2">
           <form onSubmit={handleSave} className="space-y-6">
 
             {/* Section 1: Devotee Identity */}
@@ -252,7 +252,7 @@ const PoojaSevaForm: React.FC = () => {
                 <span className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center"><User className="w-4 h-4 text-indigo-600" /></span>
                 Devotee Identity & Linkage
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Linked Temple Unit */}
                 <div className="sm:col-span-2">
                   <SmartSelect label="Linked Temple Unit" icon={Building2}  value={formData.templeId} onChange={v => setFormData(p => ({...p, templeId: v}))} options={temples.map(t => ({ value: t.id, label: t.name }))} />
@@ -288,7 +288,7 @@ const PoojaSevaForm: React.FC = () => {
                 <span className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center"><Sparkles className="w-4 h-4 text-amber-600" /></span>
                 Service Parameters
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="sm:col-span-2">
                   <SmartSelect
                     label="Pooja Package"
@@ -338,7 +338,7 @@ const PoojaSevaForm: React.FC = () => {
                 <span className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><CreditCard className="w-4 h-4 text-emerald-600" /></span>
                 Lifecycle & Status
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <SmartSelect
                   label="Payment Status"
                   icon={CreditCard}
@@ -357,7 +357,7 @@ const PoojaSevaForm: React.FC = () => {
             </div>
 
             {/* Section 4: Notes */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
               <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center"><StickyNote className="w-4 h-4 text-slate-500" /></span>
                 Administrative Notes
@@ -374,13 +374,13 @@ const PoojaSevaForm: React.FC = () => {
 
             {/* Footer */}
             <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-2">
-              <button type="button" onClick={() => navigate("/pooja-sevas")} className="w-full sm:w-auto px-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">
+              <button type="button" onClick={() => navigate("/pooja-sevas")} className="w-full sm:w-auto px-4 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">
                 Discard
               </button>
               <button
                 type="submit"
                 disabled={!formData.devoteeName || !formData.poojaType || !formData.date}
-                className={`w-full sm:w-auto px-8 py-3 text-white font-bold rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 ${panchangStatus === "rahu" ? "bg-amber-600 hover:bg-amber-700 shadow-amber-600/30" : "bg-brand-primary hover:bg-[#8e330b] shadow-brand-primary/30"}`}
+                className={`w-full sm:w-auto px-4 sm:px-4 py-3 text-white font-bold rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 ${panchangStatus === "rahu" ? "bg-amber-600 hover:bg-amber-700 shadow-amber-600/30" : "bg-brand-primary hover:bg-[#8e330b] shadow-brand-primary/30"}`}
               >
                 <Save className="w-5 h-5" />
                 {isEdit ? "Apply System Updates" : "Complete & Issue Receipt"}

@@ -104,7 +104,7 @@ export const ActiveRitualsMonitor = () => {
   }, []);
 
   return (
-    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-6 flex items-center gap-6">
+    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-6 flex items-center gap-4">
       <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center border border-orange-200 shrink-0">
         <Sparkles className="w-6 h-6 text-orange-500 animate-pulse" />
       </div>
@@ -202,7 +202,7 @@ export const LiveBroadcastAnalytics = () => {
   }, []);
 
   return (
-    <div className="bg-white p-4 rounded-xl border border-brand-primary/20 shadow-[0_0_15px_rgba(163,64,21,0.05)] mb-6 flex items-center gap-6">
+    <div className="bg-white p-4 rounded-xl border border-brand-primary/20 shadow-[0_0_15px_rgba(163,64,21,0.05)] mb-6 flex items-center gap-4">
       <div className="w-12 h-12 bg-brand-primary/10 rounded-full flex items-center justify-center shrink-0">
         <Mail className="w-6 h-6 text-brand-primary animate-pulse" />
       </div>
@@ -228,7 +228,7 @@ export const LiveBroadcastAnalytics = () => {
 // 7. Events: Countdown
 export const UpcomingEventCountdown = () => {
   return (
-    <div className="bg-white border border-slate-200 p-6 rounded-xl shadow-sm mb-6 flex justify-between items-center">
+    <div className="bg-white border border-slate-200 p-4 rounded-xl shadow-sm mb-6 flex justify-between items-center">
       <div className="flex items-center gap-4">
         <div className="p-3 bg-amber-50 rounded-lg border border-amber-100">
           <Clock className="w-6 h-6 text-amber-500" />
