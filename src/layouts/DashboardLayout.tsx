@@ -4,7 +4,7 @@ import {
   LayoutDashboard,
   UserPlus,
   Building2,
-  
+
   Bell,
   LogOut,
   User,
@@ -132,7 +132,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
 
   const menuItems = [
     { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
-    { icon: UserPlus, label: "Admin Onboard", path: "/admin-onboard" },
+    ...(temples && temples.length > 0 ? [{ icon: UserPlus, label: "Admin Onboard", path: "/admin-onboard" }] : []),
     { icon: Building2, label: "Temple Onboard", path: "/temple-onboard" },
     { icon: Users, label: "Devotees", path: "/devotees" },
     { icon: HeartHandshake, label: "Donations", path: "/donations" },
@@ -300,7 +300,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
                 </select>
               </div>
             ) : (
-              <SmartSearchBar 
+              <SmartSearchBar
                 placeholder="centralized resources..."
                 containerClassName="flex-1 max-w-sm"
                 className="bg-transparent border-none py-3 text-[12px] focus:ring-0 text-slate-600 placeholder:text-slate-200 font-semibold tracking-tight shadow-none"
@@ -382,7 +382,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="relative z-0"
+            className="relative z-0 h-full flex flex-col"
           >
             {children}
           </motion.div>

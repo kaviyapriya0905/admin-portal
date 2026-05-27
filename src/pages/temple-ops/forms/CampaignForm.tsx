@@ -259,7 +259,7 @@ const CampaignForm: React.FC = () => {
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Campaigns
         </button>
 
-        <h1 className="text-2xl font-black text-slate-800 tracking-tight">
+        <h1 className="text-2xl font-semibold text-slate-800 tracking-tight">
           {isEdit ? "Edit Campaign" : "Create New Campaign"}
         </h1>
         <p className="text-[12px] text-slate-500 font-medium max-w-lg mt-1">
@@ -306,7 +306,6 @@ const CampaignForm: React.FC = () => {
             <button
               type="button"
               onClick={handleNext}
-              disabled={!formData.name}
               className="px-8 py-2.5 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/20 hover:bg-[#8e330b] transition-all text-sm disabled:opacity-50"
             >
               Next Step

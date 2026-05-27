@@ -15,7 +15,7 @@ export const Table: React.FC<TableProps> = ({ className, children }) => (
 );
 
 export const THead: React.FC<TableProps> = ({ className, children }) => (
-  <thead className={cn("bg-slate-50/30 border-b border-slate-50", className)}>
+  <thead className={cn("bg-slate-50/95 backdrop-blur-sm border-b border-slate-100 sticky top-0 z-10", className)}>
     {children}
   </thead>
 );

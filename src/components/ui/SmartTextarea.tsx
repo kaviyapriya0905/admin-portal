@@ -48,11 +48,11 @@ const SmartTextarea: React.FC<SmartTextareaProps> = ({
           <motion.label
             initial={false}
             animate={{
-              y: (isFocused || value) ? -8 : 0,
+              y: (isFocused || value) ? -10 : 0,
               scale: (isFocused || value) ? 0.8 : 1,
               color: isFocused ? '#a34015' : '#94a3b8'
             }}
-            className={`absolute left-4 top-3 origin-left pointer-events-none font-medium tracking-wide text-sm
+            className={`absolute left-4 top-3.5 origin-left pointer-events-none font-medium tracking-wide text-sm
               ${(isFocused || value) ? 'opacity-100' : 'opacity-80'}
             `}
           >
@@ -65,7 +65,7 @@ const SmartTextarea: React.FC<SmartTextareaProps> = ({
             onChange={(e) => onChange(e.target.value)}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            className="w-full bg-transparent px-3 pt-6 pb-2 outline-none text-[11px] font-normal text-slate-800 resize-none min-h-[84px]"
+            className="w-full bg-transparent px-4 pt-7 pb-2 outline-none text-[11px] font-normal text-slate-800 resize-none min-h-[84px]"
             required={required}
           />
         </div>
@@ -78,7 +78,7 @@ const SmartTextarea: React.FC<SmartTextareaProps> = ({
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
-            className="mt-2 text-[10px] font-bold text-rose-500"
+            className="mt-1.5 px-4 text-[10px] font-bold text-rose-500 leading-relaxed"
           >
             {errorText}
           </motion.p>
@@ -88,7 +88,7 @@ const SmartTextarea: React.FC<SmartTextareaProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="mt-2 text-[10px] font-medium text-slate-400 w-full"
+            className="mt-1.5 px-4 text-[10px] font-medium text-slate-400 w-full leading-relaxed"
           >
             {helperText}
           </motion.p>

@@ -136,7 +136,7 @@ const TempleForm: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-[calc(100vh-5rem)] overflow-hidden">
       {/* Fixed Header */}
       <div className="shrink-0 bg-[#fafafa] border-b border-slate-100 pb-4 mb-0 space-y-4">
         <div className="flex items-start sm:items-center gap-4">
@@ -144,7 +144,7 @@ const TempleForm: React.FC = () => {
             <ArrowLeft className="w-5 h-5 text-slate-600" />
           </button>
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-slate-800">Edit Temple Registry</h1>
+            <h1 className="text-xl sm:text-2xl font-semibold text-slate-800">Edit Temple Registry</h1>
             <p className="text-xs sm:text-sm text-slate-500">Spiritual identity & branch details update.</p>
           </div>
         </div>

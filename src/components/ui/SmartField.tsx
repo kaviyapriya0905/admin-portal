@@ -75,11 +75,11 @@ const SmartField: React.FC<SmartFieldProps> = ({
           <motion.label
             initial={false}
             animate={{
-              y: (isFocused || value) ? -8 : 0,
+              y: (isFocused || value) ? -10 : 0,
               scale: (isFocused || value) ? 0.8 : 1,
               color: showError ? '#f43f5e' : (isFocused ? '#a34015' : '#94a3b8')
             }}
-            className={`absolute left-4 top-3 origin-left pointer-events-none font-medium tracking-wider text-[11px] sm:text-[12px] whitespace-nowrap truncate w-[85%]
+            className={`absolute left-4 top-3.5 origin-left pointer-events-none font-medium tracking-wider text-[11px] sm:text-[12px] whitespace-nowrap truncate w-[85%]
               ${(isFocused || value) ? 'opacity-100' : 'opacity-80'}
               ${labelClassName}
             `}
@@ -98,7 +98,7 @@ const SmartField: React.FC<SmartFieldProps> = ({
               setIsTouched(true);
             }}
             placeholder={isFocused ? props.placeholder : ""}
-            className={`w-full bg-transparent pl-9 pr-3 pt-4 pb-3 outline-none text-sm font-medium
+            className={`w-full bg-transparent px-4 pt-6 pb-2 outline-none text-sm font-medium
               ${showError ? 'text-rose-700' : 'text-slate-800'}
               ${type === 'date' && !value && !isFocused ? 'text-transparent' : ''}
             `}
@@ -148,7 +148,7 @@ const SmartField: React.FC<SmartFieldProps> = ({
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
-            className="mt-2 text-[10px] font-bold text-rose-500"
+            className="mt-1.5 px-4 text-[10px] font-bold text-rose-500 leading-relaxed"
           >
             {errorText}
           </motion.p>
@@ -158,7 +158,7 @@ const SmartField: React.FC<SmartFieldProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="mt-2 text-[10px] font-medium text-slate-400"
+            className="mt-1.5 px-4 text-[10px] font-medium text-slate-400 leading-relaxed"
           >
             {helperText}
           </motion.p>

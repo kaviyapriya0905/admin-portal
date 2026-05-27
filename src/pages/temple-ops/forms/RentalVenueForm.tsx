@@ -176,7 +176,7 @@ const RentalVenueForm: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col flex-1 min-h-0 overflow-hidden">
       {/* Fixed Header */}
       <div className="shrink-0 bg-[#fafafa] border-b border-slate-100 pb-4 mb-0 space-y-4">
         <div className="flex items-start sm:items-center gap-4">
@@ -184,7 +184,7 @@ const RentalVenueForm: React.FC = () => {
             <ArrowLeft className="w-5 h-5 text-slate-600" />
           </button>
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-slate-800 flex items-center gap-2">
+            <h1 className="text-xl sm:text-2xl font-semibold text-slate-800 flex items-center gap-2">
               <Building2 className="w-5 h-5 text-brand-primary" />
               {isEdit ? "Modify Hall Booking" : "Hall Booking Wizard"}
             </h1>
@@ -582,7 +582,6 @@ const RentalVenueForm: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleNext}
-                    disabled={step === 1 && conflictStatus === "conflict"}
                     className="w-full sm:w-auto px-4 sm:px-4 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     Continue Phase <ArrowLeft className="w-4 h-4 rotate-180" />
@@ -591,7 +590,6 @@ const RentalVenueForm: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleSave}
-                    disabled={conflictStatus === "conflict"}
                     className="w-full sm:w-auto px-4 sm:px-4 py-3 bg-emerald-600 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/30 hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     <Save className="w-5 h-5" />

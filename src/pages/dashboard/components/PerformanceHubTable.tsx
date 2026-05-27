@@ -30,9 +30,9 @@ const PerformanceHubTable: React.FC<PerformanceHubTableProps> = ({ recentTemples
           Full Analytics
         </button>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto overflow-y-auto max-h-96 custom-scrollbar relative">
         <table className="w-full text-left">
-          <thead>
+          <thead className="sticky top-0 z-10 bg-slate-50/95 backdrop-blur-sm shadow-sm">
             <tr>
               <th className="px-4 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50/50">
                 Temple Unit

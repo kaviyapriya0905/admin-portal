@@ -115,7 +115,7 @@ const AssetForm: React.FC = () => {
             <div className="inline-flex items-center justify-center p-2 bg-white shadow-sm border border-slate-100 rounded-xl text-brand-primary">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h1 className="text-xl font-black text-slate-800 tracking-tight">
+            <h1 className="text-xl font-semibold text-slate-800 tracking-tight">
               {isEdit ? "Modify Asset Profile" : "Register New Asset"}
             </h1>
           </div>

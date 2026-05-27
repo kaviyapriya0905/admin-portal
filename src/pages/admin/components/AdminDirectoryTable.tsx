@@ -64,7 +64,7 @@ const AdminDirectoryTable: React.FC<AdminTableProps> = ({
         />
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto overflow-y-auto max-h-[calc(100vh-18rem)] custom-scrollbar relative">
         {loading ? (
           <div className="py-20 flex flex-col items-center justify-center gap-4 text-slate-300">
             <Loader2 className="w-8 h-8 animate-spin" />

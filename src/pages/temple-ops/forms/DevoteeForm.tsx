@@ -8,6 +8,7 @@ import { type RootState } from "@/store/store";
 import SmartField from "@/components/ui/SmartField";
 import SmartSelect from "@/components/ui/SmartSelect";
 import SmartCheckbox from "@/components/ui/SmartCheckbox";
+import FormActions from "@/components/ui/FormActions";
 import { getMockData, addMockItem, updateMockItem } from "@/utils/mockData";
 
 const DevoteeForm: React.FC = () => {
@@ -508,7 +509,7 @@ const DevoteeForm: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col flex-1 min-h-0 overflow-hidden">
       {/* Fixed Header */}
       <div className="shrink-0 bg-[#fafafa] border-b border-slate-100 pb-4 mb-0 space-y-4">
         <div className="flex items-start sm:items-center gap-4">
@@ -516,7 +517,7 @@ const DevoteeForm: React.FC = () => {
             <ArrowLeft className="w-5 h-5 text-slate-600" />
           </button>
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-slate-800">{isEdit ? "Devotee CRM Profile" : "Onboard New Devotee"}</h1>
+            <h1 className="text-xl sm:text-2xl font-semibold text-slate-800">{isEdit ? "Devotee CRM Profile" : "Onboard New Devotee"}</h1>
             <p className="text-xs sm:text-sm text-slate-500">Manage identity, memberships, and activity history.</p>
           </div>
         </div>
@@ -534,12 +535,11 @@ const DevoteeForm: React.FC = () => {
         </div>
       </div>
 
-      {/* Scrollable body */}
-      <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-7xl mx-auto space-y-6 py-4 pb-12 animate-in fade-in duration-500">
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-6">
-            <div className="lg:col-span-1">
+      {/* Main body (No outer scrollbar, handled by inner columns) */}
+      <div className="flex-1 min-h-0 overflow-hidden pb-4">
+        <div className="max-w-7xl mx-auto h-full px-4 animate-in fade-in duration-500">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-6 h-full">
+            <div className="lg:col-span-1 h-full overflow-y-auto custom-scrollbar pb-10 lg:pb-0 pr-2">
               <AnimatePresence mode="wait">
                 <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
                   {renderLeftPanel()}
@@ -547,9 +547,9 @@ const DevoteeForm: React.FC = () => {
               </AnimatePresence>
             </div>
 
-            <div className="lg:col-span-2">
-              <form onSubmit={handleSave} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-6 flex flex-col">
-                <div className="pb-6">
+            <div className="lg:col-span-2 h-full min-h-0">
+              <form onSubmit={handleSave} className="bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col h-full overflow-hidden">
+                <div className="flex-1 overflow-y-auto p-6 pb-4 custom-scrollbar pr-2 min-h-0">
                   <AnimatePresence mode="wait">
                     <motion.div key={activeTab}>
                       {renderFormContent()}
@@ -557,13 +557,12 @@ const DevoteeForm: React.FC = () => {
                   </AnimatePresence>
                 </div>
 
-                <div className="pt-6 border-t border-slate-100 flex flex-col-reverse sm:flex-row justify-end gap-4 mt-auto">
-                  <button type="button" onClick={() => navigate("/devotees")} className="w-full sm:w-auto px-4 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">Cancel</button>
-                  <button type="submit" disabled={!formData.firstName || !formData.phone} className="w-full sm:w-auto px-4 py-3 bg-brand-primary text-white font-bold rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-[#8e330b] transition-all flex items-center justify-center gap-2 disabled:opacity-50">
-                    <Save className="w-5 h-5" />
-                    {isEdit ? "Update Profile" : "Register Profile"}
-                  </button>
-                </div>
+                <FormActions
+                  onCancel={() => navigate("/devotees")}
+                  cancelText="Cancel"
+                  submitText={isEdit ? "Update Profile" : "Register Profile"}
+                  className="p-6 pt-4 border-t border-slate-100 mt-auto"
+                />
               </form>
             </div>
           </div>

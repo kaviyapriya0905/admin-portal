@@ -334,7 +334,7 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="space-y-4 sm:space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 max-w-7xl mx-auto">
+    <div className="space-y-4 sm:space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 max-w-7xl">
       {/* Header Section */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-4 border-b border-slate-100">
         <div className="space-y-1.5">

@@ -4,6 +4,8 @@ import { ArrowLeft, Save, Star, AlertTriangle, MoonStar, Sparkles, User, Calenda
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { type RootState } from "@/store/store";
+import SmartCheckbox from "@/components/ui/SmartCheckbox";
+import FormActions from "@/components/ui/FormActions";
 import SmartField from "@/components/ui/SmartField";
 import SmartSelect from "@/components/ui/SmartSelect";
 import SmartTextarea from "@/components/ui/SmartTextarea";
@@ -118,7 +120,7 @@ const PoojaSevaForm: React.FC = () => {
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (panchangStatus === "rahu") {
       if (!window.confirm("This time slot falls under Rahu Kalam. Proceed anyway?")) return;
     }
@@ -159,236 +161,212 @@ const PoojaSevaForm: React.FC = () => {
   const selectedPkg = POOJA_CATALOG.find(p => p.name === formData.poojaType);
 
   return (
-    <div className="flex flex-col h-full">
-      {/* Fixed Header */}
+    <div className="flex flex-col flex-1 min-h-0 overflow-hidden">
       <div className="shrink-0 bg-[#fafafa] border-b border-slate-100 pb-4 mb-0 flex items-start sm:items-center gap-4">
         <button onClick={() => navigate("/pooja-sevas")} className="p-2 bg-white rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors shrink-0 mt-1 sm:mt-0">
           <ArrowLeft className="w-5 h-5 text-slate-600" />
         </button>
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-slate-800">{isEdit ? "Modify Pooja Booking" : "New Pooja Reservation"}</h1>
+          <h1 className="text-xl sm:text-2xl font-semibold text-slate-800">{isEdit ? "Modify Pooja Booking" : "New Pooja Reservation"}</h1>
           <p className="text-xs sm:text-sm text-slate-500 flex items-center gap-1.5 mt-0.5">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> Secure Encryption · PoojaOps 3.0
           </p>
         </div>
       </div>
+      <div className="flex-1 min-h-0 overflow-hidden pb-4">
+        <div className="max-w-7xl mx-auto h-full px-4 pt-4 animate-in fade-in duration-500">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-6 h-full">
+            <div className="lg:col-span-1 space-y-6 h-full overflow-y-auto custom-scrollbar pr-2 pb-10 lg:pb-0">
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+                  <MoonStar className="w-4 h-4 text-brand-primary" /> Live Panchang
+                </h3>
+                <p className="text-[11px] text-slate-400 mb-5">Select a time slot to check astrological significance.</p>
 
-      {/* Scrollable body */}
-      <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-7xl mx-auto space-y-6 py-4 pb-12 animate-in fade-in duration-500">
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-6">
-        {/* Left sidebar */}
-        <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-0 self-start">
-          {/* Live Panchang */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-            <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
-              <MoonStar className="w-4 h-4 text-brand-primary" /> Live Panchang
-            </h3>
-            <p className="text-[11px] text-slate-400 mb-5">Select a time slot to check astrological significance.</p>
-
-            {panchangStatus === "idle" && (
-              <div className="p-4 bg-slate-50 border border-slate-100 rounded-xl text-center text-slate-400">
-                <span className="text-[10px] font-bold uppercase tracking-wider">Awaiting Slot Selection</span>
+                {panchangStatus === "idle" && (
+                  <div className="p-4 bg-slate-50 border border-slate-100 rounded-xl text-center text-slate-400">
+                    <span className="text-[10px] font-bold uppercase tracking-wider">Awaiting Slot Selection</span>
+                  </div>
+                )}
+                {panchangStatus === "auspicious" && (
+                  <div className="p-5 bg-emerald-50 border border-emerald-200 rounded-xl">
+                    <Star className="w-7 h-7 text-emerald-500 mb-2" />
+                    <h4 className="font-bold text-emerald-700 text-sm mb-1">Auspicious Time</h4>
+                    <p className="text-emerald-600 text-[11px]">This slot is highly favorable for poojas.</p>
+                  </div>
+                )}
+                {panchangStatus === "rahu" && (
+                  <div className="p-5 bg-rose-50 border border-rose-200 rounded-xl">
+                    <AlertTriangle className="w-7 h-7 text-rose-500 mb-2" />
+                    <h4 className="font-bold text-rose-700 text-sm mb-1">Warning: Rahu Kalam</h4>
+                    <p className="text-rose-600 text-[11px]">This slot falls under Rahu Kalam (1 PM – 3 PM). Generally avoided for new poojas.</p>
+                  </div>
+                )}
               </div>
-            )}
-            {panchangStatus === "auspicious" && (
-              <div className="p-5 bg-emerald-50 border border-emerald-200 rounded-xl">
-                <Star className="w-7 h-7 text-emerald-500 mb-2" />
-                <h4 className="font-bold text-emerald-700 text-sm mb-1">Auspicious Time</h4>
-                <p className="text-emerald-600 text-[11px]">This slot is highly favorable for poojas.</p>
-              </div>
-            )}
-            {panchangStatus === "rahu" && (
-              <div className="p-5 bg-rose-50 border border-rose-200 rounded-xl">
-                <AlertTriangle className="w-7 h-7 text-rose-500 mb-2" />
-                <h4 className="font-bold text-rose-700 text-sm mb-1">Warning: Rahu Kalam</h4>
-                <p className="text-rose-600 text-[11px]">This slot falls under Rahu Kalam (1 PM – 3 PM). Generally avoided for new poojas.</p>
-              </div>
-            )}
-          </div>
-
-          {/* Booking Summary */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
-            <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-              <Ticket className="w-4 h-4 text-indigo-500" /> Booking Summary
-            </h3>
-            <div className="rounded-xl border border-brand-primary/10 bg-brand-primary/5 p-5 flex flex-col gap-1 text-center mb-4">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-brand-primary/60">Package Fee</p>
-              <p className="text-2xl font-black text-slate-900">
-                {formData.amount > 0 ? `₹${formData.amount.toLocaleString("en-IN")}` : "₹0"}
-              </p>
-              {formData.poojaType && (
-                <span className="mt-1 mx-auto px-3 py-1 rounded-full bg-white border border-slate-100 text-[10px] font-bold text-slate-500">
-                  {formData.poojaType}
-                </span>
-              )}
-            </div>
-            <div className="space-y-4">
-              {[
-                { label: "Devotee", value: formData.devoteeName || "—" },
-                { label: "Date", value: formData.date || "—" },
-                { label: "Slot", value: formData.slot || "—" },
-                { label: "Priest", value: formData.priestName && formData.priestName !== "Auto-Assign based on availability" ? formData.priestName : "Auto" },
-                { label: "Payment", value: formData.paymentStatus || "—" },
-                { label: "Booking", value: formData.bookingStatus || "—" },
-              ].map(({ label, value }) => (
-                <div key={label} className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{label}</span>
-                  <span className="text-[11px] font-bold text-slate-700 truncate max-w-[120px]">{value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Main form */}
-          <div className="lg:col-span-2">
-          <form onSubmit={handleSave} className="space-y-6">
-
-            {/* Section 1: Devotee Identity */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-              <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
-                <span className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center"><User className="w-4 h-4 text-indigo-600" /></span>
-                Devotee Identity & Linkage
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Linked Temple Unit */}
-                <div className="sm:col-span-2">
-                  <SmartSelect label="Linked Temple Unit" icon={Building2}  value={formData.templeId} onChange={v => setFormData(p => ({...p, templeId: v}))} options={temples.map(t => ({ value: t.id, label: t.name }))} />
-                </div>
-                {/* Devotee search */}
-                <div className="sm:col-span-2">
-                  <DevoteeSearchPanel 
-                    onSelect={handleDevoteeSelect} 
-                    initialValue={formData.devoteeName} 
-                  />
-                </div>
-
-                <SmartField
-                  label="Display Name"
-                  icon={User}
-                  
-                  value={formData.devoteeName}
-                  onChange={v => setFormData(p => ({ ...p, devoteeName: v }))}
-                  formatter={v => v.replace(/\b\w/g, l => l.toUpperCase())}
-                />
-                <SmartField
-                  label="Linked Contact"
-                  icon={Phone}
-                  value={formData.phone}
-                  onChange={v => setFormData(p => ({ ...p, phone: v }))}
-                />
-              </div>
-            </div>
-
-            {/* Section 2: Service Parameters */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-              <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
-                <span className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center"><Sparkles className="w-4 h-4 text-amber-600" /></span>
-                Service Parameters
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="sm:col-span-2">
-                  <SmartSelect
-                    label="Pooja Package"
-                    icon={Sparkles}
-                    value={formData.poojaType}
-                    onChange={(val) => setFormData(p => ({ ...p, poojaType: val }))}
-                    options={POOJA_CATALOG.map(pkg => ({ value: pkg.name, label: `${pkg.name} (₹${pkg.amount.toLocaleString("en-IN")})` }))}
-                  />
-                  {selectedPkg && (
-                    <p className="text-[10px] text-brand-primary font-bold mt-1.5 ml-1">Package fee: ₹{selectedPkg.amount.toLocaleString("en-IN")} (auto-filled)</p>
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+                <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                  <Ticket className="w-4 h-4 text-indigo-500" /> Booking Summary
+                </h3>
+                <div className="rounded-xl border border-brand-primary/10 bg-brand-primary/5 p-5 flex flex-col gap-1 text-center mb-4">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-brand-primary/60">Package Fee</p>
+                  <p className="text-2xl font-black text-slate-900">
+                    {formData.amount > 0 ? `₹${formData.amount.toLocaleString("en-IN")}` : "₹0"}
+                  </p>
+                  {formData.poojaType && (
+                    <span className="mt-1 mx-auto px-3 py-1 rounded-full bg-white border border-slate-100 text-[10px] font-bold text-slate-500">
+                      {formData.poojaType}
+                    </span>
                   )}
                 </div>
-
-                <SmartField
-                  label="Service Date"
-                  icon={CalendarDays}
-                  type="date"
-                  
-                  min={new Date().toISOString().split("T")[0]}
-                  value={formData.date}
-                  onChange={v => setFormData(p => ({ ...p, date: v }))}
-                />
-
-                <SmartSelect
-                  label="Time Slot"
-                  icon={Clock}
-                  value={formData.slot}
-                  onChange={v => setFormData(p => ({ ...p, slot: v }))}
-                  options={SLOT_OPTIONS}
-                />
-
-                <div className="sm:col-span-2">
-                  <SmartSelect
-                    label="Assign Specialist (Priest)"
-                    icon={Users}
-                    value={formData.priestName}
-                    onChange={v => setFormData(p => ({ ...p, priestName: v }))}
-                    options={PRIEST_OPTIONS}
-                  />
+                <div className="space-y-4">
+                  {[
+                    { label: "Devotee", value: formData.devoteeName || "—" },
+                    { label: "Date", value: formData.date || "—" },
+                    { label: "Slot", value: formData.slot || "—" },
+                    { label: "Priest", value: formData.priestName && formData.priestName !== "Auto-Assign based on availability" ? formData.priestName : "Auto" },
+                    { label: "Payment", value: formData.paymentStatus || "—" },
+                    { label: "Booking", value: formData.bookingStatus || "—" },
+                  ].map(({ label, value }) => (
+                    <div key={label} className="flex items-center justify-between">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{label}</span>
+                      <span className="text-[11px] font-bold text-slate-700 truncate max-w-[120px]">{value}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
+            <div className="lg:col-span-2 h-full min-h-0">
+              <form onSubmit={handleSave} className="flex flex-col h-full overflow-hidden">
+                <div className="flex-1 overflow-y-auto custom-scrollbar pr-2 pb-6 space-y-6">
+                  <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                    <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center"><User className="w-4 h-4 text-indigo-600" /></span>
+                      Devotee Identity & Linkage
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="sm:col-span-2" >
+                        <SmartSelect label="Linked Temple Unit" icon={Building2} value={formData.templeId} onChange={v => setFormData(p => ({ ...p, templeId: v }))} options={temples.map(t => ({ value: t.id, label: t.name }))} />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <DevoteeSearchPanel
+                          onSelect={handleDevoteeSelect}
+                          initialValue={formData.devoteeName}
+                        />
+                      </div>
 
-            {/* Section 3: Lifecycle / Status */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-              <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
-                <span className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><CreditCard className="w-4 h-4 text-emerald-600" /></span>
-                Lifecycle & Status
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <SmartSelect
-                  label="Payment Status"
-                  icon={CreditCard}
-                  value={formData.paymentStatus}
-                  onChange={v => setFormData(p => ({ ...p, paymentStatus: v }))}
-                  options={["Pending", "Paid"]}
-                />
-                <SmartSelect
-                  label="Booking Status"
-                  icon={Ticket}
-                  value={formData.bookingStatus}
-                  onChange={v => setFormData(p => ({ ...p, bookingStatus: v }))}
-                  options={["Pending", "Confirmed", "Completed", "Cancelled"]}
-                />
-              </div>
-            </div>
+                      <SmartField
+                        className="mt-2"
+                        label="Display Name"
+                        icon={User}
+                        value={formData.devoteeName}
+                        onChange={v => setFormData(p => ({ ...p, devoteeName: v }))}
+                        formatter={v => v.replace(/\b\w/g, l => l.toUpperCase())}
+                      />
+                      <SmartField
+                        className="mt-2"
+                        label="Linked Contact"
+                        icon={Phone}
+                        value={formData.phone}
+                        onChange={v => setFormData(p => ({ ...p, phone: v }))}
+                      />
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                    <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center"><Sparkles className="w-4 h-4 text-amber-600" /></span>
+                      Service Parameters
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="sm:col-span-2">
+                        <SmartSelect
+                          label="Pooja Package"
+                          icon={Sparkles}
+                          value={formData.poojaType}
+                          onChange={(val) => setFormData(p => ({ ...p, poojaType: val }))}
+                          options={POOJA_CATALOG.map(pkg => ({ value: pkg.name, label: `${pkg.name} (₹${pkg.amount.toLocaleString("en-IN")})` }))}
+                        />
+                        {selectedPkg && (
+                          <p className="text-[10px] text-brand-primary font-bold mt-1.5 ml-1">Package fee: ₹{selectedPkg.amount.toLocaleString("en-IN")} (auto-filled)</p>
+                        )}
+                      </div>
 
-            {/* Section 4: Notes */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
-              <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
-                <span className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center"><StickyNote className="w-4 h-4 text-slate-500" /></span>
-                Administrative Notes
-              </h4>
-              <SmartTextarea
-                label="Administrative Notes"
-                icon={StickyNote}
-                value={formData.notes}
-                onChange={(val) => setFormData(p => ({ ...p, notes: val }))}
-                placeholder="e.g. Special sankalpam requirements or nakshatra details..."
-                rows={3}
-              />
-            </div>
+                      <SmartField
+                        label="Service Date"
+                        icon={CalendarDays}
+                        type="date"
 
-            {/* Footer */}
-            <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-2">
-              <button type="button" onClick={() => navigate("/pooja-sevas")} className="w-full sm:w-auto px-4 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors">
-                Discard
-              </button>
-              <button
-                type="submit"
-                disabled={!formData.devoteeName || !formData.poojaType || !formData.date}
-                className={`w-full sm:w-auto px-4 sm:px-4 py-3 text-white font-bold rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 ${panchangStatus === "rahu" ? "bg-amber-600 hover:bg-amber-700 shadow-amber-600/30" : "bg-brand-primary hover:bg-[#8e330b] shadow-brand-primary/30"}`}
-              >
-                <Save className="w-5 h-5" />
-                {isEdit ? "Apply System Updates" : "Complete & Issue Receipt"}
-              </button>
+                        min={new Date().toISOString().split("T")[0]}
+                        value={formData.date}
+                        onChange={v => setFormData(p => ({ ...p, date: v }))}
+                      />
+
+                      <SmartSelect
+                        label="Time Slot"
+                        icon={Clock}
+                        value={formData.slot}
+                        onChange={v => setFormData(p => ({ ...p, slot: v }))}
+                        options={SLOT_OPTIONS}
+                      />
+
+                      <div className="sm:col-span-2">
+                        <SmartSelect
+                          label="Assign Specialist (Priest)"
+                          icon={Users}
+                          value={formData.priestName}
+                          onChange={v => setFormData(p => ({ ...p, priestName: v }))}
+                          options={PRIEST_OPTIONS}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                    <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><CreditCard className="w-4 h-4 text-emerald-600" /></span>
+                      Lifecycle & Status
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <SmartSelect
+                        label="Payment Status"
+                        icon={CreditCard}
+                        value={formData.paymentStatus}
+                        onChange={v => setFormData(p => ({ ...p, paymentStatus: v }))}
+                        options={["Pending", "Paid"]}
+                      />
+                      <SmartSelect
+                        label="Booking Status"
+                        icon={Ticket}
+                        value={formData.bookingStatus}
+                        onChange={v => setFormData(p => ({ ...p, bookingStatus: v }))}
+                        options={["Pending", "Confirmed", "Completed", "Cancelled"]}
+                      />
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+                    <h4 className="text-sm font-bold text-slate-800 mb-6 flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center"><StickyNote className="w-4 h-4 text-slate-500" /></span>
+                      Administrative Notes
+                    </h4>
+                    <SmartTextarea
+                      label="Administrative Notes"
+                      icon={StickyNote}
+                      value={formData.notes}
+                      onChange={(val) => setFormData(p => ({ ...p, notes: val }))}
+                      placeholder="e.g. Special sankalpam requirements or nakshatra details..."
+                      rows={3}
+                    />
+                  </div>
+                </div>
+                <div className="shrink-0 pt-4 mt-2 border-t border-slate-200">
+                  <FormActions
+                    onCancel={() => navigate("/pooja-sevas")}
+                    cancelText="Discard"
+                    submitText={isEdit ? "Apply System Updates" : "Complete & Issue Receipt"}
+                    submitClassName={panchangStatus === "rahu" ? "bg-amber-600 hover:bg-amber-700 shadow-amber-600/30" : "bg-brand-primary hover:bg-[#8e330b] shadow-brand-primary/30"}
+                  />
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
-        </div>
+          </div>
         </div>
       </div>
     </div>

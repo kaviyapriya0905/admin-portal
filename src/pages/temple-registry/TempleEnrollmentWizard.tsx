@@ -532,7 +532,7 @@ const TempleEnrollmentWizard: React.FC<TempleEnrollmentWizardProps> = ({
   };
 
   return (
-    <div className="bg-white flex flex-col lg:flex-row overflow-hidden min-h-screen lg:min-h-0 lg:h-[820px] border border-slate-100 rounded-xl shadow-sm relative">
+    <div className="bg-white flex flex-col lg:flex-row overflow-hidden min-h-screen lg:min-h-0 lg:h-[calc(100vh-6rem)] border border-slate-100 rounded-xl shadow-sm relative">
       <div className="w-full lg:w-[360px] bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200 flex flex-col p-4 lg:p-4 sm:p-4 shrink-0">
         <div className="mb-4 lg:mb-10">
           <div className="flex items-center gap-3 mb-2 lg:mb-4">
@@ -644,7 +644,7 @@ const TempleEnrollmentWizard: React.FC<TempleEnrollmentWizardProps> = ({
         </div>
 
         {/* Scrollable Form Content */}
-        <div className="flex-1 overflow-y-auto p-4 lg:p-4 sm:p-10 bg-slate-50/10">
+        <div className="flex-1 overflow-y-auto custom-scrollbar p-4 lg:p-4 sm:p-10 bg-slate-50/10">
           <form
             id="enrollment-form"
             onSubmit={handleSubmit}

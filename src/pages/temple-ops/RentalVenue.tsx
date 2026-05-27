@@ -216,9 +216,9 @@ const RentalVenue: React.FC = () => {
           </div>
         </div>
 
-        <div className="w-full">
+        <div className="w-full overflow-x-auto overflow-y-auto max-h-[calc(100vh-18rem)] custom-scrollbar relative">
           <table className="w-full text-left">
-            <thead>
+            <thead className="sticky top-0 z-10 bg-slate-50/95 backdrop-blur-sm shadow-sm">
               <tr className="bg-slate-50/50">
                 <th className="px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
                   Venue / Booking ID
