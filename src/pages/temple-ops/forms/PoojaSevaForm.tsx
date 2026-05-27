@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Save, Star, AlertTriangle, MoonStar, Sparkles, User, CalendarDays, Clock, Users, StickyNote, CreditCard, Ticket, ShieldCheck, Phone, Building2 } from "lucide-react";
+import { ArrowLeft, Star, AlertTriangle, MoonStar, Sparkles, User, CalendarDays, Clock, Users, StickyNote, CreditCard, Ticket, ShieldCheck, Phone, Building2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { type RootState } from "@/store/store";
-import SmartCheckbox from "@/components/ui/SmartCheckbox";
+
 import FormActions from "@/components/ui/FormActions";
 import SmartField from "@/components/ui/SmartField";
 import SmartSelect from "@/components/ui/SmartSelect";

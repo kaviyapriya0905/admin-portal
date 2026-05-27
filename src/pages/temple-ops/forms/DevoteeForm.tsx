@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Save, ScanFace, Loader2, CheckCircle2, User, Phone, Mail, MapPin, QrCode, History, Activity, ShieldAlert, Award, BookOpen, Users, Building2 } from "lucide-react";
+import { ArrowLeft, ScanFace, Loader2, CheckCircle2, User, Phone, Mail, MapPin, QrCode, History, Activity, ShieldAlert, Award, BookOpen, Users, Building2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { type RootState } from "@/store/store";

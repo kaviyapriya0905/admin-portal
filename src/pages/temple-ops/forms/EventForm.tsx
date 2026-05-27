@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  ArrowLeft, Save, Calendar, Clock, MapPin, User,
+  ArrowLeft, Calendar, Clock, MapPin, User,
   Star, Flower2, Package, Bell, Repeat, ShieldCheck,
   Sparkles, ClipboardCheck, Utensils, Sun, CloudRain,
   CloudLightning, Info, Link2, Users, StickyNote
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
-import SmartCheckbox from "@/components/ui/SmartCheckbox";
+
 import FormActions from "@/components/ui/FormActions";
 import SmartField from "@/components/ui/SmartField";
 import SmartSelect from "@/components/ui/SmartSelect";

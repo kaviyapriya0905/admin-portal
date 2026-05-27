@@ -273,7 +273,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
           )}
         </AnimatePresence>
 
-        <header className="h-16 bg-white/80 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between px-4 sm:px-4 sm:px-4 sticky top-0 z-40 transition-all duration-300">
+        <header className="h-20 bg-white/80 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between px-4 sm:px-4 sm:px-4 sticky top-0 z-40 transition-all duration-300">
           <div className="flex items-center gap-4 flex-1 max-w-xl">
             <button
               onClick={() => setIsSidebarOpen(true)}

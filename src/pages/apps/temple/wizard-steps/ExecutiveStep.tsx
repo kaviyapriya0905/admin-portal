@@ -8,7 +8,7 @@ import {
 import SmartField from "@/components/ui/SmartField";
 import SmartSelect from "@/components/ui/SmartSelect";
 import SmartTextarea from "@/components/ui/SmartTextarea";
-import type { WizardStepProps } from "@/pages/apps/temple/wizard-steps/types";
+import type { WizardStepProps } from "@/pages/temple-registry/wizard-steps/types";
 
 const ExecutiveStep: React.FC<WizardStepProps> = ({
   formData,
